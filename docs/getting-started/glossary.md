@@ -25,6 +25,15 @@ tags:
 **Bioreactor**
 : A tank process unit in which biological reactions occur.
 
+**Block**
+: A process unit placed on the WEST Layout Sheet canvas. Each block is the graphical and computational representation of a unit process (e.g. a CSTR bioreactor, a settler, an influent generator). Blocks are dragged from the Block Library onto the canvas and connected via terminals.
+
+**Block Library**
+: The palette of available process blocks, shown as a dockable panel on the left side of the WEST window. Blocks are organised by category (biological reactors, settlers, sensors, controllers, influent/effluent generators, etc.). Drag a block from the library onto the Layout Sheet to create an instance.
+
+**BSM** (Benchmark Simulation Model)
+: A standardised wastewater treatment plant model defined by the IWA Task Group on Benchmarking of Control Strategies for WWTPs. BSM1 and BSM2 provide fixed plant configurations, influent files, and evaluation criteria, allowing fair comparison of control strategies across different research groups. WEST ships with BSM-compatible model components.
+
 ---
 
 ## C
@@ -48,6 +57,12 @@ tags:
 
 **Effluent**
 : The output stream leaving the final treatment stage.
+
+**Effluent generator**
+: An Output block in WEST that collects the final treated wastewater stream and performs de-fractionation — converting ASM model state variables back into standard effluent quality parameters (COD, TKN, TSS, TP). The results are used for compliance assessment and reporting.
+
+**Experiment**
+: A configured simulation run in WEST. An experiment defines the simulation type (steady-state, dynamic, sensitivity analysis, etc.), the solver and integrator settings, the output variables to record, and the simulation duration. Experiments are managed via **Project → Virtual Experiments**.
 
 ---
 
