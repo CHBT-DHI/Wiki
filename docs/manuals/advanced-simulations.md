@@ -27,6 +27,10 @@ WEST can copy the end state of a steady-state simulation to the initial state of
 4. Switch to (or create) a dynamic experiment on the same model. Because the option is enabled, WEST will automatically seed it with the steady-state end state.
 5. Start the dynamic simulation. The model begins from the converged steady-state rather than from the default initial conditions defined in the model.
 
+![Warm-start simulation setup](../assets/images/tutorial-p065-img1.png)
+
+![Warm-start results comparison](../assets/images/tutorial-p065-img2.png)
+
 ### Manual initialisation
 
 If the automatic option is disabled, you can initialise manually via the **Initialize Simulation** button in the Control Center. Four transfer directions are available:
@@ -39,6 +43,10 @@ If the automatic option is disabled, you can initialise manually via the **Initi
 | **From Dynamic to Dynamic** | Continue or re-seed a dynamic run from a saved snapshot |
 
 For a warm-start, select **From Steady-State to Dynamic** after the steady-state run has completed successfully.
+
+![Advanced simulation — warm start](../assets/images/tutorial-p107-img1.png)
+
+![Advanced simulation — steady to dynamic](../assets/images/tutorial-p107-img2.png)
 
 !!! tip
     Saving the project after the steady-state run preserves the converged state. You can reuse it as the warm-start point for multiple dynamic experiments without re-running steady-state each time.
@@ -111,6 +119,10 @@ After the run completes:
 - Use the **Results** pane to overlay time series from different scenarios on the same plot axis.
 - Export the results table (CSV or Excel) for external post-processing.
 - If data files were attached, review the automatically computed difference metrics in the **Analysis** results tab to identify the best-performing scenario quantitatively.
+
+![Advanced simulation — scenario comparison](../assets/images/tutorial-p108-img1.png)
+
+![Advanced simulation — results overlay](../assets/images/tutorial-p108-img2.png)
 
 ### Solver options for parameter combinations
 
