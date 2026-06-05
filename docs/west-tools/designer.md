@@ -2,33 +2,27 @@
 tags:
   - west-tools
   - designer
+  - report-designer
 ---
 
 # Designer
 
-**Summary:** Size a wastewater treatment plant using conventional design rules before building a simulation model.
+The Designer (also referred to as the Report Designer) allows users to compose custom reports that combine free text, tables, plots, and live simulation results. Finished reports can be exported to PDF or printed directly. It is useful for any WEST user who needs to produce structured output from a simulation — for example, a project deliverable or a monitoring summary.
 
-**Source:** WEST User Guide, Chapter 9.
+## How to access
 
----
+**Project menu → Reports**
 
-## What the Designer provides
+## Key features
 
-The Designer allows dimensioning a treatment plant according to one of the available design templates and conventional design rules:
-- **ATV** (German Abwassertechnische Vereinigung) guidelines
-- **Metcalf & Eddy** design procedures
-
-It produces recommended tank volumes, flow rates, and sludge production estimates — which can then be used as starting parameter values in a WEST simulation project.
-
----
-
-## Quick user guide
-
-> **Needs content.** From User Guide 9.2.
-
----
+- Drag-and-drop report composition canvas
+- Embed variables and plots from the current simulation directly into the report
+- Mix free text, formatted tables, and simulation charts in a single document
+- Save report layouts as reusable templates
+- Export to PDF or send to a printer
 
 ## Related
 
+- [Data Editor](data-editor.md)
 - [Building a Plant Layout](../how-to/building-layouts.md)
 - [Quick Start Tutorial](../getting-started/quick-start.md)
