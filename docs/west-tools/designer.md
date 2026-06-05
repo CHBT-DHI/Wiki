@@ -21,6 +21,8 @@ The Designer (also referred to as the Report Designer) allows users to compose c
 - Save report layouts as reusable templates
 - Export to PDF or send to a printer
 
+![Designer interface](../assets/images/tutorial-p071-img2.png)
+
 ## Related
 
 - [Data Editor](data-editor.md)
