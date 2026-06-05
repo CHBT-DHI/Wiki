@@ -122,6 +122,8 @@ MBR blocks replace the secondary clarifier with a membrane filtration unit, enab
 
 ### Key MBR parameters
 
+![MBR block — description](../assets/images/modelica-p319-img1.png)
+
 | Parameter | Typical value | Description |
 |---|---|---|
 | `A_mem` | 500–5 000 m² | Total membrane area |
@@ -129,6 +131,8 @@ MBR blocks replace the secondary clarifier with a membrane filtration unit, enab
 | `TMP_max` | 0.3–0.5 bar | Maximum allowable transmembrane pressure |
 | `R_m` | 1×10¹² m⁻¹ | Clean membrane resistance |
 | `f_backwash` | 0.1 | Fraction of permeate used for backwashing |
+
+![MBR — parameters](../assets/images/modelica-p320-img1.png)
 
 !!! note
     MBR blocks use the same biological model instance (ASM1, ASM2d, etc.) as the upstream bioreactor blocks. No interface conversion is needed within the aerobic zone.
