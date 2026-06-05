@@ -21,6 +21,9 @@ The Unit Editor manages unit definitions and unit conversion factors within WEST
 
 ![Unit editor interface](../assets/images/tutorial-p071-img1.png)
 
+
+![Unit editor interface — userguide view](../assets/images/userguide-p104-img1.png)
+
 ## Related
 
 - [Model Editor](model-editor.md)

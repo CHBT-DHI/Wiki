@@ -140,6 +140,37 @@ To create any widget: drag a parameter from the **Block Details** window onto th
 
 ---
 
+
+![Dashboard sheets management](../assets/images/userguide-p173-img1.png)
+
+![Sheet layout in design mode](../assets/images/userguide-p174-img1.png)
+
+![Repositioning objects on a sheet](../assets/images/userguide-p174-img2.png)
+
+![Rearrange objects in design mode](../assets/images/userguide-p175-img1.png)
+
+![Design mode detail](../assets/images/userguide-p175-img2.png)
+
+![Drag model parameters to sheet](../assets/images/userguide-p176-img1.png)
+
+![Fractionation layout building blocks](../assets/images/userguide-p182-img1.png)
+
+![Rename and describe fractionation block](../assets/images/userguide-p183-img1.png)
+
+![Fractionation block detail](../assets/images/userguide-p183-img2.png)
+
+![Polyline connection mode](../assets/images/userguide-p184-img1.png)
+
+![Parameters of fractionation model](../assets/images/userguide-p185-img1.png)
+
+![Radiobutton widget example](../assets/images/userguide-p187-img1.png)
+
+![De-fractionation model — draw connection](../assets/images/userguide-p190-img1.png)
+
+![De-fractionation in polyline mode](../assets/images/userguide-p192-img1.png)
+
+![Parameters of de-fractionation model](../assets/images/userguide-p193-img1.png)
+
 ## Related
 
 - [Building a Plant Layout](building-layouts.md)

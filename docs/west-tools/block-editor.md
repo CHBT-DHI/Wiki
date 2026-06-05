@@ -21,6 +21,9 @@ The Block Editor is used to create and edit Block Icons — the graphical repres
 
 ![Block editor interface](../assets/images/tutorial-p069-img1.png)
 
+
+![Block editor interface — userguide view](../assets/images/userguide-p102-img1.png)
+
 ## Related
 
 - [Model Editor](model-editor.md)

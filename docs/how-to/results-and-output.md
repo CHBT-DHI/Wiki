@@ -146,6 +146,27 @@ WEST provides a dedicated **Export to Excel** function that sends results from t
 
 ---
 
+
+![Plot types — histogram](../assets/images/userguide-p195-img1.png)
+
+![Plot options — current value dataset](../assets/images/userguide-p196-img1.png)
+
+![Plot options — time series detail](../assets/images/userguide-p196-img2.png)
+
+![Plot options — Z(X,Y) dataset](../assets/images/userguide-p197-img1.png)
+
+![Plot options detail](../assets/images/userguide-p197-img2.png)
+
+![Add Series dialog — line plot](../assets/images/userguide-p200-img1.png)
+
+![Add Series dialog — scatter plot](../assets/images/userguide-p200-img2.png)
+
+![Add Series dialog — histogram](../assets/images/userguide-p201-img1.png)
+
+![Creating a gauge widget](../assets/images/userguide-p202-img1.png)
+
+![Set up file output for simulation](../assets/images/userguide-p205-img1.png)
+
 ## Related
 
 - [Running Simulations](running-simulations.md)

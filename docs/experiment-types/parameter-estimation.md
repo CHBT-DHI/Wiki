@@ -157,6 +157,9 @@ A **Line** plot of each calibrated parameter value vs run number (Figure 11.4) s
 
 ---
 
+
+![Parameter estimation — variables pane detail](../assets/images/userguide-p135-img2.png)
+
 ## Related
 
 - [Sensitivity Analysis](sensitivity-analysis.md) — use LSA/GSA first to identify which parameters matter
