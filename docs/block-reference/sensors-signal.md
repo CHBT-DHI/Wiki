@@ -10,6 +10,8 @@ tags:
 
 **Source:** WEST Models Guide — Sensors (pp. 380–390), Signal Treatment (pp. 396–403), Samplers (pp. 404–410).
 
+Sensor and signal treatment blocks are the interface between process blocks and controllers in a WEST layout. Sensors read state variables from connected process blocks and output them as control signals. Signal treatment blocks condition those signals (filter, limit, delay) before passing them to actuators. All sensor and signal blocks operate in simulation time — they do not add computation overhead beyond the underlying process model.
+
 ---
 
 ## Sensors
@@ -125,7 +127,7 @@ Clips the output signal to a defined minimum and maximum range, simulating senso
 
 ## Samplers
 
-Samplers aggregate a signal over a time or volume interval, simulating composite sampling.
+Sampler blocks compute composite or time-averaged sample values from continuous simulation output. The `TimeSampler` outputs the moving average of a signal over a configurable time window (hours). The `FlowProportionalSampler` computes a flow-weighted average. Samplers are used to replicate the behaviour of composite samplers used in plant monitoring, and to compare simulation output with lab grab-sample data.
 
 | Model | Method |
 |---|---|
