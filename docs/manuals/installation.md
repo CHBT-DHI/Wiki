@@ -26,6 +26,8 @@ tags:
 | .NET Framework | 4.0 full profile | Latest available |
 | Internet | Required for licence activation | — |
 
+![Installation — system requirements](../assets/images/userguide-p074-img1.png)
+
 !!! note
     WEST is a 64-bit Windows application. It is not supported on macOS or Linux.
 
