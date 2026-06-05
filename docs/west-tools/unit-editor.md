@@ -6,27 +6,20 @@ tags:
 
 # Unit Editor
 
-**Summary:** Visualise and manage the WEST unit table and conversion factors.
+The Unit Editor manages unit definitions and unit conversion factors within WEST. Most users will never need to open it — it is relevant only when working with non-standard data formats that require custom unit definitions, or when existing conversion factors need to be adjusted.
 
-**Source:** WEST User Guide, Chapter 11.
+## How to access
 
----
+**Project menu → Tools → Unit Editor**
 
-## What the Unit Editor provides
+## Key features
 
-The Unit Editor allows:
-- Viewing all units registered in WEST (e.g. m³/d, g COD/m³, °C)
-- Editing conversion factors between unit systems
-- Adding custom units for non-standard parameters
-
----
-
-## Quick user guide
-
-> **Needs content.** From User Guide 11.2.
-
----
+- View all units registered in WEST (e.g. m³/d, g COD/m³, °C)
+- Edit conversion factors between unit systems
+- Add custom units for non-standard or project-specific parameters
+- Modify existing unit conversions without touching model source code
 
 ## Related
 
 - [Model Editor](model-editor.md)
+- [Data Editor](data-editor.md)
