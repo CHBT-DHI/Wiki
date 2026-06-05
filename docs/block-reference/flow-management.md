@@ -14,7 +14,7 @@ tags:
 
 ## Combiners
 
-Mix two or more inflow streams.
+Combiner (mixer) blocks merge two or more liquid streams into one. The outlet flow equals the sum of inlet flows; component concentrations are flow-weighted averages. Available combiners: `Mixer2` (2 inlets), `Mixer3` (3 inlets), `Mixer4` (4 inlets). Use a combiner whenever two streams need to be blended before entering the next unit process.
 
 ![Flow combiner/mixer — description](../assets/images/modelica-p294-img1.png)
 
@@ -30,7 +30,7 @@ Mix two or more inflow streams.
 
 ## Splitters
 
-Divide one stream into two outflows.
+Splitter blocks divide one inlet stream into two or more outlet streams. The `Splitter` block divides flow by a fixed fraction; the `ControlledSplitter` accepts a signal input to set the split ratio dynamically. Outlet concentrations are identical to inlet concentrations (splitters do not change composition). Common uses: sludge recycle splits, influent distribution to parallel trains, step-feed distribution.
 
 ![Flow splitter — description](../assets/images/modelica-p290-img1.png)
 
@@ -48,6 +48,8 @@ Divide one stream into two outflows.
 ---
 
 ## Pumps
+
+Pump blocks move liquid between tanks at a specified flow rate. The SimplePump block takes a flow rate input (m³/d, either fixed parameter or control signal) and outputs the same liquid stream at the target flow. The VariablePump block additionally models pump head-flow curves and can output power consumption (kWh/d). Pumps are used for RAS, WAS, recirculation, and dosing streams.
 
 ![Pump block — description](../assets/images/modelica-p305-img1.png)
 
