@@ -35,6 +35,21 @@ tags:
 
 ### On/Off controller
 
+The On/Off controller (bang-bang controller) switches an actuator fully on or off based on a threshold comparison of a measured signal against two set-points. It is the simplest control strategy in WEST and requires no tuning beyond the two thresholds.
+
+**How it works:** When the measured process variable falls below `SP_on`, the controller output switches to `output_on`. When the measurement rises above `SP_off`, the output switches to `output_off`. The dead-band between `SP_on` and `SP_off` prevents rapid cycling (chattering) around the switch point.
+
+**Parameters:**
+
+| Parameter | Description | Typical value |
+|---|---|---|
+| `SP_on` | Measurement threshold below which the actuator turns on | e.g. 1.0 mg O₂/l |
+| `SP_off` | Measurement threshold above which the actuator turns off | e.g. 3.0 mg O₂/l |
+| `output_on` | Controller output value when the actuator is on | 1.0 |
+| `output_off` | Controller output value when the actuator is off | 0.0 |
+
+**Typical use — intermittent aeration:** Connect a DO sensor output to the On/Off controller measurement input, set `SP_on = 1.0 mg O₂/l` and `SP_off = 3.0 mg O₂/l`. Connect the controller output to a blower or valve block. The blower switches on when DO drops below 1 mg/l and off when DO exceeds 3 mg/l, implementing intermittent aeration for simultaneous nitrification–denitrification (SND) or energy saving.
+
 ![On/Off controller — description](../assets/images/modelica-p278-img1.png)
 
 ---
