@@ -10,6 +10,8 @@ tags:
 
 **Source:** WEST Models Guide — Thickeners (pp. 298–303), Aerobic Digesters (pp. 305–307), Sludge Drying (pp. 308–310), Biogas (pp. 311–320).
 
+Sludge treatment blocks model the downstream processing of waste activated sludge (WAS) and primary sludge. The chain typically includes: thickening → digestion → dewatering → disposal. WEST provides blocks for each step, from simple efficiency-based models to the full ADM1 biochemical model for anaerobic digestion. Sludge treatment blocks are connected to the main plant layout via the WAS outlet of secondary clarifiers or activated sludge tanks.
+
 ---
 
 ## Thickeners

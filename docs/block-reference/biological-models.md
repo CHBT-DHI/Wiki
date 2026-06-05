@@ -14,6 +14,8 @@ tags:
 
 ## Model overview
 
+WEST includes a family of activated sludge models derived from the IWA ASM family. All models share a common Petersen matrix structure: state variables (components) × processes (transformation rates). Each block instance solves the ODE system for one completely-mixed reactor volume. Models are selected at the block level; all blocks in a layout can use the same or different models.
+
 | Model | Primary use | Nutrient removal | State variables |
 |---|---|---|---|
 | ASM1 | Carbon + nitrification/denitrification | N only | 13 |
@@ -35,6 +37,8 @@ ASM1 is the IWA standard model for carbon removal, nitrification, and denitrific
 - No phosphorus dynamics
 
 ### State variables
+
+13 components: S_S (readily biodegradable substrate), S_I (soluble inert COD), X_S (slowly biodegradable substrate), X_I (particulate inert COD), X_BH (heterotrophic biomass), X_BA (autotrophic biomass), X_P (endogenous products), S_O (dissolved oxygen), S_NO (nitrate+nitrite), S_NH (ammonium), S_ND (soluble organic nitrogen), X_ND (particulate organic nitrogen), S_ALK (alkalinity).
 
 | Symbol | Description | Unit |
 |---|---|---|
@@ -67,7 +71,17 @@ ASM1 defines eight biological conversion processes:
 
 ### Key kinetic parameters (typical values at 20 °C)
 
-| Parameter | Description | Typical value | Unit |
+| Parameter | Symbol | Typical value | Unit |
+|---|---|---|---|
+| Max heterotrophic growth rate | μ_H | 6.0 | d⁻¹ |
+| Half-saturation for substrate | K_S | 20 | g COD/m³ |
+| Max autotrophic growth rate | μ_A | 0.8 | d⁻¹ |
+| Half-saturation for NH₄ | K_NH | 1.0 | g N/m³ |
+| Heterotrophic decay | b_H | 0.62 | d⁻¹ |
+| Autotrophic decay | b_A | 0.20 | d⁻¹ |
+| Yield (heterotrophic) | Y_H | 0.67 | g COD/g COD |
+
+| Name | Description | Typical value | Unit |
 |---|---|---|---|
 | `mu_H_max` | Max growth rate, heterotrophs | 6.0 | 1/d |
 | `K_S` | Half-saturation coeff for S_S | 20 | g COD/m³ |
@@ -90,6 +104,8 @@ ASM1 defines eight biological conversion processes:
 ASM2dMod is a WEST modification of the IWA ASM2d model (Gernaey and Jørgenson, 2004). It extends ASM2d to make decay process rates electron-acceptor dependent. It covers carbon removal, nitrification, denitrification, and biological phosphorus removal (EBPR) via phosphate-accumulating organisms (PAOs).
 
 ### State variables (component vector)
+
+19 components including ASM1 variables plus: S_F (fermentable substrate), S_A (acetate/VFAs), X_PAO (polyphosphate-accumulating organisms), X_PP (stored polyphosphate), X_PHA (stored PHA), S_PO4 (ortho-phosphate), X_MeOH (metal hydroxide), X_MeP (metal phosphate).
 
 | Name | Description | Unit |
 |---|---|---|
@@ -115,6 +131,8 @@ ASM2dMod is a WEST modification of the IWA ASM2d model (Gernaey and Jørgenson, 
 | X_MeP | Metal phosphate | g COD/m³ |
 
 ### Processes (conversion model)
+
+21 processes: aerobic/anoxic/anaerobic hydrolysis; aerobic/anoxic growth of heterotrophs; fermentation; storage and aerobic/anoxic growth of PAOs; PP storage; aerobic/anoxic endogenous respiration of PAOs; decay of PAOs, PP, PHA; nitrification; autotrophic decay; chemical P precipitation.
 
 | # | Name | Description |
 |---|---|---|
@@ -167,6 +185,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 
 ### Parameters — Kinetics (default values at 20°C)
 
+Key additions over ASM1: q_fe (fermentation rate, 3.0 d⁻¹), q_PHA (PHA storage rate, 3.0 d⁻¹), q_PP (PP storage rate, 1.50 d⁻¹), μ_PAO (PAO growth rate, 1.0 d⁻¹), b_PAO (PAO decay, 0.2 d⁻¹).
+
 | Name | Description | Default | Unit |
 |---|---|---|---|
 | `mu_H` | Maximum growth rate for heterotrophs | 6 | 1/d |
@@ -211,6 +231,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 
 ### Parameters — Stoichiometry
 
+Yield coefficients: Y_H=0.625 g COD/g COD, Y_PAO=0.625 g COD/g COD, Y_PO4=0.40 g P/g COD (PP stored per PHA). Fractions: f_SI=0.0 (soluble inert from hydrolysis), f_XI=0.10 (particulate inert from decay), i_BM=0.07 g N/g COD (N content of biomass), i_P=0.02 g P/g COD.
+
 | Name | Description | Default | Unit |
 |---|---|---|---|
 | `Y_H` | Yield for heterotrophic biomass | 0.625 | g COD/g COD |
@@ -223,6 +245,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 
 ### Parameters — Composition
 
+Elemental composition factors used for COD, N, P, and charge balances. i_NSF=0.03 g N/g COD (N in S_F), i_NSI=0.01 g N/g COD (N in S_I), i_NXI=0.02, i_NXS=0.04, i_NBM=0.07. i_PSF=0.01, i_PSI=0, i_PXI=0.01, i_PXS=0.01, i_PBM=0.02.
+
 | Name | Description | Default | Unit |
 |---|---|---|---|
 | `i_N_BM` | Nitrogen content of biomass | 0.07 | g N/g COD |
@@ -234,6 +258,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 | `i_TSS_X_S` | TSS to X_S ratio | 0.75 | g TSS/g COD |
 
 ### Parameters — Temperature corrections (Arrhenius θ values)
+
+All kinetic rates are corrected by θ^(T−20). Typical θ values: heterotrophic growth 1.07, autotrophic growth 1.11, hydrolysis 1.04, decay 1.05, PAO processes 1.07. Temperature significantly affects nitrification — a 5 °C drop roughly halves μ_A at θ=1.11.
 
 | Name | Parameter corrected | Default |
 |---|---|---|
@@ -253,6 +279,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 
 ### Fractionation parameters (influent characterisation)
 
+Influent COD is split into fractions assigned to ASM2d components. Key fractions: f_SS (readily biodegradable, 0.15–0.25), f_SA (acetate fraction of f_SS, 0.10), f_XI (particulate inert, 0.10–0.15), f_XS (slowly biodegradable, 0.50–0.60), f_SI (soluble inert, 0.05). See Influent Characterisation for the full procedure.
+
 | Name | Description | Default | Unit |
 |---|---|---|---|
 | `F_BOD_COD` | Ratio of BOD to COD | 0.65 | g BOD/g COD |
@@ -265,6 +293,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 | `f_X_S` | Particulate COD to X_S ratio | 0.69 | — |
 
 ### Interface variables (measurable outputs from bioreactor block)
+
+S_NH4 (ammonium, g N/m³), S_NO3 (nitrate, g N/m³), S_PO4 (ortho-P, g P/m³), S_O2 (DO, g O₂/m³), TSS (total suspended solids, g/m³), VSS (volatile SS), COD_total, BOD₅, TN (total nitrogen), TP (total phosphorus), Alkalinity (mol HCO₃⁻/m³).
 
 | Name | Terminal | Description | Unit |
 |---|---|---|---|
@@ -336,6 +366,10 @@ Extension of ASM2dMod adding inorganic suspended solids dynamics (mineral precip
 
 All other 20 ASM2dMod components are retained unchanged.
 
+### Additional components (beyond ASM2dMod)
+
+X_ISS (inorganic suspended solids, g ISS/m³). ISS accumulate in the system through influent inorganic fraction and chemical precipitation. Required for accurate TSS prediction and sludge volume calculations.
+
 ### ISS processes
 
 ASM2dISS tracks the inorganic fraction of TSS explicitly through three mechanisms:
@@ -395,6 +429,8 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 
 ### Key processes added
 
+ADM1-based anaerobic digestion processes added to the plant-wide model: hydrolysis of carbohydrates/proteins/lipids, acidogenesis, acetogenesis, methanogenesis (acetoclastic and hydrogenotrophic). Enables simulation of digesters alongside activated sludge in the same plant model.
+
 | Process | Description |
 |---|---|
 | Sulphate reduction | Anaerobic oxidation of organics coupled to SO₄²⁻ reduction; produces S_H2S; inhibits methanogens |
@@ -411,6 +447,8 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 Inorganic suspended solids (ISS) and volatile suspended solids (VSS) fractionation splits total suspended solids into organic (volatile) and inorganic fractions. ISS accumulate in the sludge and affect settling behaviour, thickening performance, and sludge volume. The fractionation is governed by the ratio `f_ISS` (g ISS / g TSS in the influent), which is used to initialise the `X_ISS` state variable from measured influent TSS data. In PWM_SA, ISS are also generated internally through chemical precipitation (X_MeP, X_MeOH) and through the inorganic content of active biomass (`i_ISS_BM`). Accurate ISS fractionation is important when modelling plants with chemical P-removal or high-mineral-load influents, and when estimating sludge production for dewatering or incineration design. ASM2d and PWM models that include the X_ISS state variable track ISS explicitly; ASM1 does not.
 
 ### Key additional parameters
+
+ADM1 interface parameters: f_ch_xc (carbohydrate fraction of composite, 0.2), f_pr_xc (protein fraction, 0.2), f_li_xc (lipid fraction, 0.3), f_xi_xc (inert fraction, 0.2). Disintegration rate k_dis (0.5 d⁻¹). Maximum acetoclastic methanogen growth rate k_m_ac (0.08 d⁻¹).
 
 | Parameter | Description | Typical value | Unit |
 |---|---|---|---|

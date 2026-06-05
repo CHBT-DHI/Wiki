@@ -27,13 +27,7 @@ The Block Library lists all available process blocks organized in palette groups
 
 ## Control Center
 
-The Control Center shows the current simulation state: running, stopped, or initialised. It provides:
-
-- **Run/Stop** buttons for quick simulation control
-- **Progress bar** during a simulation run
-- **Elapsed time** and estimated time remaining
-- **Current simulation time** (for dynamic runs)
-- Access to **Experiment Properties** for the active experiment
+The Control Center is the primary panel for managing and running simulations. It is divided into three main areas: the **Experiment selector** (top) where you choose the experiment type (Steady State, Dynamic, Sensitivity Analysis, etc.); the **Parameter panel** (middle) where you set experiment-specific settings such as simulation period, solver tolerances, and output configuration; and the **Run controls** (bottom) with Run, Pause, Stop, and Reset buttons. The status bar at the bottom of the Control Center shows the current simulation time, residual (for steady-state), and elapsed wall-clock time. During a dynamic run, a progress bar fills as simulation time advances toward the end time. You can also access **Experiment Properties** directly from the Control Center to adjust solver settings or output frequency without navigating the main menu.
 
 ---
 
@@ -92,14 +86,7 @@ A compact version of the block properties. Displays the selected object's most i
 
 ## Logging Window
 
-Shows all WEST messages including:
-
-- Simulation start/stop events
-- Convergence warnings
-- Compiler messages (when generating Modelica code)
-- Error messages with line references
-
-**Tip**: When a simulation fails, check the Logging Window first — it usually shows the exact variable or block that caused the issue.
+The Logging Window records all simulation events, warnings, and errors in chronological order. Each entry has a timestamp, severity level (Info, Warning, Error), and a message. Info messages report normal progress (solver steps, run completion). Warning messages flag potential issues that did not stop the simulation (e.g. a variable hitting its bounds). Error messages indicate failures that stopped the run — always read these first when a simulation does not complete. The log can be cleared with the **Clear** button or saved to a text file with **Save Log**.
 
 | Message type | Colour |
 |---|---|

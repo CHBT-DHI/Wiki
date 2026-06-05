@@ -48,6 +48,15 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 
 ![VolumeConstant — parameters](../assets/images/modelica-p159-img2.png)
 
+| Parameter | Unit | Default | Description |
+|---|---|---|---|
+| Volume | m³ | 1000 | Tank working volume |
+| Temperature | °C | 15 | Operating temperature |
+| f_anox | — | 0 | Anoxic fraction (0 = fully aerobic) |
+| KLa | d⁻¹ | 100 | Volumetric oxygen transfer coefficient |
+| KLa_N2 | d⁻¹ | 0 | N₂ stripping coefficient (for denitrification gas) |
+| DO_setpoint | g/m³ | 2.0 | Target DO (used if KLa is controlled) |
+
 | Name | Description | Default | Units |
 |---|---|---|---|
 | `Vol` | Volume of the tank | 1000 | m³ |
@@ -55,6 +64,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 | `Is_MixIfAer` | Is it actively mixed when aerated? | 0 | — |
 
 ### State Variables
+
+Inherited from the selected biological model (ASM1, ASM2d, etc.). Common outputs available on every AST block regardless of model: DO (g O₂/m³), NH4 (g N/m³), NO3 (g N/m³), PO4 (g P/m³), TSS (g/m³), VSS (g/m³), COD_total (g/m³), BOD5 (g/m³), TN (g N/m³), TP (g P/m³), Volume (m³), HRT (d), SRT (d, plant-level).
 
 ![VolumeConstant — state variables](../assets/images/modelica-p160-img1.png)
 
@@ -69,6 +80,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 | `M` | Mass of state components (vector) — derived | — |
 
 ### Interface Variables
+
+Inlet terminals: `Qin` (liquid stream, m³/d), `Qin2` (optional second inlet). Outlet terminals: `Qout` (liquid stream). Signal inputs: `KLa_control` (overrides KLa parameter when connected), `Volume_control` (for variable-volume tanks). Signal output: `DO_signal` (for connecting to a DO controller).
 
 ![VolumeConstant — interface variables](../assets/images/modelica-p160-img2.png)
 

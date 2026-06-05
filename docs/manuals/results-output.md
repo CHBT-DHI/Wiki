@@ -31,6 +31,11 @@ To record variables from a simulation:
 
 ### Output file settings
 
+Configure which variables are written to output files in **Simulation → Output Configuration**. The dialog has two tabs:
+
+- **Variables**: add or remove state variables from the output list. Use the block tree to navigate to specific blocks. Check "All variables" to capture everything (increases file size significantly).
+- **Settings**: set the communication interval (time between saved output points), choose binary (`.out`) or text format, and set the file name prefix. Binary format is faster to write and smaller; text format is directly readable in a spreadsheet.
+
 | Setting | Description |
 |---|---|
 | **File name pattern** | Base name for the output file. Use `{}` as a placeholder for the run number (e.g. `run_{}.out`). |
@@ -40,14 +45,18 @@ To record variables from a simulation:
 
 ### Adding quantities to record
 
-Quantities can be added to the output in two ways:
+To add a variable to the output list, open **Simulation → Output Configuration → Variables** tab. Expand the block tree on the left to find the block of interest. Select one or more variables (hold **Ctrl** for multiple) and click **Add →**. The selected variables appear in the right-hand "Record" list. Variables already in the list are highlighted. Click **OK** to save changes — they take effect on the next simulation run.
+
+Quantities can also be added in two other ways:
 
 - **Drag and drop** a variable from the **Block Details** or **Block Summary** window onto the Output tab.
 - Use the **+** / **–** buttons in the Output tab to add or remove quantities manually.
 
 ### Buffer output (WESTforAUTOMATION)
 
-Buffer output is a separate output mode used with WESTforAUTOMATION. Additional settings:
+Buffer output is used by the WESTforAUTOMATION API to read simulation results programmatically without writing to disk. Variables added to the buffer output list are held in memory during the run and accessible via the API's `get_variable()` method. Buffer output is faster than file output for batch workflows where results are processed in-code rather than inspected manually.
+
+Additional buffer output settings:
 
 | Setting | Description |
 |---|---|
@@ -131,7 +140,9 @@ Aggregate simulated data **across time** for a single run. Examples: mean efflue
 
 ### Run criteria
 
-Aggregate data **across runs** for a given time point. Available statistics:
+Run criteria define stopping conditions for a simulation beyond the end time. A run stops early if any criterion is met. Example criteria: effluent NH₄ < 1 g N/m³ for 3 consecutive days (steady-state detection), or effluent TSS > 30 g/m³ (alarm condition). Run criteria are configured in the Experiment Settings dialog under the **Criteria** tab. See [Objectives & Run Criteria](../how-to/objectives-run-criteria.md) for the full workflow.
+
+Available statistics for cross-run aggregation:
 
 - Minimum and maximum
 - Mean and standard deviation

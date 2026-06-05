@@ -14,6 +14,8 @@ tags:
 
 ## Chemical dosing
 
+WEST includes chemical dosing blocks for coagulation (FeCl₃, Al₂(SO₄)₃), precipitation, and pH adjustment. Blocks accept a dose rate signal (mg/L or g/d) and compute the resulting change in component concentrations using stoichiometric relationships. Commonly used upstream of clarifiers or for phosphorus removal.
+
 | Model | Chemical | Purpose |
 |---|---|---|
 | `Dose_Acetate` | Acetate | Carbon source for denitrification |
@@ -27,6 +29,8 @@ tags:
 ---
 
 ## Screening & grit removal
+
+Headworks blocks model physical pre-treatment. The Screening block removes a user-defined fraction of TSS and large solids; the Grit block settles inorganic grit based on a removal efficiency parameter. Both are typically used at the start of a plant layout to condition influent before biological treatment.
 
 | Model | Description |
 |---|---|
@@ -49,6 +53,8 @@ Used for flow equalisation:
 
 ## Disinfection
 
+The Disinfection block applies a first-order or CT (concentration × time) model to estimate pathogen or indicator organism removal. Parameters: disinfectant dose (mg/L), contact time (min), CT₁₀ value, temperature correction. Used for UV, chlorination, and ozonation scenarios.
+
 | Model | Agent |
 |---|---|
 | `Disinfection.Chlorine` | Chlorination |
@@ -59,6 +65,8 @@ Used for flow equalisation:
 ---
 
 ## Quaternary treatment
+
+Quaternary treatment blocks model advanced polishing steps beyond secondary and tertiary treatment: micropollutant removal by ozonation, advanced oxidation processes (AOPs), and ion exchange. Parameters depend on the specific block; typically include removal rate constants for target compounds.
 
 | Model | Description |
 |---|---|
@@ -81,17 +89,21 @@ Tertiary treatment blocks model polishing steps applied after secondary clarific
 | `t_regen` | Regeneration or replacement interval (d) | 180–365 d |
 | `K_F`, `n_F` | Freundlich isotherm coefficients | compound-specific |
 
+### Available blocks
+
+`GAC_01bed`, `GAC_10beds`, `Ozonation`, `UV_Disinfection`, `ChlorineDosing`.
+
 ### Disinfection
 
 ![Disinfection block — UV/chlorine disinfection unit](../assets/images/modelica-p422-img1.png)
 
-**Disinfection** blocks model UV or chlorine-based disinfection as the final treatment step before discharge. The block applies a log-reduction to indicator organisms based on dose (UV: mJ/cm²; chlorine: mg/l × contact time). Key parameters include dose, contact time, and hydraulic efficiency factor. Use `Disinfection.UV` for ultraviolet treatment or `Disinfection.Chlorine` / `Disinfection.ChlorineInv` for chemical disinfection with inactivation kinetics.
+See [Disinfection](#disinfection) for the full block list. The block outputs residual disinfectant concentration and log-removal of target organisms. Use `Disinfection.UV` for ultraviolet treatment or `Disinfection.Chlorine` / `Disinfection.ChlorineInv` for chemical disinfection with inactivation kinetics.
 
 ### GAC_01bed — Single-bed granular activated carbon filter
 
 ![GAC_01bed — single-bed granular activated carbon filter](../assets/images/modelica-p433-img1.png)
 
-**GAC_01bed** models a single-bed granular activated carbon adsorption filter for micropollutant removal (e.g. pharmaceuticals, pesticides, endocrine disruptors). The block uses a simplified equilibrium/kinetic adsorption model. Key parameters:
+Single-bed GAC adsorption column. Key parameters: empty-bed contact time (EBCT, min, default 10), bed volume (m³), initial carbon capacity (mg COD/g carbon), regeneration threshold (% exhaustion). The model uses a homogeneous surface diffusion (HSDM) approximation. Output: effluent TOC/COD and cumulative bed volumes treated.
 
 | Parameter | Description |
 |---|---|
@@ -105,7 +117,7 @@ Tertiary treatment blocks model polishing steps applied after secondary clarific
 
 ![GAC_10beds — 10-bed GAC filter configuration](../assets/images/modelica-p437-img1.png)
 
-**GAC_10beds** extends the single-bed model to simulate multiple beds operating in series or parallel — representative of large-scale GAC installations where beds are staggered for continuous operation and lead/lag configurations. Each bed can be at a different stage of its adsorption cycle (fresh, partially exhausted, or spent). Key parameters are the same as `GAC_01bed` plus:
+Parallel array of 10 GAC beds operated in a lead-lag sequence. When the lead bed reaches the regeneration threshold it is taken offline and a fresh bed is placed at the lag position. Provides smoother effluent quality than a single bed. Parameters: same as `GAC_01bed` plus switching threshold.
 
 | Parameter | Description |
 |---|---|
@@ -133,8 +145,8 @@ WEST implements the IWA Anaerobic Digestion Model No. 1 (ADM1) for sludge stabil
 
 | Category | State variables |
 |---|---|
-| Soluble substrates | `S_su` (monosaccharides), `S_aa` (amino acids), `S_fa` (long-chain fatty acids), `S_va`, `S_bu`, `S_pro`, `S_ac` (volatile fatty acids), `S_h2`, `S_ch4` |
-| Particulate substrates | `X_c` (composites), `X_ch` (carbohydrates), `X_pr` (proteins), `X_li` (lipids) |
+| Soluble substrates | `S_su` (monosaccharides), `S_aa` (amino acids), `S_fa` (long-chain fatty acids), `S_va`, `S_bu`, `S_pro`, `S_ac` (volatile fatty acids), `S_h2`, `S_ch4`, `S_IC` (inorganic carbon), `S_IN` (inorganic nitrogen), `S_I` (soluble inerts) |
+| Particulate substrates | `X_c` (composite), `X_ch` (carbohydrates), `X_pr` (proteins), `X_li` (lipids), `X_I` (particulate inerts) |
 | Biomass | `X_su`, `X_aa`, `X_fa`, `X_c4`, `X_pro`, `X_ac`, `X_h2` (seven trophic groups) |
 | Gas phase | `S_gas_h2`, `S_gas_ch4`, `S_gas_co2` |
 | Ion balance | `S_IC` (inorganic carbon), `S_IN` (inorganic nitrogen), `S_cat`, `S_an` |
@@ -190,7 +202,18 @@ MBR blocks replace the secondary clarifier with a membrane filtration unit, enab
 
 Granular sludge (aerobic granular sludge, AGS) and Moving Bed Biofilm Reactor (MBBR) models capture biofilm-based processes that cannot be adequately represented by conventional suspended-growth models. Both model types retain active biomass at high concentrations within structured biofilm communities, offering advantages in footprint, settleability, and simultaneous nutrient removal. Key parameters common to both approaches are biofilm thickness (`L_f`, µm), which governs internal oxygen and substrate diffusion limitations, specific surface area of the carrier or granule (`a_specific`, m²/m³), and fill fraction (volume of carriers or granules as a fraction of total reactor volume). The granular sludge model uses a layered diffusion-reaction approach in which concentration gradients across the granule radius are resolved numerically; the MBBR model uses a surface-flux formulation where the biofilm is treated as a single layer with an effective transfer coefficient. Both modules are available under the advanced biofilm module licence; they are not included in the base WEST licence.
 
+### Available blocks
+
+| Model | Description |
+|---|---|
+| `AGS_SBR` | Aerobic granular sludge sequencing batch reactor |
+| `MBBR_Aerobic` | Aerobic moving bed biofilm reactor |
+| `MBBR_Anoxic` | Anoxic moving bed biofilm reactor |
+| `IFAS` | Integrated fixed-film activated sludge |
+
 ### Aerobic granular sludge (AGS)
+
+AGS forms dense, fast-settling granules that combine aerobic, anoxic, and anaerobic zones within a single granule. The `AGS_SBR` block models simultaneous nitrification-denitrification and EBPR in a sequencing batch reactor. Key parameters: granule diameter (mm), feast/famine ratio, cycle time (h), fill fraction.
 
 | Model | Description |
 |---|---|
@@ -199,6 +222,8 @@ Granular sludge (aerobic granular sludge, AGS) and Moving Bed Biofilm Reactor (M
 
 ### Moving bed biofilm reactor (MBBR) and integrated fixed-film activated sludge (IFAS)
 
+MBBR blocks use suspended plastic carriers as biofilm support. The surface-flux model computes substrate removal as a function of bulk concentration, biofilm surface area, and diffusion resistance. IFAS combines suspended and attached biomass in the same tank. Parameters: carrier fill fraction (%), specific surface area (m²/m³), biofilm thickness (µm).
+
 | Model | Description |
 |---|---|
 | `Biofilm.MBBR` | MBBR with plastic carrier media. Biofilm kinetics are described by a simplified 1D biofilm model coupled to the bulk liquid ASM reactions. Key parameters: carrier fill fraction (`f_carrier`, typically 0.3–0.6), biofilm thickness (`L_f`), and specific surface area (`a_f`, m²/m³). |
@@ -206,17 +231,21 @@ Granular sludge (aerobic granular sludge, AGS) and Moving Bed Biofilm Reactor (M
 
 ### Key granular/MBBR parameters
 
+`carrier_fill_fraction` (–, 0–0.7), `specific_surface_area` (m²/m³, 200–800), `biofilm_thickness` (µm, 50–300), `granule_diameter` (mm, 0.5–5), `cycle_time` (h, 3–8 for SBR).
+
 | Parameter | Description |
 |---|---|
-| `f_carrier` | Volume fraction of reactor occupied by carrier media (MBBR/IFAS) |
-| `a_specific` | Specific surface area of carrier (m² per m³ of carrier volume) |
-| `L_f` | Biofilm thickness (m); determines diffusion limitations |
-| `D_gran` | Granule diameter (m) for AGS diffusion calculations |
-| `SBR_cycle` | Duration of one SBR cycle (h) for AGS-SBR |
+| `carrier_fill_fraction` | Volume fraction of reactor occupied by carrier media (MBBR/IFAS), range 0–0.7 |
+| `specific_surface_area` | Specific surface area of carrier (m²/m³), typical range 200–800 |
+| `biofilm_thickness` | Biofilm thickness (µm), typical range 50–300; determines diffusion limitations |
+| `granule_diameter` | Granule diameter (mm), typical range 0.5–5, for AGS diffusion calculations |
+| `cycle_time` | Duration of one SBR cycle (h), typical range 3–8 for AGS-SBR |
 
 ---
 
 ## Energy & heat exchange
+
+Energy blocks calculate aeration energy consumption (kWh/d) and heat transfer in digesters or heated tanks. The HeatExchanger block models heat losses to the environment using a UA-value (W/K) and ambient temperature input. Energy output blocks sum total plant energy demand for cost and carbon footprint calculations.
 
 | Model | Description |
 |---|---|
@@ -230,6 +259,8 @@ Granular sludge (aerobic granular sludge, AGS) and Moving Bed Biofilm Reactor (M
 ---
 
 ## Cost calculators
+
+Cost calculator blocks estimate capital and operating costs based on flow rates, sludge production, and energy consumption. Parameters include unit cost coefficients for electricity, chemicals, and sludge disposal. Outputs are in currency units per year or per m³ treated. Used for scenario cost comparisons.
 
 | Model | Description |
 |---|---|

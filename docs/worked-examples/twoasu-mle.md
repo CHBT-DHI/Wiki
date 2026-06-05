@@ -87,20 +87,20 @@ Click **"Generate fractionation"**. WEST automatically splits the bulk character
 
 ## Key parameters
 
-| Block | Parameter | Value |
-|---|---|---|
-| Anoxic tank | Volume | 2 000 m³ |
-| Aerobic tank | Volume | 4 000 m³ |
-| Aerobic tank | DO set-point | 1.5 mg O₂/l |
-| Clarifier | Underflow Q | 18 831 m³/d |
-| Internal recycle | Flow | 55 338 m³/d |
-| Wastage | Flow | 385 m³/d |
+| Parameter | Zone 1 (anoxic) | Zone 2 (aerobic) | Unit |
+|---|---|---|---|
+| Volume | 2000 | 4000 | m³ |
+| KLa | 0 | 150 | d⁻¹ |
+| Temperature | 15 | 15 | °C |
+| Internal recycle ratio | — | 3 × Q_in | — |
+| RAS ratio | 1 × Q_in | — | — |
+| SRT (target) | 12 | — | d |
 
 ---
 
 ## Steady-state results
 
-Typical effluent concentrations at steady-state:
+After a converged steady-state run with the default parameters, typical results are: effluent NH₄ < 1 g N/m³ (full nitrification), effluent NO₃ ~8–12 g N/m³ (partial denitrification via pre-anoxic zone), effluent TSS < 12 g/m³, MLSS in aerobic zone ~3500 g/m³, SRT ~12 days. Total nitrogen removal is typically 60–70 % of influent TN. Increase the internal recycle ratio to improve denitrification; decrease it to reduce energy consumption.
 
 | Variable | Value |
 |---|---|
@@ -117,6 +117,8 @@ Typical effluent concentrations at steady-state:
 
 ## Dynamic results (30-day run)
 
+Running a 30-day dynamic simulation with a typical diurnal influent pattern (peak flow 1.5× average at 08:00–10:00) shows: DO in the aerobic zone fluctuates between 1.5 and 3.5 g/m³ if the KLa is fixed; effluent NH₄ spikes to 2–4 g N/m³ during the morning peak if aeration is not increased. Adding a DO controller (connect a DO sensor to a PID controller driving the KLa input) stabilises effluent quality during load variations.
+
 Running with `WEST.BODCOD.Month.Influent.txt` (monthly load variation, VODE integrator):
 
 | Variable | Mean ± StDev | 5–95 percentile |
@@ -132,7 +134,7 @@ Running with `WEST.BODCOD.Month.Influent.txt` (monthly load variation, VODE inte
 
 ## Further analysis
 
-This project is the starting point for the advanced experiment tutorials:
+From this base case, useful further analyses include: (1) **Sensitivity Analysis** — vary μ_A and K_NH to quantify their effect on effluent NH₄; (2) **Scenario Analysis** — compare 10 °C vs 20 °C operation to assess winter performance; (3) **Parameter Estimation** — fit b_H and Y_H to measured MLSS and sludge production data; (4) **Aeration control** — add a DO cascade controller and compare energy use vs fixed-KLa operation using the Cost Calculator block.
 
 - [Sensitivity Analysis](../experiment-types/sensitivity-analysis.md) — which parameters drive TSS and NO?
 - [Parameter Estimation](../experiment-types/parameter-estimation.md) — calibrate to real plant data

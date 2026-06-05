@@ -48,6 +48,8 @@ For energy modelling, replace `Aeration.Ideal` with a blower-connected model. Bl
 
 ### Blower model overview
 
+WEST blower blocks model the supply of air to aeration diffusers. The blower block receives a setpoint signal (airflow m³/h or DO mg/L) and outputs an actual airflow. The airflow feeds a diffuser block which computes oxygen transfer to the tank. Blower types differ in how flow is controlled: throttle valve, variable-frequency drive (VFD), or inlet guide vanes (IGV).
+
 | Model | Description |
 |---|---|
 | `Blowers.CF_Q_VFD` | Centrifugal fan, flow-controlled via variable-frequency drive (VFD) |
@@ -174,6 +176,15 @@ P_blower = (Q_air_actual / 86 400) × (p_out − p_in) / eta   [kW]
 where `Q_air_actual` is in m³/s and pressures are in kPa. WEST integrates `P_blower` over the simulation horizon to report total energy use (kWh), which feeds into the Energy block for plant-wide energy accounting.
 
 ### Typical values
+
+| Parameter | Typical range | Unit |
+|---|---|---|
+| Nominal blower capacity | 500–5000 | m³/h |
+| Operating pressure | 50–80 | kPa |
+| VFD speed range | 40–100 | % of nominal |
+| Fine-bubble SOTE | 4–6 | % per metre submergence |
+| Alpha factor (municipal AS) | 0.4–0.7 | — |
+| Beta factor | 0.95–0.99 | — |
 
 | Configuration | Q_air (m³/d) | P_blower (kW) | eta |
 |---|---|---|---|

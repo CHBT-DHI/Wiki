@@ -32,6 +32,8 @@ Calibration targets are the measured plant variables that the model must reprodu
 
 ### Selecting measured data
 
+Good calibration data has: (1) sufficient coverage of the process — effluent quality alone is insufficient; include internal measurements (MLSS, DO profiles, sludge blanket depth); (2) multiple operating conditions — ideally data spans different loads, temperatures, and control states; (3) known measurement uncertainty — assign realistic error bounds to each data point. A minimum dataset for ASM1 calibration typically includes: influent flow and COD/N fractions, effluent NH₄, NO₃, COD, TSS, at least one MLSS measurement per reactor zone, and sludge production (WAS flow × TSS).
+
 - Assemble time-series or grab-sample data for the calibration period (typically 2–8 weeks of representative operation).
 - Recommended minimum targets for a biological nutrient removal (BNR) plant:
 
@@ -59,6 +61,8 @@ $$SSE = \sum_{i} w_i \left( y_{\text{sim},i} - y_{\text{meas},i} \right)^2$$
 - A typical weighting scheme: NH₄ × 3, NO₃ × 2, TSS × 1.
 
 ### Measurement uncertainty
+
+Each measurement has associated uncertainty that should be incorporated into the objective function weighting. Typical coefficients of variation (CV): flow meters 2–5 %, online sensors (DO, NH₄) 5–10 %, grab-sample lab analyses 5–15 %, composite samples 10–20 %. In WEST Parameter Estimation, set the measurement weight for each variable to 1/σ² where σ is the standard deviation of the measurement. This ensures that less certain measurements have less influence on the calibration.
 
 - Do not expect the model to fit within instrument noise. Allow ±10–15 % relative tolerance for lab measurements and ±20 % for grab samples.
 - If simulated values are consistently outside these tolerances, investigate whether the discrepancy is in the influent characterisation, the hydraulic model, or the kinetics.
@@ -90,6 +94,8 @@ Work through parameters in this order to avoid over-fitting:
 ![Calibration — parameter adjustment](../assets/images/userguide-p122-img1.png)
 
 ### Interpreting residuals
+
+After calibration, plot model predictions vs measured data for all calibration variables. Good calibration shows: residuals (measured − predicted) scattered randomly around zero with no systematic trend; residuals within ±2σ of the measurement uncertainty for >95 % of points; no sustained bias in any variable. Systematic over- or under-prediction in a specific variable (e.g. always over-predicting NO₃) suggests a structural model issue or a missing process (e.g. incomplete denitrification in the secondary clarifier).
 
 - Plot simulated and measured time-series on the same axes (see [Results & Output](../how-to/results-and-output.md)).
 - A systematic bias (simulated always above or below measured) indicates the wrong value for a rate-controlling parameter.
@@ -126,11 +132,24 @@ WEST includes a **Parameter Estimation** experiment type that runs an optimisati
 
 > **Caution:** Automated optimisation can over-fit if too many parameters are estimated simultaneously. Limit free parameters to 4–6 at a time and fix others at manually calibrated values.
 
+### Acceptance criteria
+
+Common quantitative acceptance criteria:
+
+| Metric | Acceptable threshold |
+|---|---|
+| Mean relative error (MRE) | < 10 % for key effluent variables |
+| Root mean square error (RMSE) | < 2× measurement uncertainty |
+| R² (coefficient of determination) | > 0.85 for dynamic calibration |
+| Mass balance closure | < 2 % error on COD, N, P |
+
+Projects following the BIOMATH or STOWA calibration protocol use stricter criteria; always agree acceptance thresholds with the project client before starting calibration.
+
 ---
 
 ## Validation
 
-Validation confirms that the calibrated model generalises beyond the calibration period.
+Validation tests the calibrated model against an independent dataset — one not used during calibration. A minimum validation dataset should cover a different season or load condition from the calibration period. If the model meets the same acceptance criteria on the validation set as on the calibration set, it is considered validated. If validation fails (systematic bias), revisit the calibration: either the calibration dataset was not representative, or a structural model assumption is violated (e.g. the model assumes complete nitrification but the plant partially nitrifies in winter). Document all calibration and validation results, including the datasets used, parameters adjusted, and final goodness-of-fit metrics, as these are typically required deliverables in consulting projects.
 
 ### Procedure
 

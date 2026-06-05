@@ -14,6 +14,8 @@ tags:
 
 ## Primary clarifiers
 
+Primary clarifiers remove settleable solids from raw or screened influent before biological treatment. WEST models primary clarifiers as simple removal-efficiency blocks. Parameters: TSS removal efficiency (%, default 60 %), VSS/TSS ratio, flow split between overflow (primary effluent) and underflow (primary sludge). The underflow can feed a thickener or digester.
+
 **Palette group:** Separation  
 **Category:** `Settlers_PST`
 
@@ -144,6 +146,12 @@ Simplified model from Benchmark Simulation Model No. 2. Acts as ideal phase sepa
 
 ## Secondary clarifiers
 
+Secondary clarifiers separate mixed liquor suspended solids (MLSS) from treated effluent. WEST offers several model levels of detail:
+- **Point settler** — Instantaneous perfect separation; effluent TSS = 0. Use for rapid debugging only.
+- **Simple settler** — Empirical TSS removal as a function of overflow rate. One parameter: maximum surface overflow rate (m/d).
+- **Takács 1D model** — Layer-based flux model with double-exponential settling velocity function. Most commonly used for design and calibration work.
+- **Otterpohl-Freund** — Alternative 1D model with explicit compression settling zone.
+
 **Palette group:** Separation  
 **Category:** `Settlers_SST`
 
@@ -240,6 +248,8 @@ High-accuracy 30-layer model based on a 1D partial differential equation (Bürge
 ---
 
 ## Guidance: which model to choose?
+
+Use the **point settler** for initial layout testing. Use the **simple settler** for screening-level studies where clarifier performance is not the focus. Use the **Takács 1D model** for all calibration work and studies where effluent TSS, sludge blanket depth, or sludge recycle concentration matter. The Otterpohl-Freund model is preferred when compression settling near the sludge blanket is important.
 
 | Situation | Recommended model |
 |---|---|

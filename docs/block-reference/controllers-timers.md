@@ -15,6 +15,8 @@ tags:
 
 ## Standard controllers
 
+Standard controllers implement basic signal processing and feedback control. Includes: On/Off controller (bang-bang), PID controller (proportional-integral-derivative), and Dead-band controller (suppresses control action within a tolerance band around the setpoint). All output a control signal (0–1 or engineering units) suitable for connecting to actuator blocks.
+
 | Model | Type | Notes |
 |---|---|---|
 | `Controllers.P_Saturation` | P | Proportional only |
@@ -77,6 +79,8 @@ The On/Off controller (bang-bang controller) switches an actuator fully on or of
 
 ## Operational controllers
 
+Operational controllers implement higher-level plant control logic: time-based switching (day/night, weekday/weekend), cascade control (outer loop sets setpoint for inner loop), feed-forward compensation, and ratio control (maintain fixed ratio between two flows). Used for DO cascade control, flow pacing, and aeration scheduling.
+
 | Model | Purpose |
 |---|---|
 | `ControllerOp.OnOff11` | On/Off with 11 operating points |
@@ -89,6 +93,8 @@ The On/Off controller (bang-bang controller) switches an actuator fully on or of
 ---
 
 ## Pump and blower controllers
+
+Dedicated controllers for pump and blower actuators. The pump controller converts a flow demand signal (m³/d) to a pump speed or on/off command. The blower controller converts an airflow demand (m³/h) to a VFD frequency or valve position signal. Both include protection logic for minimum run time and ramp rate limits.
 
 | Model | Controls |
 |---|---|

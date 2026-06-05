@@ -62,6 +62,8 @@ If you do not have a Customer Portal account, contact [DHI Support](mailto:west@
 
 ## Licence activation
 
+After installation, activate your licence by opening WEST and navigating to **Help → Licence Manager**. For a **USB dongle**: insert the dongle before launching WEST — it is detected automatically. For a **network (floating) licence**: enter the hostname or IP address of the DHI licence server and click **Connect**. For a **cloud/VDI deployment**: contact DHI support for a virtual licence configuration. The Licence Manager displays the product edition, expiry date, and number of concurrent seats available.
+
 WEST licences are managed by **WIBU Systems CodeMeter**. Two licence types are common:
 
 ### USB dongle (CmDongle)
@@ -126,22 +128,33 @@ DHI releases updates as full installer packages. Patch updates do not require un
 
 ### WEST does not start / licence not found
 
+1. Check that the DHI Licence Manager service is running: open Windows Services (`services.msc`) and look for **"DHI HASP Licence Manager"**. Start it if stopped.
+2. Verify the licence server address in WEST: **Help → Licence Manager → Server**. For a local dongle, the address should be `localhost`. For a network licence, enter the hostname or IP of the licence server.
+3. Check firewall rules: port **1947** (HASP) must be open between client and licence server.
+4. Try a different USB port if using a hardware dongle. Reinstall the HASP driver from the WEST installation media if the dongle is not detected.
+
+Additional checks:
+
 - Confirm the CodeMeter runtime is installed and running (look for the CodeMeter icon in the system tray).
-- For dongle licences: try a different USB port and check **CodeMeter Control Center** for the dongle entry.
+- For dongle licences: check **CodeMeter Control Center** for the dongle entry.
 - For network licences: verify the server hostname is correct and that port 22350 is open.
 - Run **CodeMeter Control Center → WebAdmin → Licence** to inspect which licences are available.
 
 ### Installer fails midway
 
-- Check that you have at least 5 GB of free disk space on the target drive.
-- Right-click the installer and choose **Run as administrator** — standard user rights are not sufficient.
-- Temporarily disable antivirus software; some scanners block DHI setup files.
-- Review the installer log in `%TEMP%\DHI_WEST_install.log` for the specific error.
+1. Run the installer as Administrator (right-click → **Run as administrator**).
+2. Temporarily disable antivirus real-time scanning — some AV products block installer file writes.
+3. Ensure at least **5 GB free disk space** on the target drive.
+4. Check the installer log at `%TEMP%\DHI_WEST_install.log` for the specific error.
+5. If a previous WEST version is installed, uninstall it first via **Control Panel → Programs** before running the new installer.
 
 ### .NET Framework errors on launch
 
-- Install or repair .NET Framework 4.0 Full Profile via **Windows Features** or the Microsoft Download Center.
-- Restart the machine after .NET installation and try launching WEST again.
+WEST requires .NET Framework 4.8 or later. If WEST fails to launch with a .NET error:
+
+1. Open **Windows Update** and install all pending updates — .NET 4.8 is delivered via Windows Update on Windows 10/11.
+2. Alternatively, download the **.NET Framework 4.8 offline installer** directly from Microsoft.
+3. After installing .NET, **restart Windows** before launching WEST again.
 
 ### Floating windows disappear after changing monitor resolution
 

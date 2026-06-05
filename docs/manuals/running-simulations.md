@@ -95,15 +95,20 @@ Drag variables from the **Model Explorer** or **Block Details** pane onto any Sh
 
 ### Key effluent variables
 
+The most important effluent quality variables to monitor after a simulation run are: **NH4_e** (ammonium effluent, g N/m³), **NO3_e** (nitrate, g N/m³), **PO4_e** (ortho-phosphate, g P/m³), **TSS_e** (total suspended solids, g/m³), **COD_e** (total COD, g/m³), **BOD5_e** (5-day BOD, g/m³), **TN_e** (total nitrogen), and **TP_e** (total phosphorus). Compare against your discharge consent limits.
+
 In the effluent block, the most commonly monitored variables are:
 
 | Variable | Description | Typical limit |
 |---|---|---|
-| `COD` | Chemical oxygen demand | ≤ 125 mg/l (EU Urban Wastewater directive) |
+| `COD_e` / `COD` | Chemical oxygen demand | ≤ 125 mg/l (EU Urban Wastewater directive) |
 | `TKN` | Total Kjeldahl nitrogen | — |
-| `Outflow(S_NH)` | Effluent ammonia | ≤ 5 mg/l (sensitive areas) |
-| `Outflow(S_NO)` | Effluent nitrate | ≤ 10 mg/l (sensitive areas) |
-| `TSS` | Total suspended solids | ≤ 35 mg/l (EU directive) |
+| `NH4_e` / `Outflow(S_NH)` | Effluent ammonium | ≤ 5 mg/l (sensitive areas) |
+| `NO3_e` / `Outflow(S_NO)` | Effluent nitrate | ≤ 10 mg/l (sensitive areas) |
+| `TSS_e` / `TSS` | Total suspended solids | ≤ 35 mg/l (EU directive) |
+| `BOD5_e` | 5-day biochemical oxygen demand | ≤ 25 mg/l (EU directive) |
+| `TN_e` | Total nitrogen | ≤ 10–15 mg/l (sensitive areas) |
+| `TP_e` | Total phosphorus | ≤ 1–2 mg/l (sensitive areas) |
 
 ### Analysis objectives
 
@@ -153,6 +158,8 @@ To add one:
 
 ## Controlling model parameters during a run
 
+During a dynamic simulation you can change parameter values without stopping the run. Right-click the block on the layout sheet and select **Properties → Parameters**. Edit the value and click **Apply**. The change takes effect at the current simulation time. This is useful for testing step-change responses (e.g. step up aeration, add a chemical dose) without restarting from the beginning. Note: changing structural parameters (tank volume, model type) requires a restart.
+
 WEST distinguishes two classes of parameters:
 
 - **True parameters** — constants defined in model code. Can only be changed *before* a run starts (e.g. tank volume, kinetic coefficients).
@@ -193,10 +200,16 @@ Drop a **Data Input** block on the Layout and define a **Top-level Interface Var
 
 ## Convergence failures
 
+Convergence failures occur when the steady-state solver cannot reduce residuals below the tolerance within the maximum number of iterations, or when the dynamic ODE integrator cannot advance the solution (step size → 0). Common causes and fixes:
+
 | Symptom | Likely cause | Fix |
 |---|---|---|
+| "Max iterations reached" | Poor initial conditions | Run 1-day dynamic first; use warm-start |
+| Residual oscillates | Stiff kinetics or recycle loop | Switch to implicit solver (LSODA/DASSL) |
+| Negative concentrations | Disconnected stream or missing flow | Check all terminals are connected |
+| NaN / Inf in output | Division by zero in custom calculator | Check calculator variable expressions |
+| Very slow convergence | Solver step too large | Reduce max step size to 0.005–0.01 d |
 | Newton solver diverges | Poor initial guess or flow imbalance | Check that all splitter fractions sum to 1 |
-| Negative concentrations | Parameter out of range | Check volumes > 0, all flow rates > 0 |
 | Licence error at start | Licence not found or expired | Check the WEST licence server connection |
 | Dynamic run stops early | Integrator step too large | Switch to VODE integrator or reduce absolute tolerance |
 
