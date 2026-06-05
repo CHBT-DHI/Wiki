@@ -19,6 +19,8 @@ The Block Editor is used to create and edit Block Icons — the graphical repres
 - Manage existing block icon libraries (`.wbl` files)
 - Published icons appear in the Block Library under a user-defined palette group, making them available in the layout canvas
 
+![Block editor interface](../assets/images/tutorial-p069-img1.png)
+
 ## Related
 
 - [Model Editor](model-editor.md)
