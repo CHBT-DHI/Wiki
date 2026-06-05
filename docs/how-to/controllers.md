@@ -110,6 +110,8 @@ For a **PI controller** (`PI_Saturation`), `T_D` is not applicable — set `K_P`
 
 ![Controller results — DO response](../assets/images/tutorial-p064-img1.png)
 
+![Figure 7.42 blower output response plot](../assets/images/tutorial-p064-img2.png)
+
 ![Controllers — PID block connections](../assets/images/tutorial-p095-img1.png)
 
 ![Controllers — setpoint response](../assets/images/tutorial-p096-img1.png)

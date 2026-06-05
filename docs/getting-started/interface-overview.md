@@ -41,6 +41,8 @@ On first launch, the **Getting Started pane** is shown instead of the Layout She
 
 The **News Headlines** panel displays links pulled automatically from the MIKE Powered by DHI website, so you always see the latest DHI announcements without leaving WEST.
 
+![Experiment setup panel](../assets/images/userguide-p020-img1.png)
+
 ![New project wizard](../assets/images/userguide-p026-img1.png)
 
 ![Project settings dialog](../assets/images/userguide-p027-img1.png)

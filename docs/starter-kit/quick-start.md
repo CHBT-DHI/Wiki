@@ -79,6 +79,10 @@ Double-click the **Municipal wastewater** block to open the **Influent Generator
 3. Click the **Generate** button to produce the steady-state input file. WEST writes `Influent_Municipality_1.Steady State.in.txt` to the project folder.
 4. Click **OK**.
 
+![Figure 4.4 ASM1 fractionation layout](../assets/images/tutorial-p020-img1.png)
+
+![Figure 4.5 ASM1 de-fractionation layout](../assets/images/tutorial-p021-img1.png)
+
 ---
 
 ## Step 4 — Initialise the model
