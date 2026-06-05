@@ -28,6 +28,8 @@ The Model Editor is a text editor and compiler for WEST process models written i
 4. Edit the model in the Code Editor or the Matrix Editor.
 5. Run syntax check, then generate/compile code.
 
+![Model editor interface](../assets/images/tutorial-p067-img1.png)
+
 ## Related
 
 - [Block Editor](block-editor.md)
