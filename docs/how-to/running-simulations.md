@@ -33,6 +33,8 @@ Always run steady-state first when starting a new project — it provides an ini
 2. Verify that the influent generator has produced a `.Steady State.in.txt` input file (see [Quick Start — Step 3](../getting-started/quick-start.md)).
 3. Check that all required block parameters are set (volumes, temperatures, flow rates).
 
+![Steady-state experiment setup](../assets/images/tutorial-p038-img1.png)
+
 ### Running
 
 1. Click **Start** in the Control Center.
@@ -47,6 +49,8 @@ Once a steady-state run is complete, all variables in the model hold their equil
 - Click a variable name to see its current value in the **Block Details** pane.
 - Drag a variable from Block Details onto a Sheet to create a constant-value plot.
 
+![Steady-state simulation results](../assets/images/tutorial-p039-img1.png)
+
 ---
 
 ## Running a dynamic simulation
@@ -57,6 +61,8 @@ Once a steady-state run is complete, all variables in the model hold their equil
 2. Set the **simulation duration** (e.g. 30 days).
 3. Make sure the influent generator's **Data Import** tab points to a time-series input file (e.g. `WEST.BODCOD.Month.Influent.txt`). This file drives the time-varying influent load.
 4. Optionally, run a slave steady-state simulation first: tick **Run a slave Steady-State simulation prior to Dynamic simulation** in the experiment settings. This automatically initialises the model from steady-state before integrating.
+
+![Dynamic experiment setup](../assets/images/tutorial-p041-img1.png)
 
 ### Choosing an integrator
 
@@ -75,6 +81,8 @@ For activated sludge models, always use **VODE** with **Is a Stiff Solver** chec
 2. You can pause the simulation, inspect values, and then continue.
 3. When complete, all plots show the full time-series.
 
+![Dynamic simulation results plot](../assets/images/tutorial-p042-img1.png)
+
 ---
 
 ## Reading results
@@ -86,6 +94,8 @@ Drag variables from the **Model Explorer** or **Block Details** pane onto any Sh
 - **Crosshairs** — hover to read exact values at a point in time.
 - **Export** — save the series data as a CSV or image.
 - **Add Series** — overlay multiple variables on one plot.
+
+![Running simulations — experiment tab](../assets/images/tutorial-p085-img1.png)
 
 ### Key effluent variables
 
