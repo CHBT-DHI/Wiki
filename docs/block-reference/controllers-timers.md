@@ -27,6 +27,16 @@ tags:
 | `Controllers.Ratio` | Ratio | Output = K × input |
 | `Ratio2` | Ratio | Two-input ratio |
 
+### PID controller
+
+![PID controller — description](../assets/images/modelica-p266-img1.png)
+
+![PID controller — parameters table](../assets/images/modelica-p272-img1.png)
+
+### On/Off controller
+
+![On/Off controller — description](../assets/images/modelica-p278-img1.png)
+
 ---
 
 ## Operational controllers
@@ -58,6 +68,8 @@ tags:
 ## Timers
 
 Timers generate a periodic signal for time-based control (e.g. SBR phase sequencing).
+
+![Timer block — description and parameters](../assets/images/modelica-p282-img1.png)
 
 | Model | Period outputs |
 |---|---|
