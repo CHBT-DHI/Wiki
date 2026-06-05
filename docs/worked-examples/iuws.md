@@ -30,6 +30,8 @@ This allows assessment of combined sewer overflows (CSOs), storm events, and the
 
 ## Layout extension steps
 
+To extend the base IUWS layout: (1) Add a stormwater overflow block upstream of the WWTP inlet to route wet-weather flows to the receiving water. (2) Connect the overflow outlet to the river reach block using a liquid stream. (3) Set the overflow weir level parameter to match the combined sewer capacity. (4) Run a dynamic simulation over a rain event (use the included `rain_event.txt` influent file). (5) Inspect DO sag and ammonia spike in the receiving water results panel. The example illustrates how upstream hydraulics affect downstream water quality during storm events.
+
 ### Step 1 — Adapt the WWTP layout
 
 Start from the TwoASU project. Modify the influent block to accept:
