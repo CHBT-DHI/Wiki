@@ -34,6 +34,8 @@ A Local Sensitivity Analysis computes a numerical approximation of how state var
 
 ![Sensitivity analysis (LSA) setup dialog](../assets/images/tutorial-p049-img1.png)
 
+![Sensitivity analysis setup panel (userguide view)](../assets/images/userguide-p088-img1.png)
+
 ### CRS (Central Relative Sensitivity) plots
 
 Results appear in the **Runs** tab. To visualise them, add a Sheet named "CRS" and create Time Series Line plots. In the plot sub-menu choose **Add Series**, set Source Type to **Experiment** and Source Name to **Sens**; then for each series choose `.t` as the X-item and **CRS** as the Y-item, paired with the appropriate sensitivity function (e.g. `SensFunc: .Aeration.y_S` combined with `out_1.TSS`).
@@ -121,6 +123,10 @@ A Global Sensitivity Analysis samples the full parameter space (Monte Carlo) and
 - **Runs tab**: objective values for each Monte Carlo run; best run is highlighted.
 
 ![GSA results — scatter plots](../assets/images/tutorial-p054-img1.png)
+
+![GSA — Linear Regression tab (LCC, NRC coefficients)](../assets/images/userguide-p131-img1.png)
+
+![GSA — vector types and correlation coefficients](../assets/images/userguide-p132-img1.png)
 
 ### Tornado plot interpretation
 

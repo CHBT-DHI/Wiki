@@ -25,6 +25,12 @@ Always run steady-state first when starting a new project — it provides an ini
 
 ![Experiment types overview](../assets/images/userguide-p081-img1.png)
 
+![Model editor — overview](../assets/images/userguide-p099-img1.png)
+
+![WEST tools overview](../assets/images/userguide-p105-img1.png)
+
+![Advanced simulation features panel](../assets/images/userguide-p108-img1.png)
+
 ---
 
 ## Running a steady-state simulation
@@ -36,6 +42,8 @@ Always run steady-state first when starting a new project — it provides an ini
 3. Check that all required block parameters are set (volumes, temperatures, flow rates).
 
 ![Steady-state experiment configuration](../assets/images/userguide-p036-img1.png)
+
+![Fractionation setup dialog](../assets/images/userguide-p035-img1.png)
 
 ![Steady-state experiment detail](../assets/images/userguide-p082-img1.png)
 
@@ -65,6 +73,8 @@ Once a steady-state run is complete, all variables in the model hold their equil
 4. Optionally, run a slave steady-state simulation first: tick **Run a slave Steady-State simulation prior to Dynamic simulation** in the experiment settings. This automatically initialises the model from steady-state before integrating.
 
 ![Dynamic experiment configuration](../assets/images/userguide-p036-img2.png)
+
+![Dynamic experiment setup](../assets/images/tutorial-p041-img1.png)
 
 ![Dynamic experiment detail](../assets/images/userguide-p084-img1.png)
 
@@ -100,6 +110,16 @@ Drag variables from the **Model Explorer** or **Block Details** pane onto any Sh
 - **Crosshairs** — hover to read exact values at a point in time.
 - **Export** — save the series data as a CSV or image.
 - **Add Series** — overlay multiple variables on one plot.
+
+![Output configuration panel](../assets/images/userguide-p038-img1.png)
+
+![Results plot — time series view](../assets/images/userguide-p039-img1.png)
+
+![Results export dialog](../assets/images/userguide-p040-img1.png)
+
+![Building layouts detail](../assets/images/tutorial-p081-img1.png)
+
+![Experiment tab](../assets/images/tutorial-p085-img1.png)
 
 ### Key effluent variables
 
@@ -196,6 +216,12 @@ Drop a **Data Input** block on the Layout and define a **Top-level Interface Var
 
 !!! warning
     Do not tick the top-most "Report" checkbox to include everything — generating the complete report can take a very long time on large projects.
+
+---
+
+## Sensitivity analysis panel
+
+![Sensitivity analysis panel entry](../assets/images/userguide-p045-img1.png)
 
 ---
 

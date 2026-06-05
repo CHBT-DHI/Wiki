@@ -36,10 +36,21 @@ Start from the TwoASU project. Modify the influent block to accept:
 - Dry weather flow (from DWF2 Generator)
 - Storm runoff (from Catchment blocks)
 
+![IUWS Generators palette — DWF2 and other generator blocks](../assets/images/modelica-p097-img1.png)
+
 The standard TwoASU layout has a single influent stream feeding the Combiner before the Anoxic tank. To accept both dry-weather and wet-weather inputs you need to restructure the influent end of the layout:
 
 1. **Remove** the existing single `Influent` block.
 2. **Add** a `DWF2` Generator block — this replaces the static influent file and generates a diurnal dry-weather flow pattern parameterised by average daily flow and load.
+
+![DWF2 block description](../assets/images/modelica-p098-img1.png)
+
+![DWF2 parameters table](../assets/images/modelica-p098-img2.png)
+
+![DWF2 state variables](../assets/images/modelica-p098-img3.png)
+
+![DWF2 interface variables](../assets/images/modelica-p098-img4.png)
+
 3. **Add** a `Combiner` (if not already present) immediately upstream of the Anoxic tank. This combiner will receive:
    - The DWF2 output (dry weather flow)
    - The sewer network overflow/overflow bypass stream (from Step 2)
@@ -49,6 +60,8 @@ The standard TwoASU layout has a single influent stream feeding the Combiner bef
    - `Q_avg` — average daily dry weather flow (e.g. 20 000 m³/d)
    - `Diurnal pattern` — select the default municipal diurnal curve or import a site-specific pattern
    - Pollutant concentrations (COD, NH4, TSS) consistent with the TwoASU influent characterisation
+
+![Influent block palette](../assets/images/modelica-p117-img1.png)
 
 The WWTP layout is now ready to receive variable-flow inputs from the upstream sewer model.
 
@@ -63,6 +76,8 @@ Add on a second layout region (or a linked sub-model) for:
 - `SewerTank.Freeflow` / `Retention_NoVol` — sewer transport and CSO tank
 
 **Catchment block (`Catchment.Combined_NoVol`):**
+
+![Catchment block — icon and palette](../assets/images/modelica-p105-img1.png)
 
 This block converts a rainfall timeseries into a runoff flow and pollutant load using a simple conceptual model.
 
@@ -79,7 +94,19 @@ Connect the rainfall timeseries input file (`.txt` with columns: time [d], inten
 
 Use `Combined_WithVol` if you want to model sewer storage explicitly within the catchment (adds a detention volume parameter `V_sewer`).
 
-**Sewer network block (`SewerTank.Freeflow` or `Retention_NoVol`):**
+**Sewer network blocks:**
+
+![Combined_NoVol sewer block](../assets/images/modelica-p106-img1.png)
+
+![Combined_NoVol parameters](../assets/images/modelica-p106-img2.png)
+
+Use `Combined_WithVol` for sewer layouts that include in-network storage:
+
+![Combined_WithVol sewer block](../assets/images/modelica-p108-img1.png)
+
+![Combined_WithVol parameters](../assets/images/modelica-p108-img2.png)
+
+![Sewer Tank block](../assets/images/modelica-p111-img1.png)
 
 The sewer block combines the DWF2 flow and catchment runoff, routes it through the network, and triggers a CSO discharge when the combined flow exceeds the sewer capacity.
 
@@ -93,6 +120,16 @@ The sewer block combines the DWF2 flow and catchment runoff, routes it through t
 Connect the sewer block outputs:
 - **To WWTP** port → Combiner at the WWTP inlet (replaces or supplements the DWF2 stream)
 - **CSO overflow** port → River block CSO input port (Step 3)
+
+**Combiners and splitters:**
+
+![Combiners palette](../assets/images/modelica-p121-img1.png)
+
+![Splitters palette](../assets/images/modelica-p125-img1.png)
+
+![Splitters parameters](../assets/images/modelica-p125-img2.png)
+
+![Multi splitters/combiners](../assets/images/modelica-p130-img1.png)
 
 ---
 

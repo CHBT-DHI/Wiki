@@ -34,6 +34,8 @@ Scenario Analysis (SA) runs a batch of simulations where each run uses a differe
 
 ![Scenario analysis setup dialog](../assets/images/tutorial-p047-img1.png)
 
+![Scenario analysis panel](../assets/images/userguide-p043-img1.png)
+
 ---
 
 ## Solver types
@@ -52,6 +54,8 @@ The solver type determines how WEST enumerates combinations from the parameter v
 - Use **Sequential** or **Grid** for a full factorial comparison of a small number of parameters.
 - Use **Fixed** when you have pre-defined scenario vectors of equal length (e.g. an explicit list of design alternatives).
 - Use **Cross** for a "one-at-a-time" sweep to understand individual parameter effects without the combinatorial explosion of a full factorial.
+
+![SA Parameters tab — parameter values per scenario](../assets/images/userguide-p139-img1.png)
 
 ![Scenario parameters table](../assets/images/tutorial-p048-img1.png)
 
@@ -75,6 +79,10 @@ The **Runs** tab shows a matrix with one row per completed run:
 | **Plot** | Generate instant histograms of objective values across runs. |
 
 To apply the best-performing scenario to your model, select its row and click **Copy Values**.
+
+![SA Data files tab](../assets/images/userguide-p141-img1.png)
+
+![SA Runs tab](../assets/images/userguide-p144-img1.png)
 
 ![Scenario analysis results comparison](../assets/images/tutorial-p048-img2.png)
 

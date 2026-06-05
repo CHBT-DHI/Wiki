@@ -30,15 +30,25 @@ Two sub-modes are available:
 1. Save a copy of the TwoASU project.
 2. Go to **Project | Virtual Experiments → Parameter Estimation** and select the base Dynamic experiment.
 3. Open **Analysis Properties**.
+
+![PE Analysis Properties tab pages](../assets/images/userguide-p134-img1.png)
+
 4. In the **Parameters** tab, drag the parameters to calibrate (e.g. `Clarifier.r_P`, `Clarifier.v0`, internal recycle flow). Set bounds for each.
+
+![PE Variables pane](../assets/images/userguide-p135-img1.png)
+
 5. In the **Variables** tab, drag measured data series (from a data file) and the corresponding model outputs. Configure the **Objective** criterion for each pair (e.g. AbsSquared).
 6. In the **Solver** tab, select the optimisation algorithm and settings.
 7. Click **Execute**. WEST runs multiple simulations, adjusting parameters toward the optimum.
 8. In the **Runs** tab, select the best run and click **Copy Values** to apply the calibrated parameters to the simulation.
 
+![PE Runs tab page](../assets/images/userguide-p137-img1.png)
+
 ![Parameter estimation setup — measured data and parameters](../assets/images/tutorial-p055-img1.png)
 
 ![Parameter estimation — measured data input](../assets/images/tutorial-p091-img1.png)
+
+![Parameter estimation setup (userguide)](../assets/images/userguide-p093-img1.png)
 
 ---
 

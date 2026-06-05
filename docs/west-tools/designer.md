@@ -23,6 +23,11 @@ The Designer (also referred to as the Report Designer) allows users to compose c
 
 ![Designer interface](../assets/images/tutorial-p071-img2.png)
 
+<<<<<<< HEAD
+=======
+![Designer — Create New design experiment dialog](../assets/images/userguide-p222-img1.png)
+
+>>>>>>> origin/main
 ## Related
 
 - [Data Editor](data-editor.md)

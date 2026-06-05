@@ -31,6 +31,8 @@ WEST can copy the end state of a steady-state simulation to the initial state of
 
 ![Warm-start results comparison](../assets/images/tutorial-p065-img2.png)
 
+![Controllers setup](../assets/images/tutorial-p061-img1.png)
+
 ### Manual initialisation
 
 If the automatic option is disabled, you can initialise manually via the **Initialize Simulation** button in the Control Center. Four transfer directions are available:

@@ -18,6 +18,8 @@ tags:
 
 A plant layout is built by placing **Blocks** (unit-process models) on the **Layout Sheet**, then connecting them with **Connections** that carry the wastewater vector or control signals between them. The steps below take you from an empty sheet to a fully wired layout.
 
+![How to create a plant layout — overview](../assets/images/userguide-p157-img1.png)
+
 ---
 
 ## Step 1 — Place a block
@@ -39,6 +41,8 @@ Layers let you show or hide groups of blocks and keep complex layouts organised.
 1. In the **Layers** panel, enable (click) the target layer before dropping the block. The block will be placed on whichever layer is currently active.
 2. Alternatively, after placing the block, open the **Properties** pane, click the **ellipsis (…) button** next to the Layer property (the Layers Picker), and select the desired layer.
 
+![Assign block to layer](../assets/images/userguide-p158-img1.png)
+
 ---
 
 ## Step 3 — Rename a block
@@ -57,6 +61,8 @@ To rename:
 
 Always set a meaningful **Name** early; changing it later requires updating any expressions that reference it.
 
+![Block naming / SynchronizeNames](../assets/images/userguide-p159-img1.png)
+
 ---
 
 ## Step 4 — Resize a block
@@ -73,11 +79,15 @@ The larger **dark-blue dot** above the block is the rotation handle, not a resiz
 - **Free rotation:** drag the dark-blue rotation handle (above the selected block) to any angle.
 - **Fixed rotation (90°/180°/270°):** use **Format menu → Rotate** and choose the desired fixed angle.
 
+![Rotate a block](../assets/images/userguide-p160-img1.png)
+
 ---
 
 ## Step 6 — Flip a block
 
 Use **Format menu → Flip Horizontal** or **Flip Vertical** to mirror the block icon. This is useful when you want inlet terminals on the left and outlet terminals on the right regardless of the default icon orientation.
+
+![Flip a block](../assets/images/userguide-p161-img1.png)
 
 ---
 
@@ -90,6 +100,8 @@ To change the visual appearance without affecting the underlying model:
    - **Create a new square icon** with the same terminals as the current icon.
    - **Pick from IconLib** — browse the icon library for a compatible icon (one with matching terminal positions).
 
+![Replace icon dialog](../assets/images/userguide-p162-img1.png)
+
 ---
 
 ## Step 8 — Replace a block's model
@@ -101,6 +113,10 @@ To swap the underlying process model while keeping the block's position and exis
 3. If the interfaces differ, WEST warns you which connections will be lost.
 
 You can also change the model via: select the block → **Properties window → ClassName property → choose from the dropdown**.
+
+![Replace block and connections](../assets/images/userguide-p163-img1.png)
+
+![Connection replacement detail](../assets/images/userguide-p163-img2.png)
 
 ---
 
@@ -116,6 +132,16 @@ You can also change the model via: select the block → **Properties window → 
 6. To exit connection mode without completing a connection: right-click → **Select**, or use **Home | Editing → Select**.
 
 After a successful connection an **Interface Link** dialog may appear. Use it to map variables between the two terminals (for example, mapping a sensor output to a controller's measured-variable input). Double-click any connection line later to review or modify its Interface Links.
+
+![Editing connections](../assets/images/userguide-p164-img1.png)
+
+![Interface Links dialog](../assets/images/userguide-p165-img1.png)
+
+![Interface links detail](../assets/images/userguide-p165-img2.png)
+
+![Connection type dialog](../assets/images/userguide-p166-img1.png)
+
+![Connection type options](../assets/images/userguide-p166-img2.png)
 
 ![Connecting two blocks — connector dialog](../assets/images/userguide-p030-img1.png)
 
@@ -152,6 +178,8 @@ Existing parameter values and connections are retained where the new class has m
 
 After placing and connecting blocks, configure their parameters in the Block Details window.
 
+![Block properties — available models](../assets/images/userguide-p168-img1.png)
+
 ![Block parameter configuration](../assets/images/userguide-p034-img1.png)
 
 ---
@@ -184,6 +212,12 @@ Top-Level Parameters group values that are shared across multiple blocks (e.g. a
 3. Select the parameters you want to promote.
 4. Click **Easy Create Parameters**.
 5. Confirm the parameter names and links in the dialog. WEST creates the top-level parameters and automatically links them to the selected sub-model parameters.
+
+![Top-level parameters dialog](../assets/images/userguide-p169-img1.png)
+
+![Top-level interface variables dialog](../assets/images/userguide-p170-img1.png)
+
+![Interface variable properties](../assets/images/userguide-p171-img1.png)
 
 ---
 

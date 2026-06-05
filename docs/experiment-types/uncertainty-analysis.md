@@ -51,6 +51,8 @@ UA differs from Sensitivity Analysis in focus: SA asks *which parameters matter 
 
 ![Uncertainty analysis parameters panel](../assets/images/tutorial-p088-img1.png)
 
+![Uncertainty analysis setup (userguide)](../assets/images/userguide-p095-img1.png)
+
 ---
 
 ## Criteria types
@@ -63,6 +65,10 @@ Criteria aggregate raw time-series output into scalar values for analysis. Four 
 | **Run criteria** | Aggregates a statistic across all runs at each time point. Available statistics: min, max, mean, std dev, median, percentiles, skewness, kurtosis, moment, run number for min/max/closest-to-mean. |
 | **BVDF (Bound Value Duration Frequency)** | Counts how many times and what percentage of simulation time a variable violates a lower or upper bound. The same cross-run statistics as Run criteria are available. |
 | **Classification criteria** | Classifies output values into user-defined classes (e.g. compliant / non-compliant). The same cross-run statistics as Run criteria apply to each class. |
+
+![UA Run Criteria tab](../assets/images/userguide-p147-img1.png)
+
+![UA BVDF and Classification tab pages](../assets/images/userguide-p148-img1.png)
 
 ---
 
@@ -81,6 +87,10 @@ The **Runs** tab displays a matrix with one row per completed simulation:
 | **Copy Values** | Copy the selected run's parameter values back to the base simulation. |
 | **Run** | Execute all runs in the current sample. |
 | **Plot** | Generate instant histograms of output distributions across runs. |
+
+![UA Simulation Output Properties](../assets/images/userguide-p150-img1.png)
+
+![Uncertainty analysis results (userguide)](../assets/images/userguide-p096-img1.png)
 
 ![Uncertainty analysis results — output envelope](../assets/images/tutorial-p058-img1.png)
 

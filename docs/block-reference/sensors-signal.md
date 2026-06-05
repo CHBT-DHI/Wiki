@@ -53,6 +53,40 @@ Signal treatment blocks modify a data signal before it reaches a controller — 
 
 ---
 
+## Signal treatment blocks
+
+### Data.Delay
+
+![Data.Delay block — introduces delay between input and output signal](../assets/images/modelica-p397-img1.png)
+
+Introduces a fixed time delay between the input and output signal. Use to simulate measurement lag or transport delay in a pipe or sample line.
+
+### Data.Noise
+
+![Data.Noise block — adds random noise to signal](../assets/images/modelica-p398-img1.png)
+
+Adds Gaussian random noise to the input signal, simulating sensor measurement error or electrical interference. Configure amplitude and seed for reproducibility.
+
+### Data.ResponseTime
+
+![Data.ResponseTime — dynamic response behaviour (first-order filter)](../assets/images/modelica-p400-img1.png)
+
+Applies a first-order dynamic filter to the input signal, mimicking the finite response time of a physical sensor (e.g. a DO probe with a membrane). Specify the time constant (s) to control how quickly the output tracks a step change.
+
+### Data.SampleHold
+
+![Data.SampleHold — discontinuous/sampled signal](../assets/images/modelica-p402-img1.png)
+
+Samples the input signal at a fixed interval and holds the value until the next sample, producing a staircase (zero-order hold) output. Useful for simulating PLC-based or SCADA-polled measurements with a finite scan rate.
+
+### Data.Saturation
+
+![Data.Saturation — limits output signal range](../assets/images/modelica-p403-img1.png)
+
+Clips the output signal to a defined minimum and maximum range, simulating sensor range limits (e.g. a DO probe that reads 0–20 mg O₂/l). Values outside the range are clamped at the boundary.
+
+---
+
 ## Samplers
 
 Samplers aggregate a signal over a time or volume interval, simulating composite sampling.

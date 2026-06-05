@@ -25,6 +25,8 @@ tags:
 
 ![Data input block — configuration](../assets/images/userguide-p051-img1.png)
 
+![Influent tool](../assets/images/tutorial-p074-img1.png)
+
 ---
 
 ## Wastewater input — Standard ASM vector
@@ -53,6 +55,10 @@ Use when you have standard measurements (flow, COD, TKN, TSS) and want WEST to f
 
 ![Influent tool — step 3 fractionation](../assets/images/userguide-p053-img1.png)
 
+![Input data time series](../assets/images/tutorial-p076-img1.png)
+
+![Data input block](../assets/images/tutorial-p076-img2.png)
+
 ---
 
 ## Wastewater input — Custom vector
@@ -80,6 +86,8 @@ Use a **Data Input** block to drive a single manipulated variable (e.g. a time-v
 4. **Generate and Review:** Click **Generate** to produce the input file.
 
 ![Vector input configuration](../assets/images/userguide-p056-img1.png)
+
+![Vector input](../assets/images/tutorial-p101-img1.png)
 
 ---
 
@@ -116,11 +124,17 @@ Parameter values can also be changed interactively before or during a simulation
 
 To create any widget: drag a parameter from the **Block Details** window onto the corresponding widget pane on a Dashboard Sheet.
 
+![Dashboard widgets](../assets/images/tutorial-p077-img1.png)
+
+![Slider widget](../assets/images/tutorial-p078-img1.png)
+
 ![Dashboard widget — slider](../assets/images/userguide-p058-img1.png)
 
 ![Dashboard widget — field input](../assets/images/userguide-p058-img2.png)
 
 ![Dashboard overview](../assets/images/userguide-p059-img1.png)
+
+![Results dashboard](../assets/images/tutorial-p079-img1.png)
 
 > Note: only **Manipulated Variables** (interface variables) can be changed while the simulation is running. True **Parameters** can only be changed before starting.
 

@@ -32,6 +32,8 @@ WEST supports three principal report types:
 4. Preview the composed report in the **Preview** tab before exporting.
 5. To export, click **Save** and choose an output format (see [Format options](#format-options)).
 
+![Manage Reports dialog — create/export reports](../assets/images/userguide-p209-img1.png)
+
 ---
 
 ## Format options

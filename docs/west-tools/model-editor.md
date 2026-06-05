@@ -30,6 +30,16 @@ The Model Editor is a text editor and compiler for WEST process models written i
 
 ![Model editor interface](../assets/images/tutorial-p067-img1.png)
 
+![Model Editor — Block Library Explorer panel](../assets/images/userguide-p224-img1.png)
+
+![Model Editor — Properties pane](../assets/images/userguide-p224-img2.png)
+
+![Model Editor — header file examples per unit process](../assets/images/userguide-p227-img1.png)
+
+![Model Editor — Import dialog](../assets/images/userguide-p230-img1.png)
+
+![Model Editor — secondary category reference examples](../assets/images/userguide-p231-img1.png)
+
 ## Related
 
 - [Block Editor](block-editor.md)

@@ -68,6 +68,42 @@ Used for flow equalisation:
 
 ---
 
+## Tertiary Treatment and GAC
+
+### Disinfection
+
+![Disinfection block — UV/chlorine disinfection unit](../assets/images/modelica-p422-img1.png)
+
+**Disinfection** blocks model UV or chlorine-based disinfection as the final treatment step before discharge. The block applies a log-reduction to indicator organisms based on dose (UV: mJ/cm²; chlorine: mg/l × contact time). Key parameters include dose, contact time, and hydraulic efficiency factor. Use `Disinfection.UV` for ultraviolet treatment or `Disinfection.Chlorine` / `Disinfection.ChlorineInv` for chemical disinfection with inactivation kinetics.
+
+### GAC_01bed — Single-bed granular activated carbon filter
+
+![GAC_01bed — single-bed granular activated carbon filter](../assets/images/modelica-p433-img1.png)
+
+**GAC_01bed** models a single-bed granular activated carbon adsorption filter for micropollutant removal (e.g. pharmaceuticals, pesticides, endocrine disruptors). The block uses a simplified equilibrium/kinetic adsorption model. Key parameters:
+
+| Parameter | Description |
+|---|---|
+| `V_bed` | Bed volume (m³) |
+| `EBCT` | Empty bed contact time (min); governs hydraulic loading |
+| `q_max` | Maximum adsorption capacity (mg pollutant / g GAC) |
+| `K_F` | Freundlich adsorption coefficient |
+| `n_F` | Freundlich exponent |
+
+### GAC_10beds — 10-bed GAC filter configuration
+
+![GAC_10beds — 10-bed GAC filter configuration](../assets/images/modelica-p437-img1.png)
+
+**GAC_10beds** extends the single-bed model to simulate multiple beds operating in series or parallel — representative of large-scale GAC installations where beds are staggered for continuous operation and lead/lag configurations. Each bed can be at a different stage of its adsorption cycle (fresh, partially exhausted, or spent). Key parameters are the same as `GAC_01bed` plus:
+
+| Parameter | Description |
+|---|---|
+| `N_beds` | Number of beds (up to 10) |
+| `t_regeneration` | Time between bed regeneration cycles (d) |
+| `f_parallel` | Fraction of beds operating in parallel vs series |
+
+---
+
 ## Anaerobic digestion (ADM1-based)
 
 WEST implements the IWA Anaerobic Digestion Model No. 1 (ADM1) for sludge stabilisation and biogas production modelling.

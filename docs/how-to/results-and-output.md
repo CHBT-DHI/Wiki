@@ -48,6 +48,8 @@ tags:
 
 ![Time-series plot panel](../assets/images/tutorial-p045-img2.png)
 
+![Plot configuration](../assets/images/tutorial-p045-img3.png)
+
 ### Axis settings
 
 1. Right-click the plot → **Plot Properties**.

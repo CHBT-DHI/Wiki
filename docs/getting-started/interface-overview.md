@@ -18,6 +18,12 @@ When WEST opens you see a multi-panel environment built around a central sheet a
 
 ![WEST interface overview — main window annotated](../assets/images/userguide-p015-img1.png)
 
+![Quick Tour — open project dialog](../assets/images/tutorial-p017-img1.png)
+
+![Interface overview — main window annotated](../assets/images/tutorial-p082-img1.png)
+
+![Interface overview — menus](../assets/images/tutorial-p082-img2.png)
+
 | Area | Description |
 |---|---|
 | **Sheet area** | The large central canvas. Shows whichever sheet tab is active (Layout, Dashboard, Interface, or Web Browser). |
@@ -34,6 +40,12 @@ When WEST opens you see a multi-panel environment built around a central sheet a
 On first launch, the **Getting Started pane** is shown instead of the Layout Sheet. It provides quick access to recent projects, example projects, templates, and tutorials.
 
 The **News Headlines** panel displays links pulled automatically from the MIKE Powered by DHI website, so you always see the latest DHI announcements without leaving WEST.
+
+![New project wizard](../assets/images/userguide-p026-img1.png)
+
+![Project settings dialog](../assets/images/userguide-p027-img1.png)
+
+![Saving and opening projects](../assets/images/userguide-p028-img1.png)
 
 ---
 
@@ -114,6 +126,8 @@ The **Properties window** shows graphical properties of the selected object (blo
 
 ![Properties panel / parameter editor](../assets/images/userguide-p019-img1.png)
 
+![Block properties dialog detail](../assets/images/userguide-p019-img2.png)
+
 ### Top-Level Parameters
 
 Top-Level Parameters group kinetic or operational parameters that are shared across several blocks (e.g. the same `mu_max` for multiple CSTR units). Assigning a value to a top-level parameter automatically propagates it to all linked sub-model parameters.
@@ -146,6 +160,8 @@ Once created, a calculator variable appears in Block Details at the project leve
 After a simulation completes, results can be viewed directly in the results panel.
 
 ![Results viewer panel](../assets/images/userguide-p021-img1.png)
+
+![Plot configuration dialog](../assets/images/userguide-p021-img2.png)
 
 ---
 
