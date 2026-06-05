@@ -6,49 +6,30 @@ tags:
 
 # Model Editor
 
-**Summary:** The Model Editor allows writing, editing, and generating optimised code for WEST process models.
+The Model Editor is a text editor and compiler for WEST process models written in MSL (a Modelica-based modelling language). It is the primary tool for users who need to create or customise mathematical process models beyond what the built-in model library provides. Most standard WEST users will not need it; it is intended for advanced users and model developers who want to extend the model library.
 
-**Source:** WEST User Guide, Chapter 10.
+## How to access
 
----
+**Project menu → Tools → Model Editor**
 
-## What the Model Editor provides
+## Key features
 
-- **Code Editor**: syntax-aware editor for the MSL (WEST model specification language)
-- **Matrix Editor (Gujer Matrix)**: graphical interface for defining biokinetic models as a stoichiometry/kinetics matrix — no code required
-- **Code generation**: WEST automatically compiles model code to optimised C++ for maximum simulation speed
+- Syntax-aware text editor for MSL (WEST model specification language)
+- Built-in syntax checker that highlights errors before compilation
+- Compilation of MSL source to optimised C++ for fast simulation execution
+- Gujer matrix (stoichiometry/kinetics matrix) graphical editor — define biokinetic models without writing code directly
+- Organised model library with **Categories** (groups of related model variants) and **Instances** (a category bundled with a temperature correction model)
 
----
+## Typical workflow
 
-## The WEST model library
-
-The model library is organised into:
-- **Categories** — groups of related model variants (e.g. `ASM2dMod` category contains `VolumeConstant`, `VolumeVariable`, etc.)
-- **Instances** — a category bundled with a temperature correction model (e.g. `ASM2dModTemp`)
-
----
-
-## Creating a new model
-
-> **Needs content.** From User Guide 10.3: creating a Block Library, creating an Instance, creating a Category, importing an existing Category, generating code.
-
-Key steps:
-1. Open Model Editor
-2. Create or open a Block Library
-3. Add a new Category (new model) or import an existing one
-4. Edit in Code Editor or Matrix Editor
-5. Generate code
-
----
-
-## MSL language basics
-
-> **Needs content.** Brief MSL syntax overview — variable declarations, process rates, Gujer matrix format.
-
----
+1. Open the Model Editor from the Project menu.
+2. Create or open a Block Library.
+3. Add a new Category (new model) or import an existing one.
+4. Edit the model in the Code Editor or the Matrix Editor.
+5. Run syntax check, then generate/compile code.
 
 ## Related
 
 - [Block Editor](block-editor.md)
+- [Unit Editor](unit-editor.md)
 - [Block Reference — Biological Models](../block-reference/biological-models.md)
-- [Developer context](../contributing.md)
