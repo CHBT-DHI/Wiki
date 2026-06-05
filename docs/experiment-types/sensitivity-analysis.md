@@ -32,6 +32,8 @@ A Local Sensitivity Analysis computes a numerical approximation of how state var
 6. In **Simulation Output** tab, ensure Communication Interval ≠ 0 (e.g. 0.014).
 7. Click **Execute**.
 
+![Sensitivity analysis (LSA) setup dialog](../assets/images/tutorial-p049-img1.png)
+
 ### CRS (Central Relative Sensitivity) plots
 
 Results appear in the **Runs** tab. To visualise them, add a Sheet named "CRS" and create Time Series Line plots. In the plot sub-menu choose **Add Series**, set Source Type to **Experiment** and Source Name to **Sens**; then for each series choose `.t` as the X-item and **CRS** as the Y-item, paired with the appropriate sensitivity function (e.g. `SensFunc: .Aeration.y_S` combined with `out_1.TSS`).
@@ -52,6 +54,8 @@ CRS(t) = (∂Y / ∂P) × (P_ref / Y_ref(t))
 - **Flat traces near zero** identify parameters that have negligible influence on the chosen output and can be fixed at default values during calibration.
 
 Interpretation is complicated by time-varying inputs: a parameter may appear highly sensitive at a specific time point simply because a high-flow event occurs then, not because it is structurally important across all conditions. This is why LSA is complemented by GSA.
+
+![CRS plot — cumulative relative sensitivity](../assets/images/tutorial-p051-img1.png)
 
 ### Typical sensitivities for the TwoASU example
 
@@ -108,11 +112,15 @@ A Global Sensitivity Analysis samples the full parameter space (Monte Carlo) and
 4. In **Solver** tab, set Number of Shots to 50.
 5. Click **Execute**.
 
+![GSA setup with Latin Hypercube Sampling](../assets/images/tutorial-p053-img1.png)
+
 ### Interpreting GSA results
 
 - **Linear Regression \| Scalars**: aggregated regression statistics per objective.
 - **Linear Regression \| Vectors**: regression coefficients (LCC, PCC, SRC) — create a Tornado plot by selecting an objective and clicking **Plot**.
 - **Runs tab**: objective values for each Monte Carlo run; best run is highlighted.
+
+![GSA results — scatter plots](../assets/images/tutorial-p054-img1.png)
 
 ### Tornado plot interpretation
 
@@ -124,6 +132,8 @@ A Tornado plot is a horizontal bar chart generated from the **Linear Regression 
 - **Bar length** indicates the strength of the linear association between that parameter and the objective across all Monte Carlo runs. A longer bar means a stronger effect.
 - **Bar direction (sign)** indicates the direction of influence: a bar extending to the **right** (positive coefficient) means increasing the parameter increases the objective value; a bar extending to the **left** (negative coefficient) means increasing the parameter decreases the objective.
 - **Near-zero bars** (very short) identify parameters that can be fixed at their default values without significantly affecting model predictions — these are not worth calibrating.
+
+![Tornado plot — ranked parameter sensitivities](../assets/images/tutorial-p052-img1.png)
 
 **TwoASU GSA findings (from Tutorial ch. 10.1):**
 
@@ -140,6 +150,8 @@ For the **Upper Percentile of nitrate (S_NO)** in the effluent (Figure 10.6):
 - `Clarifier.v0`, `Clarifier.Q_Under`, and `Aeration.y_S` have small effects on nitrate.
 
 **Using Tornado plots for calibration prioritisation:** Focus measurement effort and parameter estimation on the 2–3 parameters with the longest bars for the effluent quality indicators that matter most for the project. Parameters with short bars across all objectives can be fixed at literature defaults.
+
+![Sensitivity analysis — GSA SRC bar chart](../assets/images/tutorial-p093-img1.png)
 
 ---
 
