@@ -45,6 +45,12 @@ Use when you have standard measurements (flow, COD, TKN, TSS) and want WEST to f
    - Uncheck **Synchronize** if you want separate files for steady-state and dynamic runs.
 4. **Generate and Review tab:** Click **Generate** to produce the `.Steady State.in.txt` and `.Dynamic.in.txt` files in the project folder. Review the output tables and plots; edit individual values if needed. Click **Save** to preserve the settings.
 
+![Managing input data — influent tool](../assets/images/tutorial-p074-img1.png)
+
+![Input data time series](../assets/images/tutorial-p076-img1.png)
+
+![Data input block configuration](../assets/images/tutorial-p076-img2.png)
+
 ---
 
 ## Wastewater input — Custom vector
@@ -70,6 +76,8 @@ Use a **Data Input** block to drive a single manipulated variable (e.g. a time-v
 2. **General tab:** Select the target top-level interface variable from the list. If none appear, click **Top-level Interface Variables** to create one (set Causality = Input).
 3. **Data Import tab:** Load the source file and drag the relevant column to the Time Series Out section.
 4. **Generate and Review:** Click **Generate** to produce the input file.
+
+![Managing input data — vector input](../assets/images/tutorial-p101-img1.png)
 
 ---
 
@@ -103,6 +111,8 @@ Parameter values can also be changed interactively before or during a simulation
 | **Checkbox** | Toggle between 0 and 1 |
 
 To create any widget: drag a parameter from the **Block Details** window onto the corresponding widget pane on a Dashboard Sheet.
+
+![Dashboard widgets](../assets/images/tutorial-p077-img1.png)
 
 > Note: only **Manipulated Variables** (interface variables) can be changed while the simulation is running. True **Parameters** can only be changed before starting.
 
