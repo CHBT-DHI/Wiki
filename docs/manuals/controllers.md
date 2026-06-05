@@ -27,6 +27,10 @@ Controllers connect to the rest of the model via **data terminals** (shown as re
 3. Draw a second connection line from the **controller output terminal** to the **manipulated variable terminal** on the target process unit.
 4. When you complete a connection, the **Interface Links** dialog opens automatically.
 
+![Controllers — PID block on canvas](../assets/images/userguide-p067-img1.png)
+
+![Controllers — interface links dialog](../assets/images/userguide-p067-img2.png)
+
 ---
 
 ## Interface Links dialog
@@ -49,6 +53,40 @@ Multiple links can be configured on a single connection if the blocks expose mor
 | **PID** | Proportional-Integral-Derivative controller. Drives the manipulated variable to maintain a setpoint. Configure Kp, Ki, Kd, output limits, and setpoint. |
 | **On/Off** | Switches the manipulated variable between two fixed values based on threshold crossings. |
 | **Feed-forward** | Adjusts the manipulated variable based on a measured disturbance rather than a feedback error. Often combined with PID. |
+
+---
+
+## PID controller
+
+Configure PID controller parameters and review its response.
+
+![PID controller parameter dialog](../assets/images/userguide-p068-img1.png)
+
+![Controller response plot](../assets/images/userguide-p068-img2.png)
+
+---
+
+## On/Off controller
+
+The On/Off controller switches the output between two fixed values when the measured signal crosses threshold bounds.
+
+![On/Off controller setup](../assets/images/userguide-p069-img1.png)
+
+---
+
+## Timer block
+
+Use a Timer block to generate scheduled on/off or step signals independent of sensor feedback.
+
+![Timer block configuration](../assets/images/userguide-p070-img1.png)
+
+---
+
+## Feed-forward controller
+
+A feed-forward controller adjusts the manipulated variable based on a measured disturbance before the effect reaches the controlled variable.
+
+![Feed-forward controller](../assets/images/userguide-p071-img1.png)
 
 ---
 
