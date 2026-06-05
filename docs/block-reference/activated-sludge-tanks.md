@@ -32,6 +32,8 @@ All variants share the same state variables and interface structure. The biologi
 
 ## VolumeConstant
 
+![VolumeConstant tank — description](../assets/images/modelica-p159-img1.png)
+
 **Description:** Ideally mixed tank with constant volume. Outflow equals inflow:
 
 $$Q_{out} = Q_{in}$$
@@ -44,6 +46,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 
 ### Parameters
 
+![VolumeConstant — parameters](../assets/images/modelica-p159-img2.png)
+
 | Name | Description | Default | Units |
 |---|---|---|---|
 | `Vol` | Volume of the tank | 1000 | m³ |
@@ -51,6 +55,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 | `Is_MixIfAer` | Is it actively mixed when aerated? | 0 | — |
 
 ### State Variables
+
+![VolumeConstant — state variables](../assets/images/modelica-p160-img1.png)
 
 | Name | Description | Units |
 |---|---|---|
@@ -63,6 +69,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 | `M` | Mass of state components (vector) — derived | — |
 
 ### Interface Variables
+
+![VolumeConstant — interface variables](../assets/images/modelica-p160-img2.png)
 
 | Name | Terminal | Description | Default | Units |
 |---|---|---|---|---|
@@ -80,6 +88,8 @@ $$P_{mix} = 24 \cdot E_{mix} \cdot V$$
 
 ## VolumePumped
 
+![VolumePumped tank — description](../assets/images/modelica-p162-img1.png)
+
 **Description:** Ideally mixed tank where outflow is controlled by a pump. Volume can vary between `V_Min` and `V_Max`.
 
 The outflow logic is:
@@ -93,6 +103,8 @@ Power includes pumping:
 $$P_{Pump} = E_{pump} \cdot Q_{out}$$
 
 ### Parameters
+
+![VolumePumped — parameters](../assets/images/modelica-p162-img2.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -108,6 +120,8 @@ State variables and interface variables are the same as `VolumeConstant`, with a
 
 ## VolumeVariable
 
+![VolumeVariable tank — description](../assets/images/modelica-p164-img1.png)
+
 **Description:** Ideally mixed tank where outflow is governed by weir overflow:
 
 $$Q_{out} = N \cdot \alpha \cdot \left(\frac{V - V_c}{A}\right)^{\beta}$$
@@ -119,6 +133,8 @@ where:
 - `A` — surface area of the tank (m²)
 
 ### Parameters
+
+![VolumeVariable — parameters](../assets/images/modelica-p164-img2.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -136,10 +152,16 @@ Interface variables are the same as `VolumeConstant` (power outputs in kWh/d for
 
 ## VolumeConstant02–10 (multi-compartment)
 
+![VolumeConstant02 to 10 multi-compartment tanks](../assets/images/modelica-p166-img1.png)
+
 These variants model a tank as 2 to 10 ideally mixed compartments in series with constant volume.
 Each compartment has its own volume parameter (`Vol01`, `Vol02`, …) and kLa input terminal (`kLa_01`, `kLa_02`, …).
 
+![Multi-compartment tank diagram](../assets/images/modelica-p167-img1.png)
+
 ### Example: VolumeConstant02 parameters
+
+![Multi-compartment parameters](../assets/images/modelica-p167-img2.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
