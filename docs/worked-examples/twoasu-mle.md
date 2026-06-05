@@ -32,6 +32,32 @@ For build instructions, see the [Quick Start Tutorial](../getting-started/quick-
 
 ---
 
+## Starting a new project
+
+![Start a New Project — New Project dialog](../assets/images/tutorial-p031-img1.png)
+
+![New project settings dialog](../assets/images/tutorial-p032-img1.png)
+
+![Customised WEST environment and block library](../assets/images/tutorial-p033-img1.png)
+
+---
+
+## Building the layout
+
+![First step setting up TwoASU plant layout](../assets/images/tutorial-p034-img1.png)
+
+![Connecting blocks and completed layout](../assets/images/tutorial-p035-img1.png)
+
+---
+
+## Configuring influent fractionation and input data
+
+![Fractionation setup dialog](../assets/images/tutorial-p036-img1.png)
+
+![Input file and influent data configuration](../assets/images/tutorial-p037-img1.png)
+
+---
+
 ## Key parameters
 
 | Block | Parameter | Value |
@@ -56,6 +82,10 @@ Typical effluent concentrations at steady-state:
 | NOx | ~6.5 mg/l |
 | TSS | ~15.9 mg/l |
 
+![Steady-state experiment setup](../assets/images/tutorial-p038-img1.png)
+
+![Steady-state simulation results](../assets/images/tutorial-p039-img1.png)
+
 ---
 
 ## Dynamic results (30-day run)
@@ -68,6 +98,8 @@ Running with `WEST.BODCOD.Month.Influent.txt` (monthly load variation, VODE inte
 | NHx | 7.6 ± 6.3 mg/l | 0.5–21.4 |
 | NOx | 6.5 ± 2.1 mg/l | 3.4–10.5 |
 | TSS | 15.9 ± 3.0 mg/l | 12.3–21.6 |
+
+![Dynamic simulation results plot](../assets/images/tutorial-p042-img1.png)
 
 ---
 
