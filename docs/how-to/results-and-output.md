@@ -37,32 +37,6 @@ tags:
 
 ![Adding output variables to a plot](../assets/images/tutorial-p044-img1.png)
 
-### Plot types
-
-WEST supports multiple plot types. Select the type when creating a new plot or change it via right-click → **Plot Properties → General**.
-
-![Plot types — histogram](../assets/images/userguide-p195-img1.png)
-
-### Plot options
-
-![Plot options — current value](../assets/images/userguide-p196-img1.png)
-
-![Plot options — time series](../assets/images/userguide-p196-img2.png)
-
-![Plot options — Z(X,Y)](../assets/images/userguide-p197-img1.png)
-
-![Plot options detail](../assets/images/userguide-p197-img2.png)
-
-### Adding series to a plot
-
-Use the **Add Series** dialog to add one or more variables to an existing plot panel, choose the series type, and configure appearance.
-
-![Add Series dialog — line plot](../assets/images/userguide-p200-img1.png)
-
-![Add Series dialog — scatter](../assets/images/userguide-p200-img2.png)
-
-![Add Series dialog — histogram](../assets/images/userguide-p201-img1.png)
-
 ### Time-series plots
 
 - The X axis represents simulation time (default unit: days). The full simulation period is shown by default.
@@ -73,6 +47,8 @@ Use the **Add Series** dialog to add one or more variables to an existing plot p
 ![Results viewer and variable tree](../assets/images/tutorial-p045-img1.png)
 
 ![Time-series plot panel](../assets/images/tutorial-p045-img2.png)
+
+![Plot configuration](../assets/images/tutorial-p045-img3.png)
 
 ### Axis settings
 
@@ -127,8 +103,6 @@ A Gauge is a real-time dial or bar indicator updated continuously as the simulat
 4. Set the **Label** to a descriptive name (e.g. "Effluent NH₄").
 5. Gauges update in real time during dynamic simulations, making them ideal for Dashboard Sheets used as operator-style displays.
 
-![Creating a gauge](../assets/images/userguide-p202-img1.png)
-
 ---
 
 ## Exporting to file
@@ -141,8 +115,6 @@ To write time-series output to a text file during a simulation:
 4. In the block's **Parameters** tab, set the **output filename** (relative path within the project folder, e.g. `results\effluent_NH4.txt`) and the **output interval** (e.g. 0.0417 d = 1 hour).
 5. Run the simulation. WEST writes a tab-delimited text file to the specified path, with one column per variable and one row per output timestep.
 6. The file can be opened directly in Excel or imported into any data analysis tool.
-
-![Set up file output](../assets/images/userguide-p205-img1.png)
 
 ### Exporting a plot to CSV from the Dashboard
 
@@ -171,14 +143,6 @@ WEST provides a dedicated **Export to Excel** function that sends results from t
 ![Excel export options](../assets/images/tutorial-p046-img2.png)
 
 > **Tip:** For large simulations, reduce the export interval (e.g. export daily averages rather than every solver step) to keep the Excel file to a manageable size.
-
----
-
-## Reports
-
-Use the **Manage Reports** dialog to create, configure, and export structured report documents combining plots, tables, and text from one or more scenarios.
-
-![Manage Reports dialog](../assets/images/userguide-p209-img1.png)
 
 ---
 
