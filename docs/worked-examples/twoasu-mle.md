@@ -19,7 +19,7 @@ The TwoASU project models a typical municipal WWTP for biological nitrogen remov
 ```
 Municipal influent → Combiner → Anoxic tank (2 000 m³) → Aerobic tank (4 000 m³) → Clarifier
                           ↑                                                               |
-                    Loop breaker ← Internal recycle splitter (55 338 m³/d) ←————————————┘
+                    Loop breaker ← Internal recycle splitter (55 338 m³/d) ←────────────┘
                                                                                          |
                                                        Wastage (385 m³/d) → Effluent (sludge)
 ```

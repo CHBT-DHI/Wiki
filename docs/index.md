@@ -8,26 +8,15 @@ WEST lets you build, simulate, and analyse wastewater treatment plant models —
 
 ## Where to start
 
-| I want to… | Go to… |
-|---|---|
-| Get up and running quickly | [Quick Start Tutorial](starter-kit/quick-start.md) |
-| Look up a term or acronym | [Glossary](starter-kit/glossary.md) |
-| Find answers to common questions | [FAQ](starter-kit/faq.md) |
-| Install WEST | [Installation](manuals/installation.md) |
-| Run my first simulation | [Running Simulations](manuals/running-simulations.md) |
-| Understand the process models | [Technical Reference](technical-reference/index.md) |
-| Drive WEST from a script | [Automation & API](automation-api/index.md) |
-
----
-
-## Documentation tiers
-
-- **[Starter Kit](starter-kit/index.md)** — FAQ, quick start, and glossary. Start here if you are new.
-- **[Manuals](manuals/index.md)** — Step-by-step guides for every part of the interface.
-- **[Technical Reference](technical-reference/index.md)** — The models, science, and data behind WEST.
-- **[Advanced Topics](advanced-topics/index.md)** — Calibration, scenario management, and power-user features.
-- **[Developer Topics](developer-topics/index.md)** — Custom models and extending WEST.
-- **[Automation & API](automation-api/index.md)** — Running WEST programmatically and batch workflows.
+| Section | For whom | What's there |
+|---|---|---|
+| [Getting Started](getting-started/index.md) | New users | Quick start tutorial, UI overview, glossary, FAQ |
+| [How-To Guides](how-to/index.md) | All users | Task-oriented: layouts, input data, simulations, outputs, controllers, reports |
+| [Experiment Types](experiment-types/index.md) | Intermediate users | Sensitivity analysis, parameter estimation, scenario and uncertainty analysis |
+| [Block Reference](block-reference/index.md) | Modellers | Every block type: biological models, tanks, clarifiers, aeration, controllers, sensors |
+| [Worked Examples](worked-examples/index.md) | All users | TwoASU MLE, plant-wide model, integrated urban water system |
+| [WEST Tools](west-tools/index.md) | Advanced users | Model Editor, Block Editor, Data Editor, Designer, Unit Editor |
+| [Automation & API](automation-api/index.md) | Developers | WEST SDK, scripting, batch workflows |
 
 ---
 

@@ -55,34 +55,51 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Starter Kit:
-    - starter-kit/index.md
-    - FAQ: starter-kit/faq.md
-    - Quick Start Tutorial: starter-kit/quick-start.md
-    - Glossary: starter-kit/glossary.md
-  - Manuals:
-    - manuals/index.md
-    - Installation: manuals/installation.md
-    - Running Simulations: manuals/running-simulations.md
-    - Advanced Simulations: manuals/advanced-simulations.md
-    - Controllers: manuals/controllers.md
-    - Results and Output: manuals/results-output.md
-    - Worked Examples: manuals/worked-examples.md
-  - Technical Reference:
-    - technical-reference/index.md
-    - Process Models: technical-reference/process-models.md
-    - Components and Processes: technical-reference/components-processes.md
-    - Influent Characterisation: technical-reference/influent-characterisation.md
-    - Process Units: technical-reference/process-units.md
-  - Advanced Topics:
-    - advanced-topics/index.md
-    - Calibration: advanced-topics/calibration.md
-    - Scenario Management: advanced-topics/scenario-management.md
-    - Performance and Large Models: advanced-topics/performance.md
-  - Developer Topics:
-    - developer-topics/index.md
-    - Custom Models: developer-topics/custom-models.md
-    - Extending WEST: developer-topics/extending-west.md
+  - Getting Started:
+    - getting-started/index.md
+    - Quick Start Tutorial: getting-started/quick-start.md
+    - The WEST Interface: getting-started/interface-overview.md
+    - Glossary: getting-started/glossary.md
+    - FAQ: getting-started/faq.md
+  - How-To Guides:
+    - how-to/index.md
+    - Installation & Licensing: how-to/installation.md
+    - Building a Plant Layout: how-to/building-layouts.md
+    - Managing Input Data: how-to/managing-input-data.md
+    - Running Simulations: how-to/running-simulations.md
+    - Results & Output: how-to/results-and-output.md
+    - Controllers: how-to/controllers.md
+    - Reports: how-to/reports.md
+  - Experiment Types:
+    - experiment-types/index.md
+    - Sensitivity Analysis: experiment-types/sensitivity-analysis.md
+    - Parameter Estimation: experiment-types/parameter-estimation.md
+    - Scenario Analysis: experiment-types/scenario-analysis.md
+    - Uncertainty Analysis: experiment-types/uncertainty-analysis.md
+  - Block Reference:
+    - block-reference/index.md
+    - Choosing a Biological Model: block-reference/choosing-a-model.md
+    - Biological Models: block-reference/biological-models.md
+    - Activated Sludge Tanks: block-reference/activated-sludge-tanks.md
+    - Clarifiers: block-reference/clarifiers.md
+    - Sludge Treatment: block-reference/sludge-treatment.md
+    - Aeration: block-reference/aeration.md
+    - Flow Management: block-reference/flow-management.md
+    - Controllers & Timers: block-reference/controllers-timers.md
+    - Sensors & Signal Treatment: block-reference/sensors-signal.md
+    - Advanced Processes: block-reference/advanced-processes.md
+  - Worked Examples:
+    - worked-examples/index.md
+    - TwoASU MLE Layout: worked-examples/twoasu-mle.md
+    - Plant-Wide Model: worked-examples/plant-wide-model.md
+    - Integrated Urban Water System: worked-examples/iuws.md
+  - WEST Tools:
+    - west-tools/index.md
+    - Model Editor: west-tools/model-editor.md
+    - Block Editor: west-tools/block-editor.md
+    - Data Editor: west-tools/data-editor.md
+    - Designer: west-tools/designer.md
+    - Unit Editor: west-tools/unit-editor.md
   - Automation & API:
     - automation-api/index.md
     - Getting Started with the API: automation-api/getting-started.md
