@@ -72,16 +72,16 @@ The site will be available at `http://127.0.0.1:8000`.
 
 ## Review process
 
-- Every pull request requires at least one approval from a WEST domain expert.
-- The reviewer confirms technical correctness, not just grammar.
-- Merge only after approval.
-
----
-
-## Governance
+All contributions go through a pull request (PR) review before merging to `main`. The review checks: (1) technical accuracy — content should be consistent with WEST behaviour and the source PDFs; (2) style — matches the existing page structure (front matter, H2/H3 headings, Related section); (3) images — are stored as binary PNG files in `docs/assets/images/` with the naming convention `{prefix}-p{page_num:03d}-img{count}.png`; (4) navigation — if a new page is added, it must be listed in `mkdocs.yml` under the correct section. Reviewers leave comments on the PR; address all blocking comments before requesting a re-review.
 
 | Role | Responsibility |
 |---|---|
 | Wiki owner | Final say on structure, tooling, and merge policy |
 | Domain reviewers | Technical correctness review before merge |
 | Contributors | Writing, converting, and updating content |
+
+---
+
+## Governance
+
+The WEST Documentation Wiki is maintained by DHI. Content decisions (what to include, how to structure sections, which PDFs are authoritative) are made by the DHI WEST product team. Community contributions are welcome for: correcting errors, improving clarity, adding worked examples, and expanding the glossary. Requests to add new top-level sections or change the navigation structure should be raised as GitHub Issues for discussion before submitting a PR.
