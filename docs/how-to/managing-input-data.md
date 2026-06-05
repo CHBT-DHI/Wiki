@@ -68,6 +68,12 @@ Use when your measurements do not map directly to ASM components (e.g. only BOD 
    - Alternatively, load a default layout with the **Open** button on the toolbar.
 4. Complete **Data Import** and **Generate and Review** as for the Standard vector.
 
+![Fractionation layout building blocks](../assets/images/userguide-p182-img1.png)
+
+![Rename/describe fractionation block](../assets/images/userguide-p183-img1.png)
+
+![Parameters of fractionation model](../assets/images/userguide-p185-img1.png)
+
 ---
 
 ## Data input (single scalar variable)
@@ -86,6 +92,12 @@ Use a **Data Input** block to drive a single manipulated variable (e.g. a time-v
 ## Vector data input
 
 Drives a full component vector from a file — used in coupled-model (hierarchical) workflows. Setup mirrors the scalar Data Input, but a vector variable and a Category must be selected in the General tab.
+
+![De-fractionation model — draw connection](../assets/images/userguide-p190-img1.png)
+
+![De-fractionation in polyline mode](../assets/images/userguide-p192-img1.png)
+
+![Parameters of de-fractionation model](../assets/images/userguide-p193-img1.png)
 
 ![Time-varying input data](../assets/images/userguide-p057-img1.png)
 
@@ -115,6 +127,20 @@ Parameter values can also be changed interactively before or during a simulation
 | **Checkbox** | Toggle between 0 and 1 |
 
 To create any widget: drag a parameter from the **Block Details** window onto the corresponding widget pane on a Dashboard Sheet.
+
+![Dashboard sheets management](../assets/images/userguide-p173-img1.png)
+
+![Sheet layout in design mode](../assets/images/userguide-p174-img1.png)
+
+![Repositioning objects on sheet](../assets/images/userguide-p174-img2.png)
+
+![Rearrange objects in design mode](../assets/images/userguide-p175-img1.png)
+
+![Design mode detail](../assets/images/userguide-p175-img2.png)
+
+![Drag model parameters to sheet](../assets/images/userguide-p176-img1.png)
+
+![Radiobutton widget example](../assets/images/userguide-p187-img1.png)
 
 ![Dashboard widget — slider](../assets/images/userguide-p058-img1.png)
 
