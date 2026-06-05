@@ -60,5 +60,28 @@ tags:
 
 ---
 
+## Troubleshooting
+
+**My simulation shows NaN values — what does this mean?**
+: NaN (Not a Number) means a state variable went negative or a division by zero occurred. Check influent fractionation is consistent, all block volumes > 0, and splitter fractions sum to 1.
+
+**WEST crashes when I open a project — what do I do?**
+: Try opening the `.wst` file from a backup copy. If the project file is corrupt, check the autosave folder (same location as the project, prefixed with `~`).
+
+**The layout looks correct but effluent TSS is zero — why?**
+: Check the clarifier underflow recycle is connected. A Point clarifier with `f_under=1.0` sends all solids to underflow; verify the RAS connection is present.
+
+---
+
+## Performance tips
+
+**How do I speed up a slow simulation?**
+: Use steady-state initialisation, simplify the clarifier model, reduce the number of output variables written to file, and increase the output interval.
+
+**Can I run multiple simulations at the same time?**
+: With multiple WEST licences or a floating licence, yes — open multiple WEST instances. Each requires its own licence token.
+
+---
+
 !!! note "Question not answered here?"
     Open an issue on [GitHub](https://github.com/chbt-dhi/wiki/issues) or submit a pull request. See the [Contribution Guide](../contributing.md).
