@@ -30,6 +30,8 @@ WEST solves a system of ordinary differential equations (ODEs) at every timestep
 
 WEST exposes solver settings in the **Experiment Settings** dialogue (accessible from the Experiments panel).
 
+![Performance — solver settings](../assets/images/userguide-p127-img1.png)
+
 ### Explicit vs implicit solvers
 
 | Solver type | Use case | Notes |
@@ -84,6 +86,8 @@ Starting a dynamic simulation from a poorly initialised state forces the solver 
 
 - Use the steady-state initialisation approach above to avoid simulating many days of warm-up.
 - Alternatively, save the model state after a spin-up run and re-use it across multiple parameter estimation runs, avoiding repeated long transients.
+
+![Performance — run time comparison](../assets/images/userguide-p129-img1.png)
 
 ---
 
