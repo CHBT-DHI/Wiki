@@ -16,17 +16,23 @@ tags:
 
 Mix two or more inflow streams.
 
+![Flow combiner/mixer — description](../assets/images/modelica-p294-img1.png)
+
 | Model | Inlets |
 |---|---|
 | `Mix_02` | 2 inlets |
 | `Mix_03` | 3 inlets |
 | `Mix_03s` | 3 inlets with settling |
 
+![Flow combiner — parameters](../assets/images/modelica-p296-img1.png)
+
 ---
 
 ## Splitters
 
 Divide one stream into two outflows.
+
+![Flow splitter — description](../assets/images/modelica-p290-img1.png)
 
 | Model | Description |
 |---|---|
@@ -35,11 +41,15 @@ Divide one stream into two outflows.
 | `SplitRel02w` | Relative split with wastage |
 | `SplitRel02s` | Relative split with settling |
 
+![Flow splitter — parameters](../assets/images/modelica-p292-img1.png)
+
 **TwoASU example:** `SplitAbs02` is used for the internal recycle (`Q_Out2 = 55 338 m³/d`) and wastage (`Q_Out2 = 385 m³/d`) splitters.
 
 ---
 
 ## Pumps
+
+![Pump block — description](../assets/images/modelica-p305-img1.png)
 
 | Model | Description |
 |---|---|
@@ -48,6 +58,14 @@ Divide one stream into two outflows.
 | `Pumps.CF_Q_VFD` | Centrifugal pump, VFD-controlled |
 | `Pumps.CF_HQ_VFD` | Centrifugal pump with H-Q characteristic |
 | `Pumps.CF_HN_VFD` | Centrifugal pump with speed control |
+
+![Pump block — parameters](../assets/images/modelica-p308-img1.png)
+
+### Valve block
+
+![Valve block — description](../assets/images/modelica-p311-img1.png)
+
+![Valve — parameters](../assets/images/modelica-p314-img1.png)
 
 ---
 
