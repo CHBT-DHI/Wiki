@@ -219,7 +219,9 @@ Drop a **Data Input** block on the Layout and define a **Top-level Interface Var
 
 ---
 
-## Sensitivity analysis panel
+## Sensitivity analysis
+
+For sensitivity analysis experiments, use **Project → Experiments → Sensitivity Analysis**. See [Sensitivity Analysis](../experiment-types/sensitivity-analysis.md) for full setup instructions.
 
 ![Sensitivity analysis panel entry](../assets/images/userguide-p045-img1.png)
 
