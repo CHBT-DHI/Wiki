@@ -47,6 +47,10 @@ UA differs from Sensitivity Analysis in focus: SA asks *which parameters matter 
 7. Define output **criteria** (see below) to specify which aggregated statistics to compute.
 8. Click **Run**. WEST executes one simulation per sample and computes all criteria.
 
+![Uncertainty analysis setup — parameter distributions](../assets/images/tutorial-p057-img1.png)
+
+![Uncertainty analysis parameters panel](../assets/images/tutorial-p088-img1.png)
+
 ---
 
 ## Criteria types
@@ -77,6 +81,16 @@ The **Runs** tab displays a matrix with one row per completed simulation:
 | **Copy Values** | Copy the selected run's parameter values back to the base simulation. |
 | **Run** | Execute all runs in the current sample. |
 | **Plot** | Generate instant histograms of output distributions across runs. |
+
+![Uncertainty analysis results — output envelope](../assets/images/tutorial-p058-img1.png)
+
+![Uncertainty analysis — output bounds](../assets/images/tutorial-p089-img1.png)
+
+![Uncertainty bounds on effluent time-series plot](../assets/images/tutorial-p059-img1.png)
+
+![Uncertainty analysis histogram of output variable](../assets/images/tutorial-p059-img2.png)
+
+![Uncertainty analysis — cumulative distribution plot](../assets/images/tutorial-p060-img1.png)
 
 ---
 
