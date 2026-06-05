@@ -145,7 +145,7 @@ ASM2dMod is a WEST modification of the IWA ASM2d model (Gernaey and Jørgenson, 
 
 Denitrification is inhibited by dissolved oxygen via a separate parameter **K_O_Denit** (default 0.2 mg O₂/l). Increasing `K_O_Denit` increases the denitrification rate at a given DO level without affecting other processes that use `K_O`.
 
-![Effect of K_O_Denit on nitrate utilisation rate at different DO levels](../assets/images/asm2dmod-k-o-denit-graph.png)
+![ASM2dMod — K_O_Denit effect on denitrification rate graph](../assets/images/modelica-p020-img1.png)
 
 *Nitrate Utilisation Rate (NUR) vs DO at three values of K_O_Denit. Default is 0.2 for both K_O and K_O_Denit.*
 
@@ -282,6 +282,8 @@ S_O_Saturation = 14.65 − 0.41·T + 0.00799·T² − 7.78×10⁻⁵·T³   [g/m
 | `Kla_ASU` | out_2 | kLa | 1/d |
 | `V_ASU` | out_2 | Volume | m³ |
 
+![ASM2dMod — interface variables table diagram](../assets/images/modelica-p025-img1.png)
+
 ### References
 
 Gernay, K.V. and Jørgenson, S.B. (2004) Benchmarking combined biological phosphorous and nitrogen removal wastewater treatment processes. *Control Engineering Practice* 12:357–373.
@@ -293,6 +295,8 @@ Henze, M., Gujer, W., Mino, T. and van Loosdrecht, M. (2006) *Activated Sludge M
 ## ASM2dModNDHA
 
 Extension of ASM2dMod adding nitrous oxide (N₂O) as an intermediate in denitrification. Used for greenhouse gas (GHG) modelling.
+
+![ASM2dModNDHA — N2O pathway description diagram](../assets/images/modelica-p029-img1.png)
 
 ### State variables
 
@@ -351,6 +355,8 @@ TSS = VSS + X_ISS
 VSS = i_TSS_BM·(X_H + X_AUT + X_PAO) + i_TSS_X_I·X_I + i_TSS_X_S·X_S + X_PP + X_PHA
 ```
 
+![ASM2dISS — fractionation model equations diagram](../assets/images/modelica-p052-img1.png)
+
 ### When to use
 
 Select ASM2dISS when:
@@ -398,6 +404,10 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 | Ferric precipitation | Fe³⁺ + PO₄³⁻ → FePO₄ (X_FeP); reduces S_PO4 |
 | Fe/Al hydrolysis | Excess metal ion forms hydroxide floc (X_MeOH), contributing to ISS |
 
+### ISS/VSS fractionation
+
+![PWM_SA — ISS/VSS fractionation equations](../assets/images/modelica-p080-img1.png)
+
 ### Key additional parameters
 
 | Parameter | Description | Typical value | Unit |
@@ -409,6 +419,10 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 | `k_prec_Al` | Alum precipitation rate constant | 100 | m³/g·d |
 | `k_prec_Fe` | Ferric precipitation rate constant | 100 | m³/g·d |
 | `K_solub_AlP` | Solubility product for AlPO₄ | 1×10⁻⁷ | (g/m³)² |
+
+### Anaerobic sub-model process scheme
+
+![PWM_SA — anaerobic sub-model process scheme](../assets/images/modelica-p090-img1.png)
 
 ### When to use
 
