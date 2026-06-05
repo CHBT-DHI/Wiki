@@ -51,6 +51,10 @@ The standard TwoASU layout has a single influent stream feeding the Combiner bef
 
 ![DWF2 interface variables](../assets/images/modelica-p098-img4.png)
 
+![DWF2 block additional parameters](../assets/images/modelica-p098-img5.png)
+
+![DWF2 block equations](../assets/images/modelica-p098-img6.png)
+
 3. **Add** a `Combiner` (if not already present) immediately upstream of the Anoxic tank. This combiner will receive:
    - The DWF2 output (dry weather flow)
    - The sewer network overflow/overflow bypass stream (from Step 2)
