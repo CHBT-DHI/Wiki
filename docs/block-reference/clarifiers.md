@@ -160,6 +160,18 @@ Simplified model from Benchmark Simulation Model No. 2. Acts as ideal phase sepa
 
 ### SecondaryClarifier.Point
 
+The `SecondaryClarifier.Point` is an ideal point-settler with no settling kinetics. All influent TSS is directed to the underflow at a fixed separation efficiency; no sludge blanket, settling velocity, or layer structure is modelled. Soluble components pass through to the effluent unchanged.
+
+**Parameters:**
+
+| Name | Description | Default | Units |
+|---|---|---|---|
+| `A` | Clarifier surface area | 1500 | m² |
+| `f_under` | Fraction of influent solids reporting to the underflow | 0.99 | — |
+| `Q_Under` | Underflow (RAS) flow rate | 50 | m³/d |
+
+**When to use:** The Point settler is appropriate for steady-state initialisation runs (where a realistic TSS split is not yet needed), very simple conceptual models, or teaching examples where the focus is on the biological process rather than settling. It is not suitable for dynamic simulations where effluent TSS, sludge blanket height, or clarifier failure under peak loads need to be represented — use `Takacs_SVI` or `BurgerDiehl30` for those cases.
+
 ![SecondaryClarifier.Point — description and parameters](../assets/images/modelica-p184-img1.png)
 
 ---
