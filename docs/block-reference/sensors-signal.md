@@ -26,6 +26,16 @@ Sensors measure one or more state variables and output them as data signals for 
 | `ASM2dMod.MultiSampler_kVol` | Volume-proportional sampler for ASM2dMod |
 | `PWM_SA.Multiprobe` | Plant-wide model probe |
 
+### DO Sensor
+
+![DO Sensor — description](../assets/images/modelica-p254-img1.png)
+
+![DO Sensor — parameters](../assets/images/modelica-p254-img2.png)
+
+### NH4 Sensor
+
+![NH4 Sensor — description and parameters](../assets/images/modelica-p255-img1.png)
+
 ---
 
 ## Signal treatment
