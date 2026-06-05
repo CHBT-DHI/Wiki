@@ -31,7 +31,13 @@ When WEST opens you see a multi-panel environment built around a central sheet a
 
 On first launch, the **Getting Started pane** is shown instead of the Layout Sheet. It provides quick access to recent projects, example projects, templates, and tutorials.
 
+![Open project dialog](../assets/images/tutorial-p017-img1.png)
+
 The **News Headlines** panel displays links pulled automatically from the MIKE Powered by DHI website, so you always see the latest DHI announcements without leaving WEST.
+
+![Interface overview — main window](../assets/images/tutorial-p082-img1.png)
+
+![Interface overview — menus](../assets/images/tutorial-p082-img2.png)
 
 ---
 
