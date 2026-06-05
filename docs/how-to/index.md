@@ -11,3 +11,4 @@ Task-oriented guides for the most common WEST workflows.
 | [Results & Output](results-and-output.md) | Plots, tables, gauges, data export, Excel |
 | [Controllers](controllers.md) | Setting up PI/PID control loops in a layout |
 | [Reports](reports.md) | Generating and exporting project reports |
+| [Troubleshooting](troubleshooting.md) | Fixes for common errors, crashes, and unexpected results |
