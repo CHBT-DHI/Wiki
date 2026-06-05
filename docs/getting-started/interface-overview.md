@@ -16,6 +16,8 @@ tags:
 
 When WEST opens you see a multi-panel environment built around a central sheet area flanked by dockable system windows. The main areas are:
 
+![WEST interface overview — main window annotated](../assets/images/userguide-p015-img1.png)
+
 | Area | Description |
 |---|---|
 | **Sheet area** | The large central canvas. Shows whichever sheet tab is active (Layout, Dashboard, Interface, or Web Browser). |
@@ -31,13 +33,7 @@ When WEST opens you see a multi-panel environment built around a central sheet a
 
 On first launch, the **Getting Started pane** is shown instead of the Layout Sheet. It provides quick access to recent projects, example projects, templates, and tutorials.
 
-![Open project dialog](../assets/images/tutorial-p017-img1.png)
-
 The **News Headlines** panel displays links pulled automatically from the MIKE Powered by DHI website, so you always see the latest DHI announcements without leaving WEST.
-
-![Interface overview — main window](../assets/images/tutorial-p082-img1.png)
-
-![Interface overview — menus](../assets/images/tutorial-p082-img2.png)
 
 ---
 
@@ -68,6 +64,8 @@ A **Block** is the graphical representation of a unit-process model (e.g. a CSTR
 
 Blocks are placed by dragging from the **Block Library** onto the Layout Sheet.
 
+![Layout sheet / canvas with blocks](../assets/images/userguide-p017-img1.png)
+
 ### Terminals
 
 Hovering the mouse over a terminal shows a tooltip with five properties:
@@ -95,6 +93,8 @@ Connections are drawn between compatible terminals. Use **Insert | Connections**
 
 The Block Library panel (left side of the screen) lists all process-block categories installed with WEST. Categories include biological reactors, settlers, influent/effluent generators, sensors, controllers, and more. Expand a category to see individual block icons; drag one onto the Layout Sheet to create an instance.
 
+![Block library panel](../assets/images/userguide-p017-img2.png)
+
 ---
 
 ## Block Details and Properties windows
@@ -111,6 +111,8 @@ Drag any variable from Block Details onto a Dashboard Sheet to create a live plo
 ### Properties window
 
 The **Properties window** shows graphical properties of the selected object (block, connection, or sheet element): position, size, colour, label font, and the **ClassName** property (the underlying model class, changeable via a dropdown to swap the process model without redrawing the layout).
+
+![Properties panel / parameter editor](../assets/images/userguide-p019-img1.png)
 
 ### Top-Level Parameters
 
@@ -136,6 +138,30 @@ To add one: right-click the Layout Sheet → **Calculator Variables** (or via **
 | **Bounds** | Lower and upper validity limits |
 
 Once created, a calculator variable appears in Block Details at the project level and can be plotted, used as an analysis objective, or referenced in other expressions.
+
+---
+
+## Results viewer
+
+After a simulation completes, results can be viewed directly in the results panel.
+
+![Results viewer panel](../assets/images/userguide-p021-img1.png)
+
+---
+
+## Menus and toolbars
+
+### Menu bar
+
+The WEST ribbon provides access to all commands across several tabs.
+
+![WEST menus overview](../assets/images/userguide-p022-img1.png)
+
+### Toolbar
+
+The toolbar provides quick access to the most frequently used commands.
+
+![Toolbar buttons annotated](../assets/images/userguide-p023-img1.png)
 
 ---
 
