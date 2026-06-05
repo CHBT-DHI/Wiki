@@ -92,6 +92,9 @@ To apply the best-performing scenario to your model, select its row and click **
 
 ---
 
+
+![Scenario analysis — data files tab detail](../assets/images/userguide-p141-img2.png)
+
 ## Related
 
 - [Uncertainty Analysis](uncertainty-analysis.md)

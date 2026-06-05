@@ -27,6 +27,9 @@ The Data Editor is a spreadsheet-like tool for creating, viewing, and editing th
 
 ![Data Editor — Tornado data overview and description](../assets/images/userguide-p219-img1.png)
 
+
+![Data editor — table view (userguide)](../assets/images/userguide-p103-img1.png)
+
 ## Related
 
 - [Managing Input Data](../how-to/managing-input-data.md)

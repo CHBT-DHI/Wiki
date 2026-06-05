@@ -110,6 +110,9 @@ Latin Hypercube Sampling divides each parameter's distribution into *N* equal-pr
 
 ---
 
+
+![Uncertainty analysis — Classification tab](../assets/images/userguide-p148-img2.png)
+
 ## Related
 
 - [Scenario Analysis](scenario-analysis.md)

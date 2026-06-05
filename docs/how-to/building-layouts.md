@@ -221,6 +221,11 @@ Top-Level Parameters group values that are shared across multiple blocks (e.g. a
 
 ---
 
+
+![New project wizard — fill project information](../assets/images/userguide-p154-img1.png)
+
+![Block naming and SynchronizeNames detail](../assets/images/userguide-p159-img2.png)
+
 ## Related
 
 - [The WEST Interface](../getting-started/interface-overview.md)
