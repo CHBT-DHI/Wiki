@@ -35,12 +35,18 @@ tags:
 4. To add a second variable to the same plot, drag it onto the existing plot panel (not onto an empty area). WEST adds it as a new series on the same axes.
 5. To overlay variables from different blocks on one plot, repeat step 4 for each variable.
 
+![Adding output variables to a plot](../assets/images/tutorial-p044-img1.png)
+
 ### Time-series plots
 
 - The X axis represents simulation time (default unit: days). The full simulation period is shown by default.
 - Each variable appears as a coloured line. The legend is shown at the bottom of the panel.
 - Use the **zoom** controls (scroll wheel or the zoom toolbar buttons) to examine a specific time window.
 - Use **Crosshairs** (right-click → **Crosshairs**) to read exact time and value at any point on the curve.
+
+![Results viewer and variable tree](../assets/images/tutorial-p045-img1.png)
+
+![Time-series plot panel](../assets/images/tutorial-p045-img2.png)
 
 ### Axis settings
 
@@ -70,6 +76,10 @@ tags:
   - Set the number of decimal places displayed.
   - Choose whether to show the variable name, block name, or a custom label.
 - Tables are useful for comparing final steady-state values or current dynamic values at a glance during a running simulation.
+
+![Results and output — plot panel](../assets/images/tutorial-p099-img1.png)
+
+![Results and output — table view](../assets/images/tutorial-p099-img2.png)
 
 ---
 
@@ -110,6 +120,8 @@ To write time-series output to a text file during a simulation:
 2. Choose **CSV** to save the plotted time-series data as a comma-delimited file, or **Image** (PNG/BMP) to save the chart graphic.
 3. Select a save location and click **Save**.
 
+![Exporting results dialog](../assets/images/tutorial-p046-img1.png)
+
 ---
 
 ## Exporting to Excel
@@ -125,6 +137,8 @@ WEST provides a dedicated **Export to Excel** function that sends results from t
    - Choose whether to export each variable as a separate worksheet or all on one sheet.
 5. Click **Export** and choose a save location.
 6. Excel opens automatically (if installed) with each selected variable's time-series in a separate column, labelled with the block name and variable name.
+
+![Excel export options](../assets/images/tutorial-p046-img2.png)
 
 > **Tip:** For large simulations, reduce the export interval (e.g. export daily averages rather than every solver step) to keep the Excel file to a manageable size.
 
