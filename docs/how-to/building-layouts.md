@@ -28,7 +28,7 @@ A plant layout is built by placing **Blocks** (unit-process models) on the **Lay
 
 The block appears with its default icon, label, and terminals.
 
-![Customised WEST environment and block library](../assets/images/tutorial-p033-img1.png)
+![Layout editor — adding blocks](../assets/images/userguide-p029-img1.png)
 
 ---
 
@@ -117,13 +117,11 @@ You can also change the model via: select the block → **Properties window → 
 
 After a successful connection an **Interface Link** dialog may appear. Use it to map variables between the two terminals (for example, mapping a sensor output to a controller's measured-variable input). Double-click any connection line later to review or modify its Interface Links.
 
-![First step setting up TwoASU plant layout](../assets/images/tutorial-p034-img1.png)
+![Connecting two blocks — connector dialog](../assets/images/userguide-p030-img1.png)
 
-![Second step setting up TwoASU plant layout](../assets/images/tutorial-p034-img2.png)
+![Interface link dialog](../assets/images/userguide-p030-img2.png)
 
-![Connecting blocks and completed layout](../assets/images/tutorial-p035-img1.png)
-
-![Block connection detail](../assets/images/tutorial-p081-img1.png)
+![Completed layout example](../assets/images/userguide-p031-img1.png)
 
 ---
 
@@ -150,7 +148,15 @@ Existing parameter values and connections are retained where the new class has m
 
 ---
 
-## Step 12 — Define Top-Level Parameters
+## Step 12 — Configure block parameters
+
+After placing and connecting blocks, configure their parameters in the Block Details window.
+
+![Block parameter configuration](../assets/images/userguide-p034-img1.png)
+
+---
+
+## Step 13 — Define Top-Level Parameters
 
 Top-Level Parameters group values that are shared across multiple blocks (e.g. a single temperature or kinetic coefficient applied to many CSTRs).
 
