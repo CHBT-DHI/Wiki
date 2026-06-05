@@ -21,6 +21,10 @@ The Data Editor is a spreadsheet-like tool for creating, viewing, and editing th
 - Plot time series for visual inspection of the data
 - Check data file format and header consistency before use in a simulation
 
+![Data editor interface](../assets/images/tutorial-p070-img1.png)
+
+![Data editor — data table view](../assets/images/tutorial-p070-img2.png)
+
 ## Related
 
 - [Managing Input Data](../how-to/managing-input-data.md)
