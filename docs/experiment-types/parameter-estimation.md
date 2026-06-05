@@ -108,6 +108,8 @@ In practice, monitoring the **Error** plot (Figure 11.3 in the tutorial) is the 
 
 ## Results interpretation
 
+After PE converges, the **Results** panel shows: (1) best-fit parameter values with 95 % confidence intervals; (2) the objective function value (lower = better fit); (3) sensitivity matrix (Jacobian) indicating which parameters are identifiable. Check that confidence intervals are narrow relative to the parameter value — wide intervals indicate over-parameterisation. The **Correlation matrix** tab highlights correlated parameters that cannot be estimated independently; consider fixing one of them.
+
 ### Runs tab
 
 The **Runs** tab lists every simulation run with its parameter values and the resulting objective value. The run with the lowest `ObjValue` is highlighted. Click **Copy Values** on the best run to transfer its parameter set back to the simulation.
