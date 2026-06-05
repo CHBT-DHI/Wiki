@@ -28,6 +28,8 @@ A single project can hold many scenarios. For example:
 
 Scenarios that use a different physical configuration (e.g. an extra tank) require a separate layout; scenarios that only vary parameter values can share one layout.
 
+![Scenario management — scenario list](../assets/images/userguide-p125-img1.png)
+
 ---
 
 ## Creating and naming scenarios
@@ -68,11 +70,15 @@ The **Scenario Analysis** experiment type runs multiple scenarios in sequence an
 4. In the **Output** tab, select the variables to compare (e.g. effluent NH₄, effluent NO₃, MLSS, energy demand). Add variables by clicking **Add Variable** and navigating to the relevant block and output.
 5. Click **Run**. WEST executes each scenario simulation sequentially and collects results.
 
+![Scenario analysis setup](../assets/images/userguide-p086-img1.png)
+
 ### Viewing comparison results
 
 - After the run completes, the **Results** tab shows a comparison table with one column per scenario and one row per output variable (final value or time-averaged value, depending on the output type).
 - Click any variable row to open a side-by-side time-series plot showing all scenarios on the same axes.
 - Use **Plot Properties** to fix axis scales so that the same Y range is used for all scenarios, enabling fair visual comparison.
+
+![Scenario analysis results](../assets/images/userguide-p086-img2.png)
 
 ---
 
