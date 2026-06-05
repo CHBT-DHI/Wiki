@@ -27,6 +27,8 @@ Always run steady-state first when starting a new project — it provides an ini
 
 ## Running a steady-state simulation
 
+In the Control Center, select experiment type **Steady State**. Set the convergence tolerance (default 1e-6) and maximum iterations (default 500). Click **Run**. WEST solves the algebraic equations iteratively using Newton-Raphson until residuals fall below the tolerance. Results appear in the output panel when the run completes.
+
 ### Setup
 
 1. In the **Control Center**, select the **Steady-state** experiment (or create one via **Project | Virtual Experiments → Steady-state**).
@@ -50,6 +52,8 @@ Once a steady-state run is complete, all variables in the model hold their equil
 ---
 
 ## Running a dynamic simulation
+
+Select experiment type **Dynamic**. Set start time, end time, and communication interval (the timestep at which results are saved). The solver uses a variable-step ODE integrator (default: LSODA). Click **Run**. Monitor progress in the logging window. A typical 30-day dynamic run takes 10–120 seconds depending on model complexity.
 
 ### Setup
 
@@ -78,6 +82,8 @@ For activated sludge models, always use **VODE** with **Is a Stiff Solver** chec
 ---
 
 ## Reading results
+
+After a run completes, open the **Results** panel. Select variables from the tree on the left; their time series appear in the plot area. Right-click a variable to export to CSV or copy to clipboard. Use the **Table** view tab to inspect numerical values at each communication timestep.
 
 ### Time-series plots
 
