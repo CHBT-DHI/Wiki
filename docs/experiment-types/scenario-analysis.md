@@ -32,6 +32,8 @@ Scenario Analysis (SA) runs a batch of simulations where each run uses a differe
 7. Define **criteria** in the Variables/Criteria tab. Supported criteria: Mean Difference, Max Difference, Theil's IC, End Value Difference (all computed against reference time series from data files).
 8. Click **Run**. WEST executes one simulation per row in the runs matrix.
 
+![Scenario analysis setup dialog](../assets/images/tutorial-p047-img1.png)
+
 ---
 
 ## Solver types
@@ -50,6 +52,8 @@ The solver type determines how WEST enumerates combinations from the parameter v
 - Use **Sequential** or **Grid** for a full factorial comparison of a small number of parameters.
 - Use **Fixed** when you have pre-defined scenario vectors of equal length (e.g. an explicit list of design alternatives).
 - Use **Cross** for a "one-at-a-time" sweep to understand individual parameter effects without the combinatorial explosion of a full factorial.
+
+![Scenario parameters table](../assets/images/tutorial-p048-img1.png)
 
 ---
 
@@ -71,6 +75,12 @@ The **Runs** tab shows a matrix with one row per completed run:
 | **Plot** | Generate instant histograms of objective values across runs. |
 
 To apply the best-performing scenario to your model, select its row and click **Copy Values**.
+
+![Scenario analysis results comparison](../assets/images/tutorial-p048-img2.png)
+
+![Scenario analysis — parameter grid (multiple scenarios)](../assets/images/tutorial-p087-img1.png)
+
+![Scenario analysis — results grid comparison](../assets/images/tutorial-p087-img2.png)
 
 ---
 
