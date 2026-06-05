@@ -70,6 +70,17 @@ Used for flow equalisation:
 
 ## Tertiary Treatment and GAC
 
+Tertiary treatment blocks model polishing steps applied after secondary clarification to meet stringent effluent quality standards or prepare water for reuse. Granular Activated Carbon (GAC) adsorption is the primary tertiary process block in WEST, targeting residual micropollutants, trace organics (pharmaceuticals, pesticides, endocrine disruptors), colour, and odour compounds that are not removed by biological treatment. The GAC model uses a simplified equilibrium-kinetic adsorption approach based on Freundlich isotherm parameters, combined with a hydraulic residence time determined by the empty-bed contact time (EBCT). Carbon capacity decreases over time as the bed approaches exhaustion, and the model tracks the cumulative adsorbed mass to signal when regeneration or replacement is required. GAC blocks are available in WEST+ and SDK editions only; they are not included in the standard licence.
+
+**Key GAC parameters:**
+
+| Parameter | Description | Typical value |
+|---|---|---|
+| `EBCT` | Empty-bed contact time (min) — primary design variable governing contact and removal | 10–20 min |
+| `q_max` | Initial carbon adsorption capacity (mg pollutant / g GAC) | compound-specific |
+| `t_regen` | Regeneration or replacement interval (d) | 180–365 d |
+| `K_F`, `n_F` | Freundlich isotherm coefficients | compound-specific |
+
 ### Disinfection
 
 ![Disinfection block — UV/chlorine disinfection unit](../assets/images/modelica-p422-img1.png)
@@ -176,6 +187,8 @@ MBR blocks replace the secondary clarifier with a membrane filtration unit, enab
 ---
 
 ## Granular sludge and MBBR
+
+Granular sludge (aerobic granular sludge, AGS) and Moving Bed Biofilm Reactor (MBBR) models capture biofilm-based processes that cannot be adequately represented by conventional suspended-growth models. Both model types retain active biomass at high concentrations within structured biofilm communities, offering advantages in footprint, settleability, and simultaneous nutrient removal. Key parameters common to both approaches are biofilm thickness (`L_f`, µm), which governs internal oxygen and substrate diffusion limitations, specific surface area of the carrier or granule (`a_specific`, m²/m³), and fill fraction (volume of carriers or granules as a fraction of total reactor volume). The granular sludge model uses a layered diffusion-reaction approach in which concentration gradients across the granule radius are resolved numerically; the MBBR model uses a surface-flux formulation where the biofilm is treated as a single layer with an effective transfer coefficient. Both modules are available under the advanced biofilm module licence; they are not included in the base WEST licence.
 
 ### Aerobic granular sludge (AGS)
 
