@@ -67,18 +67,6 @@ ASM2dMod is a WEST modification of the IWA ASM2d model (Gernaey and Jørgenson, 
 | X_MeOH | Metal hydroxides | g COD/m³ |
 | X_MeP | Metal phosphate | g COD/m³ |
 
-**Component groupings:**
-
-| Organic matter | | | | |
-|---|---|---|---|---|
-| Soluble — Inert | Soluble — Fermentable | Soluble — Fermentation products | Particulate — Inert | Particulate — Slowly biodegradable |
-| S_I | S_F | S_A | X_I | X_S |
-
-| Biomass | | | | |
-|---|---|---|---|---|
-| Autotrophic | Heterotrophic | PAO biomass | PAO — Poly-phosphate | PAO — PHA |
-| X_AUT | X_H | X_PAO | X_PP | X_PHA |
-
 ### Processes (conversion model)
 
 | # | Name | Description |
