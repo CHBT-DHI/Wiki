@@ -19,6 +19,8 @@ The Unit Editor manages unit definitions and unit conversion factors within WEST
 - Add custom units for non-standard or project-specific parameters
 - Modify existing unit conversions without touching model source code
 
+![Unit editor interface](../assets/images/tutorial-p071-img1.png)
+
 ## Related
 
 - [Model Editor](model-editor.md)
