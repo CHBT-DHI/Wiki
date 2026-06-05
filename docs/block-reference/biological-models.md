@@ -34,7 +34,54 @@ ASM1 is the IWA standard model for carbon removal, nitrification, and denitrific
 - Oxygen and nitrate as electron acceptors
 - No phosphorus dynamics
 
-> **Needs content.** State variable table, process matrix summary, key kinetic parameters and typical values from Models Guide.
+### State variables
+
+| Symbol | Description | Unit |
+|---|---|---|
+| `S_I` | Soluble inert organic matter | g COD/m³ |
+| `S_S` | Readily biodegradable substrate | g COD/m³ |
+| `X_I` | Particulate inert organic matter | g COD/m³ |
+| `X_S` | Slowly biodegradable substrate | g COD/m³ |
+| `X_BH` | Active heterotrophic biomass | g COD/m³ |
+| `X_BA` | Active autotrophic biomass | g COD/m³ |
+| `X_P` | Particulate products from biomass decay | g COD/m³ |
+| `S_O` | Dissolved oxygen | g O₂/m³ |
+| `S_NO` | Nitrate + nitrite nitrogen | g N/m³ |
+| `S_NH` | Free and saline ammonia nitrogen | g N/m³ |
+| `S_ND` | Soluble biodegradable organic nitrogen | g N/m³ |
+| `X_ND` | Particulate biodegradable organic nitrogen | g N/m³ |
+| `S_ALK` | Alkalinity | mol HCO₃⁻/m³ |
+
+### Key processes
+
+ASM1 defines eight biological conversion processes:
+
+1. **Aerobic growth of heterotrophs** — consumption of S_S and S_O; production of X_BH
+2. **Anoxic growth of heterotrophs** (denitrification) — consumption of S_S and S_NO; production of X_BH; requires S_O < inhibition threshold
+3. **Aerobic growth of autotrophs** (nitrification) — consumption of S_NH and S_O; production of X_BA
+4. **Decay of heterotrophs** — X_BH → X_P + X_S + X_ND
+5. **Decay of autotrophs** — X_BA → X_P + X_S + X_ND
+6. **Ammonification** — S_ND → S_NH (first-order, soluble organic N mineralisation)
+7. **Hydrolysis of slowly biodegradable substrate** — X_S → S_S (surface-limited)
+8. **Hydrolysis of entrapped organic nitrogen** — X_ND → S_ND
+
+### Key kinetic parameters (typical values at 20 °C)
+
+| Parameter | Description | Typical value | Unit |
+|---|---|---|---|
+| `mu_H_max` | Max growth rate, heterotrophs | 6.0 | 1/d |
+| `K_S` | Half-saturation coeff for S_S | 20 | g COD/m³ |
+| `K_O_H` | O₂ half-saturation coeff, heterotrophs | 0.2 | g O₂/m³ |
+| `K_NO` | Nitrate half-saturation coeff | 0.5 | g N/m³ |
+| `b_H` | Decay rate, heterotrophs | 0.62 | 1/d |
+| `Y_H` | Yield, heterotrophs | 0.67 | g COD/g COD |
+| `mu_AUT` | Max growth rate, autotrophs | 0.8 | 1/d |
+| `K_NH` | NH₄ half-saturation coeff, autotrophs | 1.0 | g N/m³ |
+| `K_O_A` | O₂ half-saturation coeff, autotrophs | 0.4 | g O₂/m³ |
+| `b_AUT` | Decay rate, autotrophs | 0.05 | 1/d |
+| `Y_AUT` | Yield, autotrophs | 0.24 | g COD/g N |
+| `k_h` | Max hydrolysis rate | 3.0 | 1/d |
+| `K_X` | Hydrolysis half-saturation coeff | 0.1 | g COD/g COD |
 
 ---
 
@@ -247,7 +294,29 @@ Henze, M., Gujer, W., Mino, T. and van Loosdrecht, M. (2006) *Activated Sludge M
 
 Extension of ASM2dMod adding nitrous oxide (N₂O) as an intermediate in denitrification. Used for greenhouse gas (GHG) modelling.
 
-> **Needs content.** From Models Guide pp. 29–56.
+### State variables
+
+ASM2dModNDHA uses the same 20 components as ASM2dMod plus one additional species:
+
+| Name | Description | Unit |
+|---|---|---|
+| S_N2O | Nitrous oxide (dissolved) | g N/m³ |
+
+All other components (S_A, S_ALK, S_F, S_I, S_N2, S_NH4, S_NO3, S_O2, S_PO4, X_AUT, X_H, X_I, X_MeOH, X_MeP, X_PAO, X_PP, X_PHA, X_S, X_TSS) are identical to ASM2dMod.
+
+### Key processes
+
+ASM2dModNDHA extends ASM2dMod by splitting the denitrification pathway into two sequential steps:
+
+- **NO₃ → NO₂ → N₂O → N₂** — nitrous oxide is an explicit intermediate rather than being lumped with N₂
+- Separate half-saturation and inhibition coefficients govern each reduction step
+- N₂O stripping to the gas phase is modelled as a mass-transfer process analogous to oxygen transfer
+
+This allows prediction of dissolved and off-gas N₂O concentrations, enabling greenhouse gas inventories and identification of operational conditions that promote N₂O accumulation (e.g. transient aeration, low DO, high nitrite).
+
+### When to use
+
+Use ASM2dModNDHA when the project objective includes estimation of N₂O emissions or compliance with GHG reporting requirements. For standard nutrient removal studies, ASM2dMod is sufficient and computationally cheaper.
 
 ---
 
@@ -255,7 +324,42 @@ Extension of ASM2dMod adding nitrous oxide (N₂O) as an intermediate in denitri
 
 Extension of ASM2dMod adding inorganic suspended solids dynamics (mineral precipitation/dissolution). Relevant for plants with chemical P-removal or high mineral loads.
 
-> **Needs content.** From Models Guide pp. 57–83.
+### Additional state variable
+
+| Name | Description | Unit |
+|---|---|---|
+| `X_ISS` | Inorganic (mineral) suspended solids | g ISS/m³ |
+
+All other 20 ASM2dMod components are retained unchanged.
+
+### ISS processes
+
+ASM2dISS tracks the inorganic fraction of TSS explicitly through three mechanisms:
+
+1. **Biomass-associated ISS** — each active biomass fraction (X_H, X_AUT, X_PAO) carries a fixed ISS content defined by the composition parameter `i_ISS_BM` (default 0.02 g ISS/g COD). When biomass grows or decays, the corresponding ISS is produced or released.
+
+2. **Storage and decay products** — X_PP and X_PHA also contribute inorganic and organic solids respectively; X_PP is counted directly as ISS since poly-phosphate is inorganic.
+
+3. **Chemical precipitation contributions** — simultaneous chemical P-removal with metal salts (e.g. ferric chloride, alum) produces metal phosphate precipitates (X_MeP) and metal hydroxide floc (X_MeOH), both of which are inorganic and contribute to X_ISS rather than to the COD-based solids fractions.
+
+### TSS calculation
+
+In ASM2dMod, TSS is estimated from COD-based components using fixed conversion factors (`i_TSS_BM`, `i_TSS_X_I`, etc.). In ASM2dISS, total TSS is the sum of the COD-based volatile fraction plus X_ISS:
+
+```
+TSS = VSS + X_ISS
+VSS = i_TSS_BM·(X_H + X_AUT + X_PAO) + i_TSS_X_I·X_I + i_TSS_X_S·X_S + X_PP + X_PHA
+```
+
+### When to use
+
+Select ASM2dISS when:
+
+- The influent has a high inorganic suspended solids load (e.g. combined sewer overflow, industrial co-treatment) and accurate TSS effluent prediction is required.
+- The plant uses chemical P-removal with iron or aluminium salts, generating significant inorganic sludge fractions that would distort VSS/TSS ratios if ignored.
+- Sludge production estimates need to distinguish volatile and fixed fractions for dewatering or incineration calculations.
+
+For standard municipal plants with low ISS influent and no chemical dosing, ASM2dMod with fixed composition factors is adequate.
 
 ---
 
@@ -263,7 +367,59 @@ Extension of ASM2dMod adding inorganic suspended solids dynamics (mineral precip
 
 Plant-Wide Model combining ASM-based WWTP activated sludge processes with anaerobic digestion, enabling full carbon, energy, and resource balances across the entire plant.
 
-> **Needs content.** From Models Guide pp. 84–96.
+### Overview
+
+PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod and ADM1 (Anaerobic Digestion Model No. 1) to include:
+
+- **Sulphur cycle** — tracking of sulphate (S_SO4), hydrogen sulphide (S_H2S), and sulphur-oxidising bacteria (X_SOB) through the liquid and gas phases
+- **Aluminium/iron–phosphorus precipitation** — explicit chemistry for alum (Al³⁺) and ferric (Fe³⁺) dosing, generating aluminium phosphate and iron phosphate precipitates
+- **Biogas composition** — H₂S partial pressure in biogas calculated from liquid-phase equilibrium, enabling prediction of biogas quality and H₂S scrubbing requirements
+
+### Additional components (beyond ASM2dMod)
+
+| Name | Description | Unit |
+|---|---|---|
+| `S_SO4` | Dissolved sulphate | g S/m³ |
+| `S_H2S` | Dissolved hydrogen sulphide (total) | g S/m³ |
+| `X_SOB` | Sulphur-oxidising bacteria | g COD/m³ |
+| `S_Al` | Dissolved aluminium (from alum dosing) | g Al/m³ |
+| `S_Fe` | Dissolved iron (from ferric dosing) | g Fe/m³ |
+| `X_AlP` | Aluminium phosphate precipitate | g/m³ |
+| `X_FeP` | Iron phosphate precipitate | g/m³ |
+
+### Key processes added
+
+| Process | Description |
+|---|---|
+| Sulphate reduction | Anaerobic oxidation of organics coupled to SO₄²⁻ reduction; produces S_H2S; inhibits methanogens |
+| H₂S stripping | Mass transfer of dissolved H₂S to biogas phase |
+| Sulphide oxidation | Aerobic oxidation of H₂S by X_SOB (relevant in trickling filters or partial aeration) |
+| Alum precipitation | Al³⁺ + PO₄³⁻ → AlPO₄ (X_AlP); reduces S_PO4 |
+| Ferric precipitation | Fe³⁺ + PO₄³⁻ → FePO₄ (X_FeP); reduces S_PO4 |
+| Fe/Al hydrolysis | Excess metal ion forms hydroxide floc (X_MeOH), contributing to ISS |
+
+### Key additional parameters
+
+| Parameter | Description | Typical value | Unit |
+|---|---|---|---|
+| `k_SOB` | Growth rate of sulphur-oxidising bacteria | 5.0 | 1/d |
+| `K_H2S_SOB` | H₂S half-saturation coeff for SOB | 0.5 | g S/m³ |
+| `K_H2S_inh` | H₂S inhibition coeff for acetogens/methanogens | 150–300 | g S/m³ |
+| `k_La_H2S` | H₂S mass-transfer coefficient | plant-specific | 1/d |
+| `k_prec_Al` | Alum precipitation rate constant | 100 | m³/g·d |
+| `k_prec_Fe` | Ferric precipitation rate constant | 100 | m³/g·d |
+| `K_solub_AlP` | Solubility product for AlPO₄ | 1×10⁻⁷ | (g/m³)² |
+
+### When to use
+
+PWM_SA is appropriate when:
+
+- **Biogas H₂S** must be predicted for energy recovery planning or compliance (e.g. cogeneration engine limits)
+- **Chemical P-removal** with alum or ferric is practised and the model must account for the resulting inorganic sludge production and phosphorus recovery interactions
+- **Sulphide toxicity** to anaerobic digesters is a concern (e.g. high-sulphate industrial co-digestion)
+- A **plant-wide mass balance** is required that couples the liquid-treatment train and the sludge-treatment train in a single model
+
+For activated sludge studies without anaerobic digestion coupling or chemical dosing, ASM2dMod or ASM2dISS is more appropriate and computationally lighter.
 
 ---
 
