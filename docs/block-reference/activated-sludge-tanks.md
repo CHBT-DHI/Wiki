@@ -19,34 +19,136 @@ Activated sludge tanks are the biological reactor blocks. They implement the bio
 | Model variant | Description |
 |---|---|
 | `VolumeConstant` | Fixed volume, single compartment — most common |
-| `VolumePumped` | Volume with pump-driven inflow |
-| `VolumeVariable` | Volume varies with inflow/outflow balance |
-| `VolumeConstant02–10` | Multi-input variants for complex configurations |
+| `VolumePumped` | Volume with pump-driven outflow |
+| `VolumeVariable` | Volume varies with weir overflow |
+| `VolumeConstant02–10` | Multi-compartment variants (2–10 compartments) |
 | `OxidationDitch.Sector` | Single sector of an oxidation ditch |
 | `OxidationDitch.Ditch04 / Ditch06` | 4- or 6-sector oxidation ditch |
 | `SBR_PS_R01–R08` | Sequencing Batch Reactor phases (fill, react, settle, decant) |
 
+All variants share the same state variables and interface structure. The biological conversion model (ASM1, ASM2dMod, etc.) is set at the project Instance level.
+
 ---
 
-## VolumeConstant (standard bioreactor)
+## VolumeConstant
 
-The most commonly used bioreactor block.
+**Description:** Ideally mixed tank with constant volume. Outflow equals inflow:
 
-**Key parameters:**
+$$Q_{out} = Q_{in}$$
 
-| Parameter | Description | Typical value |
+Power consumption:
+
+$$P_{aer} = \frac{1}{OTR} \cdot S_{O,sat} \cdot kLa \cdot V$$
+
+$$P_{mix} = 24 \cdot E_{mix} \cdot V$$
+
+### Parameters
+
+| Name | Description | Default | Units |
+|---|---|---|---|
+| `Vol` | Volume of the tank | 1000 | m³ |
+| `Kla_Min` | Lowest kLa that ensures adequate mixing | 20.0 | 1/d |
+| `Is_MixIfAer` | Is it actively mixed when aerated? | 0 | — |
+
+### State Variables
+
+| Name | Description | Units |
 |---|---|---|
-| `V` | Tank volume | m³ — design-specific |
-| `Temp` | Temperature | 15–20 °C |
-| `kLa` | Oxygen transfer coefficient (if aeration is internal) | h⁻¹ |
+| `C` | Concentration of state components (vector) | g/m³ |
+| `V` | Volume of the tank | m³ |
+| `Q_In` | Influent flow rate | m³/d |
+| `Q_Out` | Effluent flow rate | m³/d |
+| `Kla_Actual` | Oxygen transfer coefficient | 1/d |
+| `Temp_Actual` | Temperature | °C |
+| `M` | Mass of state components (vector) — derived | — |
 
-**Connection terminals:**
-- Flow in (blue arrow in) — wastewater vector
-- Flow out (blue arrow out) — wastewater vector
-- Aeration (red square top) — connects to an Aeration block
-- DO sensor (red circle) — connects to a sensor or controller
+### Interface Variables
 
-> **Needs content.** Add full parameter table from Models Guide pp. 203–204.
+| Name | Terminal | Description | Default | Units |
+|---|---|---|---|---|
+| `Inflow` | in_1 | Inflow vector | — | g/d |
+| `Outflow` | out_1 | Effluent flow (component vector) | — | g/d |
+| `P_Aer` | out_2 | Power consumption for aeration | — | W |
+| `P_Mix` | out_2 | Power consumption for mixing | — | W |
+| `Temp` | in_2 | Temperature | 15.0 | °C |
+| `T_air` | in_2 | Air temperature | 15.0 | °C |
+| `Kla` | in_2 | Oxygen transfer coefficient | 50 | 1/d |
+| `E_OTR` | in_2 | Oxygen Transfer Rate per unit energy | 1800.0 | g/kWh |
+| `E_Mix_sp` | in_2 | Mixing energy per unit volume | 0.005 | kWh/m³/d |
+
+---
+
+## VolumePumped
+
+**Description:** Ideally mixed tank where outflow is controlled by a pump. Volume can vary between `V_Min` and `V_Max`.
+
+The outflow logic is:
+
+- `V < V_Min`: if pump rate `Q_p > Q_in`, then `Q_out = Q_in`; otherwise `Q_out = Q_p`
+- `V_Min ≤ V ≤ V_Max`: `Q_out = Q_p`
+- `V > V_Max`: if `Q_p > Q_in`, then `Q_out = Q_p`; otherwise `Q_out = Q_in`
+
+Power includes pumping:
+
+$$P_{Pump} = E_{pump} \cdot Q_{out}$$
+
+### Parameters
+
+| Name | Description | Default | Units |
+|---|---|---|---|
+| `V_Max` | Maximum volume | 2000 | m³ |
+| `V_Min` | Minimum volume | 10 | m³ |
+| `Vol` | Initial volume | 1000 | m³ |
+| `Kla_Min` | Lowest kLa ensuring adequate mixing | 20.0 | 1/d |
+| `Is_MixIfAer` | Actively mixed when aerated? | 0 | — |
+
+State variables and interface variables are the same as `VolumeConstant`, with an additional `E_Pump` interface input (pumping energy per unit flow, kWh/m³).
+
+---
+
+## VolumeVariable
+
+**Description:** Ideally mixed tank where outflow is governed by weir overflow:
+
+$$Q_{out} = N \cdot \alpha \cdot \left(\frac{V - V_c}{A}\right)^{\beta}$$
+
+where:
+- `α`, `β` — empirical factors for weir type/width and design
+- `N` — number of weirs
+- `V_c` — volume of tank below the weirs (m³)
+- `A` — surface area of the tank (m²)
+
+### Parameters
+
+| Name | Description | Default | Units |
+|---|---|---|---|
+| `A` | Surface area below the weirs | 200 | m² |
+| `N` | Number of weirs | 100 | — |
+| `Alpha` | Empirical factor (weir type/width) | 1 | — |
+| `Beta` | Empirical factor (weir design) | 1 | — |
+| `Vol` | Volume of the tank (under the weir) | 2000 | m³ |
+| `Kla_Min` | Lowest kLa ensuring adequate mixing | 20.0 | 1/d |
+| `Is_MixIfAer` | Actively mixed when aerated? | 0 | — |
+
+Interface variables are the same as `VolumeConstant` (power outputs in kWh/d for this variant).
+
+---
+
+## VolumeConstant02–10 (multi-compartment)
+
+These variants model a tank as 2 to 10 ideally mixed compartments in series with constant volume.
+Each compartment has its own volume parameter (`Vol01`, `Vol02`, …) and kLa input terminal (`kLa_01`, `kLa_02`, …).
+
+### Example: VolumeConstant02 parameters
+
+| Name | Description | Default | Units |
+|---|---|---|---|
+| `Vol01` | Volume of compartment 1 | 1000 | m³ |
+| `Vol02` | Volume of compartment 2 | 1000 | m³ |
+
+Interface inputs include a separate kLa for each compartment. There are no internal state variables at the wrapper level (each compartment is a `VolumeConstant` internally).
+
+Use multi-compartment variants to represent plug-flow-like behaviour without adding separate blocks in the layout.
 
 ---
 
@@ -62,7 +164,7 @@ WEST also includes biofilm reactor blocks for attached-growth processes:
 | `MABR` | Membrane Aerated Biofilm Reactor |
 | `FBBR` | Fixed Bed Biofilm Reactor |
 
-> **Needs content.** Expand from Models Guide pp. 254–265.
+See Models Guide pp. 254–265 for full parameter tables.
 
 ---
 
