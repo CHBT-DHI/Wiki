@@ -34,6 +34,20 @@ Sensors measure one or more state variables and output them as data signals for 
 
 ### NH4 Sensor
 
+The NH4 Sensor measures ammonium (NH4-N) concentration in mg/L within a bioreactor or process stream. It reads the `S_NH` (or equivalent) state variable from the connected block and outputs it as a data signal.
+
+**Output:** The measured `S_NH4` value (mg N/L) is sent to a connected controller (e.g. an aeration or dosing controller) or written to an output sheet for post-processing.
+
+**Parameters:**
+
+| Parameter | Description | Default | Units |
+|---|---|---|---|
+| `noise` | Gaussian noise amplitude added to the measurement | 0 | mg N/L |
+| `t_delay` | Measurement delay (first-order lag or pure delay) | 0 | min |
+| `offset` | Calibration offset added to the raw reading | 0 | mg N/L |
+
+**Typical use — NH4-based aeration control:** Connect the NH4 Sensor output to a PI or On/Off controller that adjusts the aeration set-point or blower output. When NH4-N is low (nitrification proceeding well), the controller reduces aeration to save energy. When NH4-N rises above a threshold, aeration is increased to maintain effluent quality. This strategy is known as ammonia-based aeration control (ABAC) and can achieve significant energy savings compared to fixed DO set-point control.
+
 ![NH4 Sensor — description and parameters](../assets/images/modelica-p255-img1.png)
 
 ---

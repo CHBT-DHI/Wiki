@@ -171,13 +171,36 @@ After a simulation completes, results can be viewed directly in the results pane
 
 ### Menu bar
 
-The WEST ribbon provides access to all commands across several tabs.
+The WEST ribbon provides access to all commands across several tabs:
+
+- **File** — New project, Open project, Save, Save As, recent projects, and exit.
+- **Project** — Manage experiments (Virtual Experiments), access tools (sensitivity analysis, parameter estimation), and edit project properties and instance settings.
+- **Insert** — Add blocks to the canvas, draw connections between blocks, insert output and controller blocks, and add new sheets.
+- **View** — Toggle system windows (Block Library, Model Explorer, Control Center, etc.), adjust zoom level, and arrange panels.
+- **Help** — Open the WEST User Guide, check licence status and licence server connection, and view the About dialog (version information).
+
+!!! tip
+    Most canvas actions — inserting blocks, drawing connections, accessing block properties, and managing top-level parameters — are also accessible via **right-click on the Layout Sheet canvas**, without navigating the ribbon.
 
 ![WEST menus overview](../assets/images/userguide-p022-img1.png)
 
 ### Toolbar
 
-The toolbar provides quick access to the most frequently used commands.
+The toolbar provides quick access to the most frequently used commands. Common toolbar buttons include:
+
+| Button | Action |
+|---|---|
+| **New Project** | Create a blank project using the new-project wizard |
+| **Open** | Open an existing `.wst` project file |
+| **Save** | Save the current project |
+| **Run Steady-State** | Start a steady-state simulation for the active experiment |
+| **Run Dynamic** | Start a dynamic simulation for the active experiment |
+| **Stop Simulation** | Halt a running simulation |
+| **Zoom In / Zoom Out** | Increase or decrease the canvas zoom level |
+| **Select** | Switch to the selection/pointer mode for clicking and moving objects |
+| **Pan** | Switch to the pan mode for scrolling the canvas by dragging |
+
+The toolbar can be customised: right-click any blank area of the toolbar strip and use the **Customise** option to add, remove, or reorder buttons.
 
 ![Toolbar buttons annotated](../assets/images/userguide-p023-img1.png)
 

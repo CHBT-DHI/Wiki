@@ -63,6 +63,17 @@ Divide one stream into two outflows.
 
 ### Valve block
 
+The Valve block modulates flow through a pipe or process connection based on a dimensionless control signal in the range 0–1. The output flow is proportional to the signal: `Q_out = signal × Q_in`, up to a configurable maximum. It is used wherever a controller or timer needs to throttle or divert a stream rather than switch it fully on or off.
+
+**Parameters:**
+
+| Parameter | Description | Units |
+|---|---|---|
+| `Q_max` | Maximum allowable flow through the valve when fully open | m³/d |
+| `signal` | Control input from a controller or timer (dimensionless, 0–1) | — |
+
+**Typical use — flow diversion:** Connect the output of an On/Off controller or a PID controller to the `signal` terminal. The valve then opens or closes proportionally, diverting the desired fraction of flow to a downstream block (e.g. bypassing a reactor, controlling RAS flow, or modulating dosing). A signal of 0 closes the valve completely; a signal of 1 passes the full `Q_max` flow.
+
 ![Valve block — description](../assets/images/modelica-p311-img1.png)
 
 ![Valve — parameters](../assets/images/modelica-p314-img1.png)

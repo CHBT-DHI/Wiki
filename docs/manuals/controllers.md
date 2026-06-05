@@ -58,7 +58,38 @@ Multiple links can be configured on a single connection if the blocks expose mor
 
 ## PID controller
 
-Configure PID controller parameters and review its response.
+The PID controller block computes an output signal `u` from the error between a measured process variable and a setpoint:
+
+```
+u(t) = Kp · e(t) + (Kp/Ti) · ∫e dt + Kp · Td · de/dt
+```
+
+where `e(t) = SP − y_m(t)`.
+
+### Parameters
+
+| Parameter | Description | Typical starting value |
+|---|---|---|
+| **Kp** | Proportional gain. Higher values give a faster but potentially oscillatory response. | 1.0 |
+| **Ti** | Integral time constant (days). Controls how quickly steady-state error is eliminated. Lower values give stronger integral action. | 0.1 d |
+| **Td** | Derivative time constant (days). Adds damping by reacting to the rate of change of error. Often left at zero to avoid amplifying sensor noise. | 0.0 d |
+| **SP** | Setpoint — the target value for the controlled variable (e.g. 2.0 mg/l DO). | — |
+| **output_min** | Minimum allowed controller output. Prevents the actuator from being driven below a physical limit (e.g. 0 m³/h airflow). | 0.0 |
+| **output_max** | Maximum allowed controller output. Prevents the actuator from being over-driven. | — |
+| **sample_time** | Controller sampling interval (days). How often the error is computed and the output updated. | 0.000694 d (≈ 1 min) |
+
+### Tuning guidance
+
+A practical manual tuning procedure for a DO control loop:
+
+1. Set **Ti = ∞** (or a very large value) and **Td = 0** to start with proportional-only control.
+2. Increase **Kp** from 1.0 until the DO response is fast without sustained oscillation. If the output oscillates, halve Kp.
+3. Once Kp is acceptable, reduce **Ti** from a large value (e.g. 1.0 d) toward 0.1 d until the steady-state offset is eliminated within a few hours.
+4. Add a small **Td** only if the response still overshoots significantly; start with Td = Ti / 10.
+
+### Anti-windup
+
+The WEST PID block includes built-in **anti-windup**: when the controller output hits `output_min` or `output_max`, the integrator is frozen. This prevents the integral term from accumulating (winding up) while the output is saturated, which would cause a large overshoot when the constraint is released.
 
 ![PID controller parameter dialog](../assets/images/userguide-p068-img1.png)
 
