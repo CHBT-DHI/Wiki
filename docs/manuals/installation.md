@@ -116,6 +116,14 @@ DHI releases updates as full installer packages. Patch updates do not require un
 
 ## Troubleshooting
 
+**License not found**: Ensure the WEST license server address is correctly set under Help → License Manager. Check that port 27000 (default FlexNet) is open in the firewall.
+
+**Installer fails on Windows**: Run the installer as Administrator. Disable antivirus real-time scanning during installation.
+
+**Missing Visual C++ runtime**: Download and install the Microsoft Visual C++ Redistributable (x64) matching the WEST version year from the Microsoft website.
+
+**WEST crashes on startup**: Delete the `%APPDATA%\DHI\WEST` folder to reset user preferences, then restart.
+
 ### WEST does not start / licence not found
 
 - Confirm the CodeMeter runtime is installed and running (look for the CodeMeter icon in the system tray).
