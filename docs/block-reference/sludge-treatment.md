@@ -27,11 +27,15 @@ All thickener models are simplified: they compute the split between clarified wa
 
 ### ThickenerDS
 
+![Thickener block — description](../assets/images/modelica-p219-img1.png)
+
 Solids separation efficiency is back-computed from the desired DS and sludge flow:
 
 $$e_X = \frac{DS \cdot Q_{sl} \cdot \rho_{sl}}{X_{in}}$$
 
 **Parameters:**
+
+![Thickener — parameters](../assets/images/modelica-p220-img1.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -40,6 +44,8 @@ $$e_X = \frac{DS \cdot Q_{sl} \cdot \rho_{sl}}{X_{in}}$$
 | `i_TSS_X_I` | TSS/X_I ratio | 0.75 | — |
 | `i_TSS_X_S` | TSS/X_S ratio | 0.75 | — |
 | `rho_sludge` | Specific gravity of dewatered sludge | 1.07×10⁶ | g/m³ |
+
+![Thickener — equations](../assets/images/modelica-p220-img2.png)
 
 **Interface variables:**
 
@@ -72,7 +78,19 @@ Interface and parameters are the same as ThickenerDS, but the `e_X` input drives
 |---|---|
 | `VolumeConstant` | Aerobic digester at constant volume |
 
+![Aerobic digester — description](../assets/images/modelica-p222-img1.png)
+
 The aerobic digester uses the same structure as the activated sludge `VolumeConstant` block, but with aerobic digestion kinetics. Parameters include tank volume (`Vol`), kLa, and temperature. It is connected to an Aeration block the same way as a bioreactor.
+
+![Aerobic digester — parameters](../assets/images/modelica-p222-img2.png)
+
+---
+
+## Anaerobic digestion (ADM1)
+
+![Anaerobic digester ADM1 — description](../assets/images/modelica-p224-img1.png)
+
+![Anaerobic digester ADM1 — parameters](../assets/images/modelica-p224-img2.png)
 
 ---
 
@@ -97,6 +115,8 @@ These blocks are used in plant-wide models where anaerobic digestion generates b
 | `GasEngine` | Combined heat and power (CHP) gas engine |
 | `GasTurbine_Simple` | Simplified gas turbine model |
 | `Flare` | Biogas flare (waste combustion) |
+
+![GasHolder — description and parameters](../assets/images/modelica-p226-img1.png)
 
 The `GasEngine` (CHP) model computes:
 - Electrical power output (kWh/d)
