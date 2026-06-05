@@ -59,6 +59,7 @@ nav:
     - getting-started/index.md
     - Quick Start Tutorial: getting-started/quick-start.md
     - The WEST Interface: getting-started/interface-overview.md
+    - System Windows: getting-started/system-windows.md
     - Glossary: getting-started/glossary.md
     - FAQ: getting-started/faq.md
   - How-To Guides:
@@ -70,6 +71,16 @@ nav:
     - Results & Output: how-to/results-and-output.md
     - Controllers: how-to/controllers.md
     - Reports: how-to/reports.md
+    - Calculator Variables: how-to/calculator-variables.md
+    - Keyboard Shortcuts: how-to/keyboard-shortcuts.md
+    - WEST Options: how-to/west-options.md
+    - Effluent De-fractionation: how-to/effluent-defractionation.md
+    - Objectives & Run Criteria: how-to/objectives-run-criteria.md
+    - Vector & Wastewater Output: how-to/vector-output.md
+    - Plot Customisation: how-to/plot-customisation.md
+    - Initialising Models: how-to/initialising-models.md
+    - WEST Editions: how-to/west-product-editions.md
+    - Troubleshooting: how-to/troubleshooting.md
   - Experiment Types:
     - experiment-types/index.md
     - Sensitivity Analysis: experiment-types/sensitivity-analysis.md
@@ -88,6 +99,7 @@ nav:
     - Controllers & Timers: block-reference/controllers-timers.md
     - Sensors & Signal Treatment: block-reference/sensors-signal.md
     - Advanced Processes: block-reference/advanced-processes.md
+    - River & Receiving Water: block-reference/river-receiving-water.md
   - Worked Examples:
     - worked-examples/index.md
     - TwoASU MLE Layout: worked-examples/twoasu-mle.md
@@ -105,6 +117,35 @@ nav:
     - Getting Started with the API: automation-api/getting-started.md
     - Running Simulations Programmatically: automation-api/running-simulations.md
     - Batch Workflows: automation-api/batch-workflows.md
+  - Technical Reference:
+    - technical-reference/index.md
+    - Process Models: technical-reference/process-models.md
+    - Components and Processes: technical-reference/components-processes.md
+    - Influent Characterisation: technical-reference/influent-characterisation.md
+    - Process Units: technical-reference/process-units.md
+    - WEST Model Structure: technical-reference/west-model-structure.md
+  - Advanced Topics:
+    - advanced-topics/index.md
+    - Calibration: advanced-topics/calibration.md
+    - Scenario Management: advanced-topics/scenario-management.md
+    - Performance: advanced-topics/performance.md
+  - Developer Topics:
+    - developer-topics/index.md
+    - Custom Models: developer-topics/custom-models.md
+    - Extending WEST: developer-topics/extending-west.md
+  - Manuals:
+    - manuals/index.md
+    - Installation: manuals/installation.md
+    - Running Simulations: manuals/running-simulations.md
+    - Advanced Simulations: manuals/advanced-simulations.md
+    - Controllers: manuals/controllers.md
+    - Results and Output: manuals/results-output.md
+    - Worked Examples: manuals/worked-examples.md
+  - Starter Kit:
+    - starter-kit/index.md
+    - Quick Start: starter-kit/quick-start.md
+    - Glossary: starter-kit/glossary.md
+    - FAQ: starter-kit/faq.md
   - Contributing: contributing.md
 
 extra:
