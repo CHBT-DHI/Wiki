@@ -46,6 +46,8 @@ For build instructions, see the [Quick Start Tutorial](../getting-started/quick-
 
 ![First step setting up TwoASU plant layout](../assets/images/tutorial-p034-img1.png)
 
+![Figure 7.5 second step TwoASU layout](../assets/images/tutorial-p034-img2.png)
+
 ![Connecting blocks and completed layout](../assets/images/tutorial-p035-img1.png)
 
 ---
