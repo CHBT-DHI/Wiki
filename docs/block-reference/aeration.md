@@ -55,6 +55,34 @@ For energy modelling, replace `Aeration.Ideal` with a blower-connected model. Bl
 | `Blowers.CF_Q_IGV` | Centrifugal fan with inlet guide vane (IGV) throttle control |
 | `Blowers.PD_Q_VFD` | Positive-displacement (Roots-type) blower, VFD-controlled |
 
+### CF_Q_Throttle blower
+
+![CF_Q_Throttle blower — description](../assets/images/modelica-p136-img1.png)
+
+![CF_Q_Throttle — parameters table](../assets/images/modelica-p136-img2.png)
+
+### CF_Q_VFD blower
+
+![CF_Q_VFD blower — description](../assets/images/modelica-p140-img1.png)
+
+![CF_Q_VFD — parameters table](../assets/images/modelica-p140-img2.png)
+
+### CF_HQ_VFD blower
+
+![CF_HQ_VFD blower — description](../assets/images/modelica-p145-img1.png)
+
+![CF_HQ_VFD — parameters table](../assets/images/modelica-p145-img2.png)
+
+### CF_Q_IGV blower
+
+![CF_Q_IGV blower — description](../assets/images/modelica-p147-img1.png)
+
+![CF_Q_IGV — parameters](../assets/images/modelica-p147-img2.png)
+
+### PD_Q_VFD blower
+
+![PD_Q_VFD blower — description](../assets/images/modelica-p149-img1.png)
+
 ### Parameters
 
 | Parameter | Description | Unit | Typical value |
@@ -100,6 +128,40 @@ where `Q_air_actual` is in m³/s and pressures are in kPa. WEST integrates `P_bl
 | Small WWTP (< 10 000 PE) | 3 000–8 000 | 15–45 | 0.62 |
 | Medium WWTP (10 000–100 000 PE) | 8 000–30 000 | 45–200 | 0.68 |
 | Large WWTP (> 100 000 PE) | 30 000–80 000 | 200–500 | 0.72 |
+
+---
+
+## Aeration diffuser blocks
+
+### Aeration FineBubble1
+
+![Aeration FineBubble1 — description](../assets/images/modelica-p150-img1.png)
+
+![Aeration FineBubble1 — parameters](../assets/images/modelica-p150-img2.png)
+
+### Aeration FineBubble2
+
+![Aeration FineBubble2 — description](../assets/images/modelica-p153-img1.png)
+
+![Aeration FineBubble2 — parameters](../assets/images/modelica-p153-img2.png)
+
+### Aeration CoarseBubble
+
+![Aeration CoarseBubble — description](../assets/images/modelica-p154-img1.png)
+
+![Aeration CoarseBubble — parameters](../assets/images/modelica-p154-img2.png)
+
+### Surface aerator
+
+![Surface aerator — description](../assets/images/modelica-p156-img1.png)
+
+![Surface aerator — parameters](../assets/images/modelica-p156-img2.png)
+
+### Jet aerator
+
+![Jet aerator — description](../assets/images/modelica-p157-img1.png)
+
+![Jet aerator — parameters](../assets/images/modelica-p157-img2.png)
 
 ---
 
