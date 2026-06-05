@@ -29,6 +29,8 @@ tags:
 
 ### PrimaryClarifier.Point
 
+![PrimaryClarifier.Point — description](../assets/images/modelica-p170-img1.png)
+
 Ideal separator with no volume. Soluble components pass through unchanged; particulate components are split by `f_ns`.
 
 Mass balance:
@@ -36,6 +38,8 @@ Mass balance:
 - Underflow: C_under,Xi = (1 − f_ns) · C_in,Xi
 
 **Interface variables:**
+
+![PrimaryClarifier.Point — parameters](../assets/images/modelica-p170-img2.png)
 
 | Name | Terminal | Description | Default | Units |
 |---|---|---|---|---|
@@ -51,6 +55,8 @@ Mass balance:
 
 ### PrimaryClarifier.OtterpohlFreund
 
+![PrimaryClarifier.OtterpohlFreund — description](../assets/images/modelica-p173-img1.png)
+
 Empirical model where removal efficiency depends on hydraulic retention time (Otterpohl et al. 1994):
 
 $$E_{eff,COD} = f_{corr} \cdot (2.88 \cdot f_X - 0.118) \cdot (1.45 + 6.15 \cdot \log HRT)$$
@@ -58,6 +64,8 @@ $$E_{eff,COD} = f_{corr} \cdot (2.88 \cdot f_X - 0.118) \cdot (1.45 + 6.15 \cdot
 All COD removed is assumed particulate. No biological reactions.
 
 **Parameters:**
+
+![PrimaryClarifier.OtterpohlFreund — parameters](../assets/images/modelica-p173-img2.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -70,11 +78,15 @@ All COD removed is assumed particulate. No biological reactions.
 
 ### PrimaryClarifier.Takacs_SVI
 
+![PrimaryClarifier.Takacs_SVI — description and equations](../assets/images/modelica-p176-img1.png)
+
 1D layer model (Takács/Vitasovic). Settling velocity follows double-exponential Vesilind equation, corrected for SVI:
 
 r_H = (0.148 + 0.0021 · SVI) / 1000
 
 **Parameters:**
+
+![PrimaryClarifier.Takacs_SVI — parameters](../assets/images/modelica-p176-img2.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -124,6 +136,8 @@ where N = number of lamellae, A_sp = specific surface per lamella (m²), θ = in
 
 ### PrimaryClarifier.BSM2
 
+![PrimaryClarifier.BSM2 — description](../assets/images/modelica-p179-img1.png)
+
 Simplified model from Benchmark Simulation Model No. 2. Acts as ideal phase separator — no volume, no retention time. Thickening factor `f_th` computed from desired solid removal `R` and incoming/underflow solid fractions.
 
 ---
@@ -144,11 +158,21 @@ Simplified model from Benchmark Simulation Model No. 2. Acts as ideal phase sepa
 
 ---
 
+### SecondaryClarifier.Point
+
+![SecondaryClarifier.Point — description and parameters](../assets/images/modelica-p184-img1.png)
+
+---
+
 ### SecondaryClarifier.Takacs_SVI
+
+![SecondaryClarifier.Takacs_SVI — description](../assets/images/modelica-p187-img1.png)
 
 The standard secondary clarifier for most WWTP models (used in BSM1). 1D layer model with SVI-corrected settling velocity.
 
 **Parameters:**
+
+![SecondaryClarifier.Takacs_SVI — parameters](../assets/images/modelica-p190-img1.png)
 
 | Name | Description | Default | Units |
 |---|---|---|---|
@@ -178,6 +202,8 @@ The standard secondary clarifier for most WWTP models (used in BSM1). 1D layer m
 
 **State variables:**
 
+![SecondaryClarifier.Takacs_SVI — state variables](../assets/images/modelica-p190-img2.png)
+
 | Name | Description | Units |
 |---|---|---|
 | `Q_In` | Influent flow rate | m³/d |
@@ -194,6 +220,8 @@ The standard secondary clarifier for most WWTP models (used in BSM1). 1D layer m
 ---
 
 ### SecondaryClarifier.BurgerDiehl30
+
+![SecondaryClarifier.BurgerDiehl30 — description](../assets/images/modelica-p202-img1.png)
 
 High-accuracy 30-layer model based on a 1D partial differential equation (Bürger et al. 2011/2012). More robust than Takács for extreme or rapidly-varying inputs. Optionally includes sludge compressibility and dispersion terms. Use when settling dynamics need to be accurately captured (storm events, wet-weather peaks, calibration studies).
 
