@@ -65,6 +65,8 @@ The following walkthrough sets up a PID controller to maintain dissolved oxygen 
 4. In the right-hand list (destination), select `y_m` (measured process variable).
 5. Click **OK**.
 
+![DO controller wiring diagram](../assets/images/tutorial-p063-img1.png)
+
 ### 4. Connect the controller output to the blower/aerator manipulated variable
 
 1. Draw a **data connection** from the PID controller's output terminal to the aerobic tank's aeration input terminal.
@@ -105,6 +107,12 @@ For a **PI controller** (`PI_Saturation`), `T_D` is not applicable — set `K_P`
    - If `S_O` oscillates persistently, reduce `K_P` or increase `T_I`.
    - If `S_O` is slow to reach setpoint, increase `K_P` or decrease `T_I`.
 6. For a load disturbance test, increase the influent flow or COD load mid-simulation and confirm the controller brings `S_O` back to setpoint.
+
+![Controller results — DO response](../assets/images/tutorial-p064-img1.png)
+
+![Controllers — PID block connections](../assets/images/tutorial-p095-img1.png)
+
+![Controllers — setpoint response](../assets/images/tutorial-p096-img1.png)
 
 ---
 
