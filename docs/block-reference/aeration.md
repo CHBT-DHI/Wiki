@@ -159,6 +159,17 @@ where `Q_air_actual` is in m³/s and pressures are in kPa. WEST integrates `P_bl
 
 ### Jet aerator
 
+Jet aerators inject pressurised liquid mixed with air into the tank through nozzles, creating high-velocity jets that entrain and disperse fine bubbles throughout the mixed liquor. The combined momentum and turbulence from the jets provide both oxygen transfer and mixing in a single unit, making them well suited to deep tanks or retrofit installations where diffuser grids are impractical.
+
+**Key parameters:**
+
+| Parameter | Description | Units |
+|---|---|---|
+| `Q_jet` | Jet liquid flow rate | m³/d |
+| `alpha_jet` | Jet transfer efficiency factor (process water correction) | — |
+
+Jet aerators typically achieve higher KLa values than fine-bubble diffusers at equivalent energy input in high-mixed-liquor-suspended-solids conditions, because the alpha factor (`alpha_jet`) degrades less with increasing MLSS. Typical standard oxygen transfer efficiency (SOTE) per metre of submergence is comparable to coarse-bubble systems, but the high mixing intensity reduces fouling risk on the nozzles.
+
 ![Jet aerator — description](../assets/images/modelica-p157-img1.png)
 
 ![Jet aerator — parameters](../assets/images/modelica-p157-img2.png)
