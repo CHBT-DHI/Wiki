@@ -88,6 +88,22 @@ The aerobic digester uses the same structure as the activated sludge `VolumeCons
 
 ## Anaerobic digestion (ADM1)
 
+The `AnaerobicDigester.ADM1` block implements the IWA Anaerobic Digestion Model No. 1 (ADM1), a comprehensive mechanistic model with 32 state variables. It covers the full biochemical conversion chain: disintegration and hydrolysis of complex substrates, acidogenesis (sugar and amino acid fermentation), acetogenesis (LCFA and propionate/butyrate oxidation), and methanogenesis (acetoclastic and hydrogenotrophic). Physico-chemical equilibria (acid–base, liquid–gas transfer) are included, enabling pH and biogas composition to be calculated dynamically.
+
+**When to use:** Use `AnaerobicDigester.ADM1` in models where biogas production, methane yield, or digester stability are of interest — for example, plant-wide energy balances, co-digestion studies, or investigations into digester instability (e.g. VFA accumulation, pH drop, foaming risk). For simpler sludge destruction estimates where biogas detail is not required, a lumped empirical model may be sufficient.
+
+**Key block:** `AnaerobicDigester.ADM1`
+
+**Parameters:**
+
+| Parameter | Description | Default | Units |
+|---|---|---|---|
+| `Volume` | Digester working volume | 3 000 | m³ |
+| `T_dig` | Digestion temperature | 35 | °C |
+| `SRT_target` | Target solids retention time | 20–30 | d |
+| `pH` | pH (calculated from acid–base equilibria) | — | — |
+| `Q_gas` | Biogas production rate (output) | — | m³/d |
+
 ![Anaerobic digester ADM1 — description](../assets/images/modelica-p224-img1.png)
 
 ![Anaerobic digester ADM1 — parameters](../assets/images/modelica-p224-img2.png)
