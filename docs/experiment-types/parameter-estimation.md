@@ -36,6 +36,10 @@ Two sub-modes are available:
 7. Click **Execute**. WEST runs multiple simulations, adjusting parameters toward the optimum.
 8. In the **Runs** tab, select the best run and click **Copy Values** to apply the calibrated parameters to the simulation.
 
+![Parameter estimation setup — measured data and parameters](../assets/images/tutorial-p055-img1.png)
+
+![Parameter estimation — measured data input](../assets/images/tutorial-p091-img1.png)
+
 ---
 
 ## Algorithm options
@@ -105,6 +109,14 @@ Set up a **Line** plot with two series:
 - Measured data (added via **Add Series → File** source, pointing to the measurement text file)
 
 A good calibration result shows the simulated line tracking the peaks and troughs of the measured scatter (Figure 11.2 in the tutorial). Systematic offset after convergence suggests a structural model limitation rather than a parameter estimation problem.
+
+![Parameter estimation — optimisation convergence](../assets/images/tutorial-p056-img1.png)
+
+![Parameter estimation — data fit plot (simulated vs measured)](../assets/images/tutorial-p056-img2.png)
+
+![Parameter estimation — optimisation progress plot](../assets/images/tutorial-p092-img1.png)
+
+![Parameter estimation — final fit](../assets/images/tutorial-p092-img2.png)
 
 ### Error (convergence) plot
 
