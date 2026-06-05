@@ -52,6 +52,28 @@ Buffer output is a separate output mode used with WESTforAUTOMATION. Additional 
 
 ## Viewing results after a run
 
+### Results plot panel
+
+After a run completes, open the Results tab to view time-series plots.
+
+![Results tab — plot panel](../assets/images/userguide-p060-img1.png)
+
+![Plot — add variable dialog](../assets/images/userguide-p060-img2.png)
+
+![Plot — axis configuration](../assets/images/userguide-p060-img3.png)
+
+### Table output
+
+Results can also be viewed as a table of values.
+
+![Table output configuration](../assets/images/userguide-p062-img1.png)
+
+### Gauge widget
+
+Dashboard gauges provide a real-time numeric readout of key variables during or after a run.
+
+![Gauge widget](../assets/images/userguide-p063-img1.png)
+
 ### Runs tab (advanced experiments)
 
 In Scenario Analysis, Uncertainty Analysis, and Parameter Estimation experiments, the **Runs** tab displays a matrix with:
@@ -107,6 +129,18 @@ Classify output values into user-defined classes (e.g. "good / acceptable / poor
 ---
 
 ## Exporting results
+
+### Export to CSV
+
+![Export to CSV dialog](../assets/images/userguide-p064-img1.png)
+
+### Export to Excel
+
+![Export to Excel dialog](../assets/images/userguide-p064-img2.png)
+
+### Output file configuration
+
+![Output file configuration](../assets/images/userguide-p065-img1.png)
 
 ### Export runs matrix to Excel
 
