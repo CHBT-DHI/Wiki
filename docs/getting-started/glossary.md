@@ -48,8 +48,14 @@ tags:
 
 ## D
 
+**Decay**
+: The endogenous respiration or lysis process by which active biomass is converted to inert products and biodegradable substrate. Represented in ASM1 by the decay rate coefficient b_H or b_A (d⁻¹).
+
+**Denitrification**
+: The biological conversion of nitrate (NO₃⁻) to nitrogen gas (N₂) by heterotrophic bacteria under anoxic conditions (no dissolved oxygen).
+
 **Dynamic simulation**
-: A time-varying simulation tracking how state variables evolve over a simulation period.
+: A simulation mode that solves the model as a system of ordinary differential equations (ODEs) over time, capturing transient behaviour such as load variations, startups, and control responses. Contrast with steady-state simulation.
 
 ---
 
@@ -102,7 +108,13 @@ tags:
 ## I
 
 **Influent**
-: The inlet wastewater stream. See [Managing Input Data](../how-to/managing-input-data.md).
+: The wastewater stream entering a treatment plant or a unit process. In WEST, the influent is defined by a flow rate (m³/d) and a set of component concentrations (g/m³) corresponding to the active biological model. See [Managing Input Data](../how-to/managing-input-data.md).
+
+**Initial conditions**
+: The starting values of all state variables at the beginning of a simulation. Poor initial conditions are a common cause of convergence failures in steady-state simulations.
+
+**ISS**
+: Inorganic suspended solids; the non-volatile fraction of TSS. Relevant in ASM2d and plant-wide models that track inorganic solids accumulation.
 
 ---
 
@@ -203,8 +215,14 @@ tags:
 
 ## T
 
+**Terminal**
+: A connection point on a WEST block icon. Terminals define the type of stream a block can send or receive (liquid, gas, signal). Incompatible terminal types cannot be connected.
+
+**TN**
+: Total nitrogen (g N/m³); the sum of all nitrogen forms: NH₄⁺, NO₂⁻, NO₃⁻, and organic N. A key nutrient removal performance indicator.
+
 **TSS** (Total Suspended Solids)
-: Mass concentration of suspended particulate matter.
+: Total suspended solids (g/m³ or mg/L); the total particulate matter in a liquid stream. TSS = VSS + ISS. A key effluent quality parameter and a discharge consent variable.
 
 ---
 
