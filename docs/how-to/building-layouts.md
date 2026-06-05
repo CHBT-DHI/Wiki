@@ -28,6 +28,8 @@ A plant layout is built by placing **Blocks** (unit-process models) on the **Lay
 
 The block appears with its default icon, label, and terminals.
 
+![Customised WEST environment and block library](../assets/images/tutorial-p033-img1.png)
+
 ---
 
 ## Step 2 — Assign the block to a layer
@@ -114,6 +116,14 @@ You can also change the model via: select the block → **Properties window → 
 6. To exit connection mode without completing a connection: right-click → **Select**, or use **Home | Editing → Select**.
 
 After a successful connection an **Interface Link** dialog may appear. Use it to map variables between the two terminals (for example, mapping a sensor output to a controller's measured-variable input). Double-click any connection line later to review or modify its Interface Links.
+
+![First step setting up TwoASU plant layout](../assets/images/tutorial-p034-img1.png)
+
+![Second step setting up TwoASU plant layout](../assets/images/tutorial-p034-img2.png)
+
+![Connecting blocks and completed layout](../assets/images/tutorial-p035-img1.png)
+
+![Block connection detail](../assets/images/tutorial-p081-img1.png)
 
 ---
 
