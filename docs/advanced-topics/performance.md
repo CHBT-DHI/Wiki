@@ -52,6 +52,15 @@ WEST exposes solver settings in the **Experiment Settings** dialogue (accessible
 
 ## Reducing run time
 
+Key strategies to speed up slow simulations:
+
+- **Increase communication interval**: A larger timestep between saved outputs reduces I/O overhead without affecting solver accuracy.
+- **Remove unused output variables**: Deselect variables in Simulation → Output Configuration that you do not need.
+- **Use steady-state initialisation**: Always run a steady-state simulation first and use it as the initial condition for dynamic runs (warm-start).
+- **Simplify the model**: Replace detailed sub-models with simpler alternatives where precision is not required (e.g. point settler instead of 1D settler for preliminary runs).
+- **Increase solver tolerances**: Loosen absolute and relative tolerances slightly (e.g. 1e-5 instead of 1e-6) for exploratory runs; tighten for final results.
+- **Run on a machine with fast single-core performance**: WEST uses a single thread per simulation run; clock speed matters more than core count.
+
 ### 1. Simplify the clarifier model
 
 Secondary clarifiers are often the most computationally expensive component. Options in order of increasing simplicity:
