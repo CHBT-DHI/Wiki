@@ -33,6 +33,18 @@ Contact DHI or your DHI regional representative for a licensed installer. See [I
 
 WEST is a 64-bit Windows application and does not run natively on macOS or Linux.
 
+### Where do I find the example projects?
+
+Example projects are installed to `C:\Users\Public\Documents\DHI\WEST\Examples` (Windows) or the equivalent path shown during installation. Open them with File → Open Project.
+
+### How do I know which biological model to use?
+
+Start with ASM1 for simple activated sludge without phosphorus removal. Use ASM2d if EBPR is involved. Use PWM_SA for plant-wide modelling including sludge treatment. See [Choosing a Biological Model](../block-reference/choosing-a-model.md) for a full comparison.
+
+### My simulation says "not converged" — what does that mean?
+
+The steady-state solver could not find a solution within the allowed iterations. Common causes: poor initial conditions, disconnected flow paths, or mass-balance errors in the layout. Try running a short dynamic simulation first to reach a plausible steady state, then use that as the starting point.
+
 ---
 
 ## Modelling questions
@@ -72,6 +84,18 @@ Yes. WEST supports two main approaches:
 
 CSV files must have a header row and use either comma or tab as the delimiter. Time should be in days (or in the unit configured in Project Settings). See [Influent Characterisation](../technical-reference/influent-characterisation.md) for guidance on fractionating raw plant data into ASM model components.
 
+### How do I add a recycle stream?
+
+Connect an output terminal of a downstream block (e.g. the underflow of a clarifier) back to an upstream block's inlet. WEST handles recycles automatically in both steady-state (iterative solving) and dynamic (time-step) modes.
+
+### Can I run the same model with different influent files?
+
+Yes — use the Scenario Analysis experiment type. Create one scenario per influent file, assign each scenario's Influent block to the appropriate data file, then run a scenario comparison.
+
+### How do I check my mass balance?
+
+Use the **Mass Balance** output variable available on most blocks. Sum the inlet and outlet flows for COD, N, and P. A closure error greater than ~1 % usually indicates a disconnected stream or an incorrectly parameterised block.
+
 ---
 
 ## Results and output
@@ -102,6 +126,18 @@ To locate your project file, go to **File → Project Properties** — the proje
 
 See [Results & Output](../how-to/results-and-output.md) for the full procedure including Excel-specific options.
 
+### Why are my results empty after a run?
+
+The variable may not be in the output list. Go to Simulation → Output Configuration and add the variable. Then re-run.
+
+### How do I compare results from two runs?
+
+Use Scenario Analysis to run both configurations and generate a side-by-side comparison, or export each run's results to CSV and compare in Excel.
+
+### How do I export a results plot as an image?
+
+Right-click the plot panel and choose **Export Image**. Supported formats: PNG, EMF, and SVG.
+
 ---
 
 ## Licensing and installation
@@ -116,6 +152,10 @@ See [Results & Output](../how-to/results-and-output.md) for the full procedure i
 
 If you need urgent access, DHI support can issue a temporary emergency licence. Contact support@dhigroup.com with your licence number and a description of the issue.
 
+### WEST says my license has expired — what do I do?
+
+Contact your DHI account manager or support@dhigroup.com to renew the license. If you have a new license file, point the License Manager to it under Help → License Manager → Update.
+
 ### Can I run WEST on a virtual machine or remote desktop?
 
 Yes, with some limitations:
@@ -126,6 +166,12 @@ Yes, with some limitations:
 - **Citrix / VDI:** Supported with a network licence. Contact DHI support for specific Citrix configuration guidance.
 
 In all VM and RDP scenarios, ensure the WEST installation uses the same Windows locale and regional settings as your data files to avoid CSV import issues with decimal separators.
+
+As long as the license server is accessible from the VM/RDS environment and the network latency to the license server is low (< 50 ms recommended), floating licenses work well in these setups.
+
+### I installed WEST but I can't find it in the Start menu.
+
+The installer may have completed without creating shortcuts if it was run without administrator rights. Locate `WEST.exe` in the installation directory (default: `C:\Program Files\DHI\WEST`) and create a shortcut manually. Then re-run the installer as Administrator to complete the Start menu registration.
 
 ---
 
