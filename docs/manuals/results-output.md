@@ -20,7 +20,14 @@ WEST writes simulation results to output files as a run executes. Each experimen
 
 ## Configuring simulation output
 
-Open the **Output** tab of Simulation Properties to configure what is recorded.
+To record variables from a simulation:
+
+1. Go to **Insert → Output → Data Output** block and drop it onto the layout canvas, or open an existing experiment's **Simulation Properties** and switch to the **Output** tab.
+2. Double-click the Data Output block (or the Output tab) to open the output configuration dialog.
+3. In the **Variables** list, select the variables to record. You can also drag variables directly from the **Block Details** or **Block Summary** pane onto the Output tab.
+4. Set the **File path** — type a full path to the output file or click the folder icon to browse. The folder must already exist; WEST will not create it automatically.
+5. Set the **Communication interval** — how often (in simulation time units) a value is written. Use a coarser interval (e.g. 0.0417 d = 1 hour) for long runs to keep file sizes manageable.
+6. Click **OK**. Run the simulation. Output is written continuously as the run progresses and is available for plotting as soon as the run completes.
 
 ### Output file settings
 
@@ -54,7 +61,16 @@ Buffer output is a separate output mode used with WESTforAUTOMATION. Additional 
 
 ### Results plot panel
 
-After a run completes, open the Results tab to view time-series plots.
+After a run completes, click the **Results** tab at the bottom of the WEST window to open the results workspace. To create a time-series plot:
+
+1. In the **Model Explorer** (left panel), expand the block tree to find the variable you want to plot.
+2. Drag the variable from the Model Explorer (or from the **Block Details** pane) onto the plot area. A new plot series is created automatically.
+3. To add more variables to the same plot, drag additional variables onto the existing plot — they are overlaid as separate series.
+4. **Right-click** anywhere on the plot to access configuration options:
+   - **Configure Axes** — set axis labels, units, and scale (linear or logarithmic).
+   - **Add Series** — add a variable to the current plot from a dialog rather than by dragging.
+   - **Change Plot Type** — switch between line, scatter, bar, and step chart types.
+   - **Export** — save the plot as an image (PNG, BMP) or export the underlying data as CSV.
 
 ![Results tab — plot panel](../assets/images/userguide-p060-img1.png)
 
@@ -64,7 +80,14 @@ After a run completes, open the Results tab to view time-series plots.
 
 ### Table output
 
-Results can also be viewed as a table of values.
+To view results as a structured table:
+
+1. Go to **Insert → Output → Table Output** block and drop it onto the layout.
+2. Double-click the block to open its configuration dialog.
+3. In the **Columns** list, add the variable names you want to appear as table columns (e.g. `S_NH`, `S_NO`, `COD`).
+4. Set the **Row frequency** — how often (in simulation time units) a row is written to the table (equivalent to the communication interval for file output).
+5. Click **OK** and run the simulation.
+6. After the run, open the **Results** tab. The table appears as a sortable, scrollable grid with one row per output time step and one column per configured variable. Click any column header to sort by that variable.
 
 ![Table output configuration](../assets/images/userguide-p062-img1.png)
 
