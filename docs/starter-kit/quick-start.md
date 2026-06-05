@@ -39,6 +39,8 @@ The **TwoASU** sample project: a standard MLE layout for nitrification–denitri
 
 The Layout Editor works like a drag-and-drop flowsheet. Open the **Block Library** panel on the left.
 
+![WEST interface and layout sheet](../assets/images/tutorial-p017-img2.png)
+
 Drag the following blocks onto the canvas and arrange them roughly left-to-right:
 
 | Block name | Library location | Role |
@@ -51,6 +53,8 @@ Drag the following blocks onto the canvas and arrange them roughly left-to-right
 | PI controller | Control | DO control |
 | Loop breaker (×2) | Utilities | Breaks algebraic loops in recycle streams |
 | Effluent (×2) | Outlet | Treated effluent, wasted sludge |
+
+![Dragging Input, ASU, and Clarifier blocks onto the layout sheet](../assets/images/tutorial-p018-img1.png)
 
 **Connect the blocks** by hovering over an output terminal (blue triangle) and dragging to an input terminal (green triangle). The flow path is:
 
@@ -170,6 +174,8 @@ The plots update in real-time as the simulation progresses.
 ## Step 9 — View and interpret results
 
 Open the **Effluent** sheet. The plots show the time-varying effluent concentrations driven by the monthly influent variation.
+
+![Results of 30-day dynamic simulation (TwoASU)](../assets/images/tutorial-p023-img1.png)
 
 To read a specific value, right-click a plot and choose **Crosshairs**. Hover over any point to see its exact value and time.
 
