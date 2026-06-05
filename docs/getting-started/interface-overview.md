@@ -68,6 +68,8 @@ To add a sheet: **Insert → Sheets group → Add Sheet**.
 
 ## The Layout Sheet — blocks, terminals, and connections
 
+The Layout Sheet is the main canvas where you build your plant model. Drag blocks from the Block Library panel onto the sheet to place them. Each block has coloured terminals (connection points) on its edges — blue for liquid streams, orange for gas, grey for signals. Hover over a terminal to see its name and type. To connect two blocks, click the source terminal and drag to a compatible destination terminal. Connections snap to terminals automatically; incompatible types are rejected. Right-click any block to access **Properties**, **Rename**, or **Delete**.
+
 ### Blocks
 
 A **Block** is the graphical representation of a unit-process model (e.g. a CSTR bioreactor, a settler, an influent generator). Each block consists of three parts:
@@ -112,6 +114,8 @@ The Block Library panel (left side of the screen) lists all process-block catego
 ---
 
 ## Block Details and Properties windows
+
+The **Block Details** window (bottom panel, default) shows all parameters and state variables for the currently selected block. Parameters are editable; state variables are read-only during a run. The **Properties** window (right panel) shows block-level metadata: name, model type, and description. Use **Block Details** to set initial conditions and parameter values before running a simulation.
 
 ### Block Details
 
@@ -168,6 +172,8 @@ After a simulation completes, results can be viewed directly in the results pane
 ---
 
 ## Menus and toolbars
+
+The menu bar contains: **File** (open/save/export project), **Project** (tools, reports, layout management), **Simulation** (run, output configuration), **View** (panel visibility, zoom), **Help** (documentation, license). The main toolbar provides one-click access to the most common actions: New Project, Open, Save, Run, Stop, Zoom In/Out, and Show Block Library. Hover over any toolbar button to see its tooltip and keyboard shortcut.
 
 ### Menu bar
 
