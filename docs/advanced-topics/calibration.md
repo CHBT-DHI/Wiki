@@ -22,6 +22,8 @@ tags:
 3. Adjust only parameters with physical meaning; stay within literature ranges.
 4. Validate against an independent dataset.
 
+![Calibration workflow](../assets/images/userguide-p117-img1.png)
+
 ---
 
 ## Step 1 — Define calibration targets
@@ -43,6 +45,8 @@ Calibration targets are the measured plant variables that the model must reprodu
 | Reactor DO (if controlled) | Aeration tank | Continuous |
 
 - For dynamic calibration, daily composite samples are the minimum; grab samples introduce too much variability to calibrate time-varying behaviour reliably.
+
+![Calibration — measured data import](../assets/images/userguide-p118-img1.png)
 
 ### Defining the objective function
 
@@ -83,6 +87,8 @@ Work through parameters in this order to avoid over-fitting:
 3. Click the value of the parameter to edit it directly, or drag the parameter onto a Dashboard Sheet to create a **Slider** for interactive adjustment during a running simulation.
 4. For batch adjustment of multiple parameters, use **Tools → Parameter Table** to view and edit all parameters in a spreadsheet-style table.
 
+![Calibration — parameter adjustment](../assets/images/userguide-p122-img1.png)
+
 ### Interpreting residuals
 
 - Plot simulated and measured time-series on the same axes (see [Results & Output](../how-to/results-and-output.md)).
@@ -90,6 +96,8 @@ Work through parameters in this order to avoid over-fitting:
 - Random scatter around zero is acceptable and indicates measurement noise rather than a model structural error.
 - If NH₄ is too high and NO₃ is too low, increase µ_A or check DO availability in the aerobic zone.
 - If TSS is too high at steady-state, check SRT or increase b_H.
+
+![Calibration — objective function results](../assets/images/userguide-p123-img1.png)
 
 ---
 
@@ -130,6 +138,8 @@ Validation confirms that the calibrated model generalises beyond the calibration
 2. Without changing any calibrated parameters, set the simulation period to match the validation dataset and update the influent time-series.
 3. Run the simulation and compare simulated vs measured using the same target variables as calibration.
 4. Calculate SSE (or RMSE) for the validation period and compare it to the calibration period SSE. A validation SSE less than twice the calibration SSE is generally acceptable.
+
+![Validation — simulated vs measured](../assets/images/userguide-p124-img1.png)
 
 ### Acceptance criteria
 
