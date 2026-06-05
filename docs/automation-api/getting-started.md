@@ -29,6 +29,21 @@ The COM server is registered automatically when WEST is installed. There is no s
 
 ## Installation
 
+The WEST Python API is included with WEST SDK edition. Install the Python package from the WEST installation directory:
+
+```bash
+pip install "C:\Program Files\DHI\WEST\sdk\west_api-*.whl"
+```
+
+Requires Python 3.8 or later. The package depends on `numpy`, `pandas`, and `pywin32` (Windows). Verify the installation:
+
+```python
+import west_api
+print(west_api.__version__)
+```
+
+If `import west_api` fails, ensure the WEST installation directory is on the system PATH and that the correct Python interpreter (64-bit) is being used.
+
 ### 1. Verify the COM server is registered
 
 After a standard WEST installation the COM server (`DHI.WEST.Application`) is registered in the Windows registry. Open a command prompt and run:

@@ -84,6 +84,8 @@ For ASM2d, additionally determine:
 
 ## Importing an influent file
 
+Prepared influent time-series data can be imported into WEST using the **Data Editor** (File → New → Data or double-click a `.txt`/`.xls` file in the project tree). The file must have a header row listing component names that match the model's state variable names. After importing, connect the data file to the **Influent** block by setting its **File** parameter to the imported data file path. WEST reads the file at runtime and interpolates between timesteps. See [Managing Input Data](../how-to/managing-input-data.md) for file format requirements.
+
 ### Supported formats
 WEST accepts influent time series as:
 - **CSV / TXT** — comma- or tab-delimited, UTF-8. One row per time point.

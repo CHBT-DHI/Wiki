@@ -22,6 +22,8 @@ tags:
 
 ## Example 1 — BNR Plant (Biological Nutrient Removal)
 
+A conventional BNR layout with anaerobic, anoxic, and aerobic zones in series followed by a secondary clarifier. The example demonstrates: setting up the ASM2d model, configuring EBPR by enabling the PAO sub-model, adding a DO controller, and comparing steady-state vs dynamic effluent quality. Source files are included in the WEST installation under `Examples\BNR_Plant`.
+
 ### Overview
 
 A BNR plant achieves simultaneous removal of nitrogen and phosphorus by combining anoxic and aerobic zones with controlled recirculation. This example uses the **ASM2dMod** model, which includes phosphorus-accumulating organisms (PAOs), and targets effluent quality suitable for sensitive receiving waters.
@@ -88,6 +90,8 @@ If targets are not met, review: SRT (increase for better nitrification), IR rati
 
 ## Example 2 — MBR Configuration (Membrane Bioreactor)
 
+An MBR layout replaces the secondary clarifier with a membrane tank. The example covers: selecting the MBR block, setting permeate flux and TMP parameters, linking aeration to the membrane tank, and running a fouling scenario. Demonstrates how MBR allows higher MLSS concentrations and smaller footprint.
+
 ### Overview
 
 A Membrane Bioreactor (MBR) replaces the secondary clarifier with a submerged or external membrane module. The membrane provides complete solids retention, allowing operation at much higher MLSS concentrations (8–12 g/L) and producing a particle-free effluent suitable for reuse.
@@ -142,6 +146,8 @@ Influent → [Bioreactor (MBR)] → [MBR Membrane block] → Permeate (Effluent)
 ---
 
 ## Example 3 — Step-Feed Aeration Control
+
+A step-feed layout distributes influent across multiple aerobic zones. Aeration is controlled by DO sensors feeding PID controllers on each zone blower. The example shows: configuring the step-feed splitter, tuning PID gains, and comparing energy consumption with and without control using the Scenario Analysis experiment type.
 
 ### Overview
 

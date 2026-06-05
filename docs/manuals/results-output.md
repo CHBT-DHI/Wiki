@@ -59,6 +59,8 @@ Buffer output is a separate output mode used with WESTforAUTOMATION. Additional 
 
 ## Viewing results after a run
 
+Results are displayed automatically in the **Output** panel when a run finishes. The panel has two tabs: **Plot** (time-series graphs) and **Table** (numerical values). Click any state variable in the variable tree to add it to the active plot. Multiple variables can be overlaid; use the right-click menu to assign a secondary Y-axis.
+
 ### Results plot panel
 
 After a run completes, click the **Results** tab at the bottom of the WEST window to open the results workspace. To create a time-series plot:
@@ -153,15 +155,23 @@ Classify output values into user-defined classes (e.g. "good / acceptable / poor
 
 ## Exporting results
 
+Right-click any variable in the results tree and choose **Export**. A dialog lets you select the time range and format. Results can also be bulk-exported via **File → Export Results**.
+
 ### Export to CSV
+
+Exports selected variables as comma-separated values. Each column is one variable; rows correspond to communication timesteps. The header row contains variable names including units.
 
 ![Export to CSV dialog](../assets/images/userguide-p064-img1.png)
 
 ### Export to Excel
 
+Exports to `.xlsx` format with one sheet per experiment run. Variable metadata (units, block path) is written to a summary sheet. Requires Microsoft Excel or a compatible reader.
+
 ![Export to Excel dialog](../assets/images/userguide-p064-img2.png)
 
 ### Output file configuration
+
+Configure which variables are saved by opening **Simulation → Output Configuration**. Add or remove variables from the output list, set the communication interval, and choose binary (`.out`) or text format. Saving fewer variables reduces file size and slightly improves run speed.
 
 ![Output file configuration](../assets/images/userguide-p065-img1.png)
 

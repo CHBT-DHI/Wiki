@@ -61,11 +61,32 @@ For energy modelling, replace `Aeration.Ideal` with a blower-connected model. Bl
 
 ![CF_Q_Throttle — parameters table](../assets/images/modelica-p136-img2.png)
 
+Constant-flow centrifugal blower controlled by a throttle valve on the discharge side. The valve position is fixed at a nominal setting, making this the simplest blower model in WEST. Air flow rate is set directly by the `Q_air_nominal` parameter and does not respond to downstream pressure changes. Use this model when the operating point is essentially fixed and energy accuracy is less important than simplicity.
+
+**Key parameters:**
+
+| Parameter | Description | Unit |
+|---|---|---|
+| `Q_air_nominal` | Nominal air flow rate delivered at the throttle position | m³/h |
+| `p_max` | Maximum allowable discharge pressure | kPa |
+| `eta` | Overall blower + motor efficiency | — |
+
 ### CF_Q_VFD blower
 
 ![CF_Q_VFD blower — description](../assets/images/modelica-p140-img1.png)
 
 ![CF_Q_VFD — parameters table](../assets/images/modelica-p140-img2.png)
+
+Variable-frequency drive (VFD) centrifugal blower that maintains a constant flow set-point. The incoming control signal specifies the target flow rate; the model adjusts motor speed to match. A ramp-rate limit prevents abrupt speed changes that would stress the motor. This model is suitable for most modern aeration control schemes where the blower controller outputs a flow demand.
+
+**Key parameters:**
+
+| Parameter | Description | Unit |
+|---|---|---|
+| `Q_air_min` | Minimum allowable flow rate | m³/h |
+| `Q_air_max` | Maximum allowable flow rate | m³/h |
+| `ramp_rate` | Maximum rate of change of flow set-point | m³/h per min |
+| `eta` | Overall efficiency at nominal operating point | — |
 
 ### CF_HQ_VFD blower
 
@@ -73,15 +94,46 @@ For energy modelling, replace `Aeration.Ideal` with a blower-connected model. Bl
 
 ![CF_HQ_VFD — parameters table](../assets/images/modelica-p145-img2.png)
 
+VFD centrifugal blower with an explicit H-Q (pressure–flow) characteristic curve. The blower can operate in two modes: **flow priority**, where the VFD speed is set to deliver a requested flow regardless of header pressure, and **pressure priority**, where speed is set to maintain a target header pressure and flow is determined by the system curve intersection. The model automatically selects the active mode based on which constraint is binding. Use this model when the blower interacts with a shared air header or when detailed energy calculations are required.
+
+**Key parameters:**
+
+| Parameter | Description |
+|---|---|
+| `a0`, `a1`, `a2` | Polynomial H-Q curve coefficients (pressure = a0 + a1·Q + a2·Q²) |
+| `n_min`, `n_max` | Minimum and maximum motor speed (rpm or normalised) |
+| `p_setpoint` | Header pressure set-point for pressure-priority mode (kPa) |
+
 ### CF_Q_IGV blower
 
 ![CF_Q_IGV blower — description](../assets/images/modelica-p147-img1.png)
 
 ![CF_Q_IGV — parameters](../assets/images/modelica-p147-img2.png)
 
+Centrifugal blower with inlet guide vanes (IGVs) that control air flow by varying the pre-swirl angle entering the impeller. Unlike throttle control, IGVs reduce the energy absorbed by the blower at part-load, making this model more efficient than `CF_Q_Throttle` at reduced flow rates. The control signal drives the guide vane angle, which the model converts to a delivered flow rate using a vane-angle/flow characteristic. Suitable for plants that operate frequently at partial aeration capacity.
+
+**Key parameters:**
+
+| Parameter | Description | Unit |
+|---|---|---|
+| `Q_air_max` | Rated flow at fully open vane position | m³/h |
+| `vane_min` | Minimum vane angle (fully closed, minimum flow) | degrees |
+| `eta_IGV` | Part-load efficiency correction factor relative to VFD baseline | — |
+
 ### PD_Q_VFD blower
 
 ![PD_Q_VFD blower — description](../assets/images/modelica-p149-img1.png)
+
+Positive-displacement (Roots-type or screw-type) blower with VFD speed control. Unlike centrifugal machines, PD blowers deliver a flow that is almost directly proportional to rotational speed and largely independent of discharge pressure. This makes them well-suited to applications with widely varying backpressure (e.g. deep tanks, variable submergence). Flow is calculated as the product of displacement per revolution and actual speed. Power consumption rises linearly with pressure differential across the unit.
+
+**Key parameters:**
+
+| Parameter | Description | Unit |
+|---|---|---|
+| `disp_per_rev` | Displaced air volume per shaft revolution | m³/rev |
+| `n_min`, `n_max` | Minimum and maximum shaft speed | rpm |
+| `p_max` | Maximum allowable discharge pressure | kPa |
+| `eta` | Mechanical + motor efficiency | — |
 
 ### Parameters
 
@@ -133,11 +185,38 @@ where `Q_air_actual` is in m³/s and pressures are in kPa. WEST integrates `P_bl
 
 ## Aeration diffuser blocks
 
+Diffuser blocks model the oxygen transfer from air to mixed liquor. Transfer efficiency depends on diffuser type, submergence depth, and alpha factor. The diffuser block sits inside the bioreactor block and converts the incoming `Q_air` signal into a volumetric oxygen transfer coefficient (`kLa`) using empirical correlations. All diffuser models apply a process-water correction factor (alpha) and a salinity/surface tension correction (beta) to convert clean-water transfer data (SOTE) to process conditions.
+
+| Model | Transfer mechanism | Typical SOTE |
+|---|---|---|
+| `Aeration.FineBubble1` | Fine-bubble disc/membrane (SOTE-based) | 4–6 %/m |
+| `Aeration.FineBubble2` | Fine-bubble (KLa correlation) | 4–6 %/m equivalent |
+| `Aeration.CoarseBubble` | Coarse-bubble sparger | 1–2 %/m |
+| `Aeration.Surface` | Mechanical surface aerator | expressed as SOTR |
+
 ### Aeration FineBubble1
 
 ![Aeration FineBubble1 — description](../assets/images/modelica-p150-img1.png)
 
 ![Aeration FineBubble1 — parameters](../assets/images/modelica-p150-img2.png)
+
+Fine-bubble disc or membrane diffuser model based on a standard oxygen transfer efficiency (SOTE) correlation. Oxygen transfer rate is calculated as:
+
+```
+OTR = Q_air × SOTE × (H_sub / H_ref) × alpha × beta × (C_sat − C) / C_sat_clean
+```
+
+where `H_sub` is diffuser submergence depth. SOTE is typically 4–6 % per metre of submergence for modern membrane diffusers. This model requires measured or manufacturer-supplied SOTE data and is the preferred choice when diffuser performance data is available.
+
+**Key parameters:**
+
+| Parameter | Description | Typical value |
+|---|---|---|
+| `SOTE` | Standard oxygen transfer efficiency per metre submergence | 0.05 (5 %/m) |
+| `H_sub` | Diffuser submergence depth | m (tank-specific) |
+| `A_floor` | Diffuser floor area | m² |
+| `alpha` | Process-water correction factor (accounts for surfactants, MLSS) | 0.4–0.7 |
+| `beta` | Salinity/surface-tension correction | 0.95–1.0 |
 
 ### Aeration FineBubble2
 
@@ -145,17 +224,59 @@ where `Q_air_actual` is in m³/s and pressures are in kPa. WEST integrates `P_bl
 
 ![Aeration FineBubble2 — parameters](../assets/images/modelica-p153-img2.png)
 
+Alternative fine-bubble diffuser model that calculates the oxygen transfer coefficient `kLa` directly from a correlation with airflow rate, tank volume, and temperature. This approach is useful when SOTE data from the diffuser manufacturer is unavailable or when calibrating to measured `kLa` values from off-gas testing. The model uses the relationship:
+
+```
+kLa = K_transfer × (Q_air / V_tank)^n × theta^(T − 20)
+```
+
+where `K_transfer` and `n` are empirical coefficients fitted to plant data, and `theta` is the Arrhenius temperature coefficient (typically 1.024).
+
+**Key parameters:**
+
+| Parameter | Description |
+|---|---|
+| `K_transfer` | Empirical transfer coefficient (fitted to measured kLa) |
+| `n` | Flow exponent (typically 0.8–1.0) |
+| `V_tank` | Tank volume used in the normalisation (m³) |
+| `theta` | Temperature correction coefficient |
+
 ### Aeration CoarseBubble
 
 ![Aeration CoarseBubble — description](../assets/images/modelica-p154-img1.png)
 
 ![Aeration CoarseBubble — parameters](../assets/images/modelica-p154-img2.png)
 
+Coarse-bubble sparger model. Coarse-bubble systems generate larger bubbles (typically 6–10 mm diameter) that rise quickly through the tank, resulting in lower oxygen transfer efficiency (approximately 1–2 % per metre of submergence) compared to fine-bubble systems. However, they are substantially less prone to fouling and clogging, making them suitable for high-solids applications, sludge tanks, and tanks receiving raw wastewater. The model structure is identical to `FineBubble1` but uses lower default SOTE values.
+
+**Key parameters:**
+
+| Parameter | Description | Typical value |
+|---|---|---|
+| `SOTE` | Standard oxygen transfer efficiency per metre submergence | 0.015 (1.5 %/m) |
+| `H_sub` | Diffuser submergence depth | m |
+| `A_floor` | Diffuser floor area | m² |
+| `alpha` | Process-water correction factor | 0.6–0.8 (less degradation than fine-bubble) |
+| `beta` | Salinity correction | 0.95–1.0 |
+
 ### Surface aerator
 
 ![Surface aerator — description](../assets/images/modelica-p156-img1.png)
 
 ![Surface aerator — parameters](../assets/images/modelica-p156-img2.png)
+
+Mechanical surface aerator model. Surface aerators transfer oxygen by agitating the water surface and entraining atmospheric air, rather than by releasing bubbles from below. Oxygen transfer capacity is expressed as a standard oxygen transfer rate (SOTR, kg O₂/h) measured under clean-water conditions at 20 °C and zero DO. The actual transfer rate in process conditions is corrected by alpha and beta factors and the oxygen deficit. Power draw is a direct parameter, enabling energy calculations.
+
+**Key parameters:**
+
+| Parameter | Description | Unit |
+|---|---|---|
+| `SOTR` | Standard oxygen transfer rate (clean water, 20 °C, 0 mg/l DO) | kg O₂/h |
+| `P_motor` | Motor power draw | kW |
+| `alpha` | Process-water correction factor | — (0.6–0.9) |
+| `beta` | Salinity/surface tension correction | — (0.95–1.0) |
+
+Surface aerators are common in oxidation ditches, aerated lagoons, and SBRs. They are mechanically simple but consume more energy per kg O₂ transferred than fine-bubble diffuser systems at equivalent mixing levels.
 
 ### Jet aerator
 

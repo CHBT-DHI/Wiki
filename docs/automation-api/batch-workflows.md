@@ -147,6 +147,19 @@ if __name__ == "__main__":
 
 ## Storing and analysing batch results
 
+After a batch run, collect results using `sim.get_variable(block_path, variable_name)` for each run. Store them in a pandas DataFrame for analysis:
+
+```python
+import pandas as pd
+records = []
+for params, result in batch_results:
+    records.append({**params, **result})
+df = pd.DataFrame(records)
+df.to_csv('batch_results.csv', index=False)
+```
+
+Use standard pandas or matplotlib operations to compute statistics, plot response surfaces, or rank parameter combinations by effluent quality. For large batches (>100 runs), consider writing results incrementally to avoid memory issues.
+
 ### Saving to CSV
 
 Use Python's built-in `csv.DictWriter` (as shown above) for straightforward tabular results. Each row should include the swept parameter value(s) alongside all output metrics of interest.

@@ -33,6 +33,27 @@ tags:
 
 ![PID controller — parameters table](../assets/images/modelica-p272-img1.png)
 
+Classic Proportional-Integral-Derivative (PID) controller. The output signal is calculated as:
+
+```
+u(t) = Kp · e(t) + Ki · ∫e dt + Kd · de/dt
+```
+
+where `e = setpoint − measurement`. The integral term eliminates steady-state offset; the derivative term damps oscillation by anticipating the rate of change of the error. In practice, `Ki = Kp / Ti` and `Kd = Kp · Td`, so tuning is performed via the gain `Kp`, integral time `Ti` (min), and derivative time `Td` (min).
+
+**Key parameters:**
+
+| Parameter | Description | Typical value |
+|---|---|---|
+| `Kp` | Proportional gain | 1–10 (loop-dependent) |
+| `Ti` | Integral time (min) | 5–60 min |
+| `Td` | Derivative time (min) | 0–10 min (often 0 for DO/NH4 loops) |
+| `u_min` | Minimum controller output (lower saturation limit) | 0 |
+| `u_max` | Maximum controller output (upper saturation limit) | 1 or Q_max |
+| `anti_windup` | Enable integrator clamping when output saturates | true |
+
+**Typical uses:** DO control (sensor → PID → blower flow set-point), effluent NH4-based aeration control, flow-pacing of chemical dosing pumps, SBR level control. For most biological control loops in WEST, `Controllers.PI_Saturation` (derivative disabled, `Td = 0`) is the recommended starting point because derivative action amplifies sensor noise.
+
 ### On/Off controller
 
 The On/Off controller (bang-bang controller) switches an actuator fully on or off based on a threshold comparison of a measured signal against two set-points. It is the simplest control strategy in WEST and requires no tuning beyond the two thresholds.

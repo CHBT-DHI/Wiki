@@ -108,6 +108,8 @@ Save this file as `FirstOrderDecay.wml`.
 
 ## Compiling and loading the custom model
 
+After writing the model in the Model Editor: (1) Click **Compile** (or press F7). WEST parses the Modelica-like source and reports any syntax or type errors in the compiler output panel. Fix all errors before proceeding. (2) Once compilation succeeds, the model appears in the Model Explorer under your namespace. (3) To use the model in a layout, create a block icon for it in the Block Editor and assign the compiled model. (4) Drag the new block from the Block Library onto a layout sheet and set its parameters in the Block Details panel. (5) Run a quick steady-state simulation to verify mass balance before proceeding to dynamic runs.
+
 ### 1. Compile
 
 Open a command prompt and run the WEST model compiler (adjust the path to your installation):

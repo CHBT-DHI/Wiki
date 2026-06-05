@@ -34,6 +34,8 @@ Scenarios that use a different physical configuration (e.g. an extra tank) requi
 
 ## Creating and naming scenarios
 
+In the Control Center, open the **Scenarios** tab. Click **Add Scenario** to create a new scenario. Give it a descriptive name (e.g. "Baseline", "High Load", "Upgraded Aeration"). Each scenario stores its own parameter values independently. Switch between scenarios using the dropdown at the top of the Control Center. Parameter values for the active scenario are highlighted in blue in the Block Details panel.
+
 ### Creating a new scenario from scratch
 
 1. In the **Experiments** panel (left sidebar), right-click the project name → **New Scenario** (or use **Insert → New Scenario** from the menu).
@@ -83,6 +85,8 @@ The **Scenario Analysis** experiment type runs multiple scenarios in sequence an
 ---
 
 ## Exporting scenario comparison results
+
+After running all scenarios, go to **Experiment Types → Scenario Analysis**. Select the scenarios to compare and the output variables of interest. Click **Compare** to generate a side-by-side table and overlay plots. Export the comparison table with **File → Export → Scenario Comparison** — this produces a CSV with one column per scenario and one row per selected variable.
 
 ### Exporting to Excel
 

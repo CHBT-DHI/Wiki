@@ -28,6 +28,8 @@ You can use a custom model without creating a custom block (WEST will render it 
 
 ## Creating a custom block library
 
+A block library (`.wbl` file) bundles a set of related block icons and their associated models into a single distributable file. To create one: (1) Open the Block Editor (Project → Tools → Block Editor). (2) Create or import block icons for your custom models. (3) Assign each icon to a palette group (the category name shown in the Block Library panel). (4) Go to File → Save Library As and choose a `.wbl` destination. (5) Distribute the `.wbl` file; other users load it via Project → Tools → Block Editor → File → Open Library. The blocks then appear in their palette group in the Block Library panel.
+
 ### 1. Define the block in a `.wbl` file
 
 Block library files are XML-based. A minimal block entry looks like:
@@ -93,6 +95,8 @@ The output lists all registered models with their version, path, and status (`OK
 ---
 
 ## Sharing custom models with other users
+
+Package your custom model for distribution: (1) Export the model source (`.msl` files) from the Model Editor. (2) Compile a `.wbl` block library (see above). (3) Write a brief installation note: which WEST edition is required, where to copy files, and how to load the library. Recipients copy the `.msl` files to their WEST model library directory and load the `.wbl` in the Block Editor. For larger teams, consider a shared network model library path configured in Project → Options → Paths.
 
 ### Option A: Simple file copy
 

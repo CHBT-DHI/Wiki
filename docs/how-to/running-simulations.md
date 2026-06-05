@@ -35,6 +35,8 @@ Always run steady-state first when starting a new project — it provides an ini
 
 ## Running a steady-state simulation
 
+Open the **Control Center** (F5 or toolbar button). Set the experiment type to **Steady State**. Adjust the convergence tolerance if needed (default 1×10⁻⁶). Click **Run**. WEST solves the system iteratively; watch the residual value decrease in the logging window. When it falls below the tolerance the run completes and results appear automatically.
+
 ### Setup
 
 1. In the **Control Center**, select the **Steady-state** experiment (or create one via **Project | Virtual Experiments → Steady-state**).
@@ -64,6 +66,8 @@ Once a steady-state run is complete, all variables in the model hold their equil
 ---
 
 ## Running a dynamic simulation
+
+Set experiment type to **Dynamic**. Enter the simulation period: start time (days), end time, and communication interval (the timestep at which output is saved — smaller = more detail but larger files). Click **Run**. The progress bar in the Control Center shows elapsed simulation time. Pause at any point with the **Pause** button; resume with **Continue**.
 
 ### Setup
 
@@ -102,6 +106,8 @@ For activated sludge models, always use **VODE** with **Is a Stiff Solver** chec
 ---
 
 ## Reading results
+
+Results open automatically in the **Output** panel. Use the variable tree to select what to plot. If results do not appear, check that the variables you want are included in **Simulation → Output Configuration**. To compare results from multiple runs, use the **Scenario Analysis** experiment type or export to CSV and compare externally.
 
 ### Time-series plots
 

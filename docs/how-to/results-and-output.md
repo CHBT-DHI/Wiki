@@ -27,6 +27,8 @@ tags:
 
 ## Plots
 
+The plot panel displays time-series results after a simulation run. To add a variable: expand the variable tree on the left and double-click or drag a variable onto the plot area. To overlay multiple variables on one graph, drag additional variables onto the same panel. Right-click the plot for options: set axis limits, add a secondary Y-axis, change line style, export image. Use **View → New Plot Panel** to create a second plot window and compare different variables side by side.
+
 ### Adding variables to a plot panel
 
 1. After running a simulation, switch to the **Dashboard** or open an existing Sheet.
@@ -62,6 +64,8 @@ tags:
 ---
 
 ## Tables
+
+Switch to the **Table** tab in the results panel to view numerical output. The table shows one row per communication timestep and one column per selected variable. Sort or filter rows using column headers. Select a range of cells and press Ctrl+C to copy to clipboard for pasting into Excel. Click **Export** to save the full table as CSV or XLSX.
 
 ### Creating a results table
 

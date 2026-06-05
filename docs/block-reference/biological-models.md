@@ -408,6 +408,8 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 
 ![PWM_SA — ISS/VSS fractionation equations](../assets/images/modelica-p080-img1.png)
 
+Inorganic suspended solids (ISS) and volatile suspended solids (VSS) fractionation splits total suspended solids into organic (volatile) and inorganic fractions. ISS accumulate in the sludge and affect settling behaviour, thickening performance, and sludge volume. The fractionation is governed by the ratio `f_ISS` (g ISS / g TSS in the influent), which is used to initialise the `X_ISS` state variable from measured influent TSS data. In PWM_SA, ISS are also generated internally through chemical precipitation (X_MeP, X_MeOH) and through the inorganic content of active biomass (`i_ISS_BM`). Accurate ISS fractionation is important when modelling plants with chemical P-removal or high-mineral-load influents, and when estimating sludge production for dewatering or incineration design. ASM2d and PWM models that include the X_ISS state variable track ISS explicitly; ASM1 does not.
+
 ### Key additional parameters
 
 | Parameter | Description | Typical value | Unit |
@@ -423,6 +425,15 @@ PWM_SA (Plant-Wide Model with Sulphur and Aluminium chemistry) extends ASM2dMod 
 ### Anaerobic sub-model process scheme
 
 ![PWM_SA — anaerobic sub-model process scheme](../assets/images/modelica-p090-img1.png)
+
+The anaerobic sub-model within PWM_SA handles the fermentation, acetogenesis, and methanogenesis zones that occur in the anaerobic selector and digester sections of a combined aerobic/anaerobic process. The process scheme proceeds through four sequential stages:
+
+1. **Hydrolysis** — slowly biodegradable particulate substrate (X_S) is enzymatically broken down to readily biodegradable soluble substrate (S_F) under anaerobic conditions, following first-order kinetics.
+2. **Fermentation** — readily biodegradable COD (S_F) is fermented to volatile fatty acids (VFAs), primarily acetate (S_A), by facultative fermentative heterotrophs. This step is the carbon source for PAO anaerobic metabolism.
+3. **VFA uptake by PAOs** — phosphate-accumulating organisms (X_PAO) take up acetate (S_A) under strictly anaerobic conditions and store it intracellularly as polyhydroxyalkanoates (X_PHA), simultaneously releasing orthophosphate (S_PO). This anaerobic P-release is a prerequisite for the subsequent aerobic/anoxic P-uptake that achieves net biological phosphorus removal.
+4. **Phosphorus release** — net release of S_PO to the bulk liquid occurs as PAOs hydrolyse intracellular X_PP to provide energy for PHA storage. The magnitude of P-release is proportional to VFA availability and is a key diagnostic indicator of EBPR performance.
+
+This sub-model is active when using ASM2d or PWM_SA in layouts that include an anaerobic zone (e.g. UCT, A²O, or Bardenpho configurations) and is essential for simulating enhanced biological phosphorus removal (EBPR).
 
 ### When to use
 
