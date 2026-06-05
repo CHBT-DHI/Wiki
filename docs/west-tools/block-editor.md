@@ -6,28 +6,18 @@ tags:
 
 # Block Editor
 
-**Summary:** Create and manage icon libraries — the graphical representations of process blocks used in WEST layouts.
+The Block Editor is used to create and edit Block Icons — the graphical representations of process models that appear in WEST plant layouts. Block icons are distinct from the underlying mathematical models: a single model can have multiple icon representations. Users who build standard WEST simulations with the existing block library will not need this tool; it is relevant when introducing new models or customising the visual appearance of existing ones.
 
-**Source:** WEST User Guide, Chapter 7.
+## How to access
 
----
+**Project menu → Tools → Block Editor**
 
-## What the Block Editor provides
+## Key features
 
-The Block Editor lets you:
-- Create new block icons (graphical appearance + terminals)
-- Manage existing icon libraries (`.wbl` files)
-- Assign terminal positions and properties to icons
-
-Block icons are separate from the underlying mathematical models. A single model (e.g. `VolumeConstant`) can have multiple icon representations.
-
----
-
-## Quick user guide
-
-> **Needs content.** From User Guide 7.2.
-
----
+- Create new block icons (graphical shape, colour, and label)
+- Define the number, type, and position of terminals on each icon
+- Manage existing block icon libraries (`.wbl` files)
+- Published icons appear in the Block Library under a user-defined palette group, making them available in the layout canvas
 
 ## Related
 
